@@ -60,6 +60,28 @@ El error de consulta se identifica con ícono y texto. La búsqueda sin resultad
 mantiene una sugerencia para probar otra palabra. Los enlaces de agregar y quitar
 carreras, el formulario GET y la dirección compartible mantienen su comportamiento.
 
+### Beneficios y calendario
+
+La página de beneficios utiliza la cabecera azul de las páginas interiores.
+El acceso principal coral lleva al calendario para evitar recorrer todo el
+catálogo antes de consultar un plazo. Un segundo enlace permite llegar al
+buscador. Ambos destinos reciben el foco mediante navegación nativa.
+
+Las tarjetas muestran nombre, explicación, requisitos, cobertura, postulación
+y fuente completa. En escritorio se distribuyen en dos columnas. En teléfono
+se leen en una columna. La búsqueda conserva su actualización al escribir y
+anuncia el conteo de resultados. El estado vacío ofrece probar otro nombre.
+
+El calendario se presenta como un recorrido con nodos y procesos identificados
+por su nombre. Las fechas exactas y las pendientes conservan sus explicaciones,
+referencias, fuentes y fechas de consulta. Se reutiliza el componente Aviso
+para los plazos pendientes. La disposición de dos columnas en escritorio
+separa el proceso de su fecha o aviso.
+
+El catálogo completo y el calendario se renderizan en el servidor. La búsqueda
+interactiva requiere JavaScript. Los valores, el orden de los plazos y las
+reglas de búsqueda siguen procediendo de sus módulos y archivos existentes.
+
 > Regla de este proyecto: **ningún elemento visual existe porque "se ve bonito"**. Cada color, letra, espacio y borde responde a una de estas cuatro razones, y aquí queda escrita cuál:
 >
 > 1. **Accesibilidad medible** (WCAG 2.2, daltonismo, legibilidad).

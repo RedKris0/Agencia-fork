@@ -211,3 +211,30 @@ la simulación temporal descrita arriba. La conexión real continúa pendiente.
 - Axe sin infracciones detectadas en el comparador con contenido, tanto en
   teléfono como en escritorio y en ambos temas.
 - Revisión visual de las columnas a 375, 768 y 1280 px y en tema oscuro.
+
+### Beneficios y plazos
+
+La página interior incorpora la cabecera azul, acceso coral al calendario y
+enlace al buscador. Los destinos de navegación reciben el foco de teclado.
+El catálogo organiza sus tarjetas en dos columnas en escritorio y una en
+teléfono. El calendario utiliza el recorrido de estaciones para relacionar
+los procesos con sus fechas o avisos de fecha pendiente.
+
+Se reutilizan Enlace, Aviso e IndicadorEstacion. La consulta textual y el orden
+de plazos mantienen su implementación. Los contenidos se leen de los archivos
+versionados, incluidos fuentes, URL, fechas de consulta y motivos de ausencia.
+La búsqueda interactiva requiere JavaScript. El catálogo y el calendario
+completos están disponibles sin JavaScript.
+
+- Compilación directa de Next, lint, tipos y verificación de tokens aprobados.
+- 189 pruebas de Node y 21 pruebas Playwright aprobadas con Edge, incluidas
+  cinco nuevas de beneficios.
+- Verificados los 16 beneficios y nueve plazos contra los archivos versionados,
+  con sus fuentes y fechas. La comprobación cubre el contenido sin JavaScript.
+- Accesos directos revisados con teclado. Búsqueda, conteo y estado vacío
+  comprobados en el navegador.
+- Capturas a 375, 768 y 1280 px, tema oscuro y texto al 200 % sin desbordamiento.
+- Axe sin infracciones WCAG detectadas en ambos temas.
+
+Esta etapa verifica la presentación del catálogo existente. La vigencia de
+las fuentes externas requiere la revisión de datos correspondiente.
