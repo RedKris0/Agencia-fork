@@ -81,6 +81,19 @@ utilizadas por las pruebas existentes.
 
 ## Verificación local de esta etapa
 
+### Refinamiento solicitado tras la revisión visual
+
+Cristóbal pidió mayor profesionalismo después de revisar la base. La guía
+incorpora una jerarquía tipográfica más marcada y una composición de dos
+columnas en escritorio. Los datos presentes y ausentes tienen tratamientos
+diferenciados mediante superficie y borde. La cabecera limita el logo a
+`--ancho-logo` (15 rem), usa estaciones circulares y concentra el coral en la
+estación actual. Los controles de prueba se agrupan entre separadores.
+
+El círculo identifica una estación del recorrido; el borde discontinuo
+identifica una ausencia de datos. Cada tratamiento conserva su nombre y
+explicación textual. Estos cambios afectan únicamente estilos y tokens.
+
 - `next build` y `npm run lint` completados correctamente.
 - 44 pares de contraste aprobados mediante `scripts/tokens.py --check`.
 - 189 pruebas existentes aprobadas con Node 24. En Windows, las pruebas que

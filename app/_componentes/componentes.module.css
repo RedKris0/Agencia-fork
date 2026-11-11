@@ -1,7 +1,7 @@
 .boton {
   min-block-size: var(--objetivo-tactil);
   min-inline-size: var(--objetivo-tactil);
-  padding: var(--espacio-3) var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-6);
   border: var(--borde) solid var(--color-linea);
   border-radius: var(--radio);
   font: inherit;
@@ -10,7 +10,7 @@
   overflow-wrap: anywhere;
   transition: transform var(--mov-rapido) var(--mov-curva), opacity var(--mov-rapido) var(--mov-curva);
 }
-.principal { background: var(--color-accion); color: var(--color-sobre-accion); }
+.principal { background: var(--color-accion); color: var(--color-sobre-accion); border-color: var(--color-accion-texto); }
 .secundario { background: var(--color-superficie); color: var(--color-linea-texto); }
 .boton:disabled { cursor: not-allowed; background: var(--color-superficie); color: var(--color-texto-suave); border-color: var(--color-borde); }
 .boton:focus-visible, .enlace:focus-visible { outline: var(--anillo-foco) solid var(--color-foco); outline-offset: var(--espacio-1); }
@@ -25,6 +25,9 @@
   --color-texto: var(--color-marca-texto);
   --color-foco: var(--color-marca-texto);
   --color-estacion-explorar: var(--color-marca-linea);
+  --color-estacion-postular: var(--color-marca-linea);
+  --color-estacion-llegar: var(--color-marca-linea);
+  --color-estacion-avanzar: var(--color-marca-linea);
   display: grid;
   gap: var(--espacio-6);
   padding: var(--espacio-6) var(--espacio-4);
@@ -32,24 +35,26 @@
   color: var(--color-marca-texto);
   border-block-end: var(--borde-linea) solid var(--color-accion);
 }
-.logo { inline-size: auto; block-size: auto; max-inline-size: 100%; max-block-size: var(--espacio-16); }
+.logo { inline-size: var(--ancho-logo); block-size: auto; max-inline-size: 100%; max-block-size: var(--espacio-16); }
 .logoClaro { display: none; }
 .logoOscuro { display: block; }
 .navegacion { display: flex; flex-wrap: wrap; gap: var(--espacio-2) var(--espacio-6); margin: 0; padding: 0; list-style: none; }
-.navegacion .enlace { display: inline-flex; align-items: center; min-block-size: var(--objetivo-tactil); }
+.navegacion .enlace { display: inline-flex; align-items: center; min-block-size: var(--objetivo-tactil); font-weight: 700; }
 .estaciones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 .estacion { --color-etapa: var(--color-estacion-explorar); position: relative; display: grid; justify-items: center; align-content: start; gap: var(--espacio-2); min-inline-size: 0; text-align: center; }
 .estacion[data-estacion="2"] { --color-etapa: var(--color-estacion-postular); }
 .estacion[data-estacion="3"] { --color-etapa: var(--color-estacion-llegar); }
 .estacion[data-estacion="4"] { --color-etapa: var(--color-estacion-avanzar); }
 .estacion::before { content: ""; position: absolute; inset-block-start: calc(var(--objetivo-tactil) / 2); inset-inline: 0; block-size: var(--borde-linea); background: var(--color-etapa); }
-.numero { position: relative; display: grid; place-items: center; inline-size: var(--objetivo-tactil); block-size: var(--objetivo-tactil); border: var(--borde) solid var(--color-etapa); border-radius: var(--radio); background: var(--color-superficie); color: var(--color-texto); font-family: var(--fuente-cifras); }
+.numero { position: relative; display: grid; place-items: center; inline-size: var(--objetivo-tactil); block-size: var(--objetivo-tactil); border: var(--borde) solid var(--color-etapa); border-radius: 50%; background: var(--color-superficie); color: var(--color-texto); font-family: var(--fuente-cifras); }
 .estacion[aria-current="step"] .numero { background: var(--color-linea); color: var(--color-sobre-linea); }
 .nombre { font-size: var(--texto-m1); overflow-wrap: anywhere; }
 .actual { font-size: var(--texto-m1); color: var(--color-linea-texto); }
 .resumenMovil { display: none; }
-.dato { display: grid; gap: var(--espacio-3); padding: var(--espacio-6); border: var(--borde) solid var(--color-borde); border-radius: var(--radio); background: var(--color-superficie); }
-.cifra { font-family: var(--fuente-cifras); font-size: var(--texto-3); overflow-wrap: anywhere; }
+.dato { display: grid; align-content: start; gap: var(--espacio-3); padding: var(--espacio-6); border: var(--borde) solid var(--color-borde); border-radius: var(--radio); background: var(--color-superficie-suave); }
+.dato:has(.sinDato) { border-style: dashed; background: var(--color-superficie); }
+.dato h3 { font-size: var(--texto-0); }
+.cifra { font-family: var(--fuente-cifras); font-size: var(--texto-4); line-height: var(--interlineado-titulos); overflow-wrap: anywhere; }
 .sinDato { color: var(--color-texto-suave); }
 .aviso { display: grid; gap: var(--espacio-2); padding: var(--espacio-4); border: var(--borde) solid currentColor; border-inline-start-width: var(--borde-linea); border-radius: var(--radio); background: var(--color-superficie); color: var(--color-texto); }
 .tituloAviso { display: flex; align-items: start; gap: var(--espacio-2); }
@@ -64,6 +69,12 @@
 }
 
 .boton:enabled:active { transform: none; }
+
+.encabezado .estacion[aria-current="step"] .numero {
+  background: var(--color-accion);
+  border-color: var(--color-accion);
+  color: var(--color-sobre-accion);
+}
 
 @media (min-width: 48rem) {
   .encabezado { grid-template-columns: minmax(0, 1fr) auto; padding: var(--espacio-8); align-items: center; }
