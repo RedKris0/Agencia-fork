@@ -1,6 +1,6 @@
 # 0029 — Base visual Andén urbano
 
-Fecha: 2026-11-11 · Estado: propuesta (pendiente de aceptación del líder)
+Fecha: 2026-11-11 · Estado: aceptada por el líder ([@rafajaque](https://github.com/rafajaque)) el 2026-11-11
 
 ## Contexto
 
@@ -128,8 +128,8 @@ La revisión de contraste reemplaza el texto blanco de Beneficios por
 `--color-sobre-accion` sobre el mismo fondo coral. El par ya forma parte de
 `contraste_requerido` con mínimo 4,5. La acción azul conserva texto blanco.
 Los resultados por texto, tema y ancho se registran junto a las pruebas de
-la portada. La numeración 0029 se propone para evitar el ADR 0028 del PR #139
-y queda pendiente de confirmación del líder.
+la portada. La numeración 0029 evita el ADR 0028 del PR #139, reservado para
+la visibilidad del repositorio.
 
 ### Refinamiento solicitado tras la revisión visual
 
