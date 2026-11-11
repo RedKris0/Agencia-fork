@@ -3,6 +3,7 @@
   "fecha_consulta": "2026-11-11",
   "fuente": "Formulario Único de Acreditación Socioeconómica (FUAS), Mineduc",
   "url": "https://postulacion.beneficiosestudiantiles.cl/fuas/",
+  "url_resultados": "https://resultados.beneficiosestudiantiles.cl",
   "plazos": [
     {"codigo": "fuas_primer_periodo", "proceso": "Primer periodo de postulación FUAS", "descripcion": "Completar el Formulario Único de Acreditación Socioeconómica para beneficios 2027.", "inicio": "2026-10-01", "termino": "2026-10-22", "estado": "publicado", "motivo_sin_fecha": null, "fuente": "FUAS, Mineduc", "url": "https://postulacion.beneficiosestudiantiles.cl/fuas/", "fecha_consulta": "2026-11-11"},
     {"codigo": "fuas_extension_primer_periodo", "proceso": "Extensión del primer periodo de postulación FUAS", "descripcion": "Plazo adicional para completar el formulario para beneficios 2027.", "inicio": "2026-10-22", "termino": "2026-11-06", "estado": "publicado", "motivo_sin_fecha": null, "fuente": "FUAS, Mineduc", "url": "https://postulacion.beneficiosestudiantiles.cl/fuas/", "fecha_consulta": "2026-11-11"},

@@ -1,6 +1,6 @@
-# 0029 — Continuidad visual y movimiento del portal
+# 0030 — Continuidad visual y movimiento del portal
 
-Fecha: 2026-11-11 · Estado: aceptada por Cristóbal para la copia de rediseño
+Fecha: 2026-11-11 · Estado: propuesta (pendiente de aceptación del líder)
 
 ## Contexto
 

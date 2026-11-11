@@ -61,6 +61,39 @@ export function primerPeriodoCerrado(plazos: Plazo[], hoy: string): PrimerPeriod
   };
 }
 
+// Hitos que siguen a la postulación, en el orden en que ocurren (primer período).
+export const HITOS_DESPUES_DE_POSTULAR = [
+  "nivel_socioeconomico_primer_periodo",
+  "preseleccion_primer_periodo",
+  "asignacion_primer_periodo",
+  "apelacion_primer_periodo",
+] as const;
+
+export type EstadoDeHito = "paso" | "en_curso" | "proximo" | "mas_adelante" | "sin_fecha";
+export type HitoConEstado = { plazo: Plazo; estado: EstadoDeHito };
+
+// Marca cada hito como ya pasado, en curso, el próximo o más adelante. Solo el primer hito futuro
+// es «próximo». Un hito sin fecha publicada queda «sin_fecha»: nunca se le supone una.
+export function hitosConEstado(plazos: Plazo[], codigos: readonly string[], hoy: string): HitoConEstado[] {
+  const porCodigo = new Map(plazos.map((plazo) => [plazo.codigo, plazo]));
+  let hayProximo = false;
+  return codigos.flatMap((codigo): HitoConEstado[] => {
+    const plazo = porCodigo.get(codigo);
+    if (!plazo) return [];
+    if (!plazo.inicio || !plazo.termino) return [{ plazo, estado: "sin_fecha" }];
+    if (hoy > plazo.termino) return [{ plazo, estado: "paso" }];
+    if (hoy >= plazo.inicio) {
+      hayProximo = true;
+      return [{ plazo, estado: "en_curso" }];
+    }
+    if (!hayProximo) {
+      hayProximo = true;
+      return [{ plazo, estado: "proximo" }];
+    }
+    return [{ plazo, estado: "mas_adelante" }];
+  });
+}
+
 export function normalizarTexto(texto: string): string {
   return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLocaleLowerCase("es-CL");
 }

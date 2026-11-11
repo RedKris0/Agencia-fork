@@ -83,8 +83,8 @@
 .billete li svg { inline-size: var(--espacio-4); block-size: var(--espacio-4); flex-shrink: 0; margin-block-start: var(--espacio-1); }
 .billeteAlternativo { transform: translateY(var(--espacio-6)); background: var(--color-marca-linea); border-color: var(--color-marca-fondo); }
 .aclaracionVisual { grid-column: 1 / -1; padding-block-start: var(--espacio-6); color: var(--color-texto-suave); font-size: var(--texto-m1); }
-.beneficios { --color-foco: var(--color-marca-fondo); background: var(--color-accion); color: var(--color-marca-texto); }
-.beneficios h2 { color: var(--color-marca-texto); }
+.beneficios { --color-foco: var(--color-sobre-accion); background: var(--color-accion); color: var(--color-sobre-accion); }
+.beneficios h2 { color: inherit; }
 .beneficios::after { background: var(--color-marca-texto); }
 .beneficios .cartelPlazos { border-color: currentColor; }
 .beneficios::before { background: var(--color-superficie-suave); }

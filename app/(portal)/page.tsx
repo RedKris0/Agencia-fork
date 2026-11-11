@@ -26,7 +26,7 @@ export default function Inicio() {
               <p className={estilos.entrada}>Información oficial y apoyo para elegir, postular y avanzar.</p>
               <Link className={estilos.accion} href="/carreras">Explorar carreras <ArrowUpRight aria-hidden="true" /></Link>
 
-              <Link className={estilos.accionSecundaria} href="/beneficios#calendario-plazos">Revisar mis plazos de becas y gratuidad (FUAS)</Link>
+              <Link className={estilos.accionSecundaria} href="/fuas">Revisar mi próximo paso para becas y gratuidad (FUAS)</Link>
             </div>
             <Carrusel />
             <p className={estilos.notaHero}>Datos de Mineduc — SIES y Datos Abiertos — y DEMRE.<br />Beneficios consultados el <time dateTime={beneficios.fecha_consulta}>{fechaLarga(beneficios.fecha_consulta)}</time>.<br /><a href="#fuentes">Consulta las fuentes y sus fechas.</a></p>

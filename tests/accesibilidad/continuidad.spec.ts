@@ -3,10 +3,10 @@ import AxeBuilder from '@axe-core/playwright';
 import calendario from '../../datos/beneficios/plazos_2027.json' with { type: 'json' };
 import { hoyEnChile, primerPeriodoCerrado } from '../../app/(portal)/beneficios/beneficios';
 
-test('la portada conserva el acceso al calendario y el aviso vigente del FUAS', async ({ page }) => {
+test('la portada conserva el acceso a la guía y el aviso vigente del FUAS', async ({ page }) => {
   await page.goto('/');
-  const acceso = page.getByRole('link', { name: 'Revisar mis plazos de becas y gratuidad (FUAS)', exact: true });
-  await expect(acceso).toHaveAttribute('href', '/beneficios#calendario-plazos');
+  const acceso = page.getByRole('link', { name: 'Revisar mi próximo paso para becas y gratuidad (FUAS)', exact: true });
+  await expect(acceso).toHaveAttribute('href', '/fuas');
   const cerrado = primerPeriodoCerrado(calendario.plazos, hoyEnChile());
   const aviso = page.getByText('el primer período de postulación ya cerró', { exact: false });
   if (cerrado) {
@@ -17,7 +17,7 @@ test('la portada conserva el acceso al calendario y el aviso vigente del FUAS', 
     await expect(aviso).toHaveCount(0);
   }
   await acceso.click();
-  await expect(page.getByRole('heading', { name: 'Calendario de plazos', exact: true })).toBeInViewport();
+  await expect(page).toHaveURL('/fuas');
 });
 
 const paginas = [
@@ -112,7 +112,7 @@ test('las cabeceras conservan el ancho disponible con texto ampliado', async ({ 
 test('la ficha que se abre desde una tarjeta conserva la identidad y sus indicadores', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/carreras');
-  test.skip(await page.locator('main').getByRole('alert').count() > 0, 'La ficha con contenido requiere una fuente de datos disponible.');
+  await expect(page.locator('main').getByRole('alert'), 'La fuente de datos debe estar disponible para comprobar este flujo.').toHaveCount(0);
   const primera = page.getByRole('article').first();
   const nombre = await primera.getByRole('heading', { level: 3 }).innerText();
   await primera.getByRole('link', { name: 'Ver ficha de carrera', exact: true }).click();

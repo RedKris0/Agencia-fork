@@ -1,0 +1,111 @@
+/* Guía del FUAS. Solo valores de diseno/tokens.css (docs/diseno.md). */
+.guia {
+  max-inline-size: var(--medida);
+  margin-inline: auto;
+  padding: var(--espacio-8) var(--espacio-4);
+  display: grid;
+  gap: var(--espacio-6);
+}
+
+.encabezado,
+.situacion,
+.pasos li,
+.enlaces {
+  display: grid;
+  gap: var(--espacio-3);
+}
+
+.encabezado h1,
+.encabezado p,
+.situacion h2,
+.situacion p,
+.pasos h3,
+.pasos p,
+.fuente {
+  margin: 0;
+}
+
+.encabezado {
+  padding-block-end: var(--espacio-6);
+  border-block-end: var(--borde-linea) solid var(--color-linea);
+}
+
+.encabezado h1 {
+  font-size: var(--texto-3);
+}
+
+.situacion {
+  min-inline-size: 0;
+  padding: var(--espacio-4);
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+}
+
+.situacion h2 {
+  font-size: var(--texto-2);
+  font-weight: 700;
+}
+
+.pasos {
+  display: grid;
+  gap: var(--espacio-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pasos li {
+  min-inline-size: 0;
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-fondo);
+}
+
+/* El paso que toca ahora lleva borde grueso además de la palabra «Próximo paso» o «Está en curso». */
+.pasos li.destacado {
+  border-color: var(--color-linea);
+  border-inline-start-width: var(--borde-linea);
+}
+
+.pasos h3 {
+  font-size: var(--texto-1);
+}
+
+.estado {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  color: var(--color-linea-texto);
+}
+
+.icono {
+  inline-size: var(--texto-1);
+  block-size: var(--texto-1);
+  flex-shrink: 0;
+}
+
+.enlaces {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.enlace {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--objetivo-tactil);
+  color: var(--color-linea-texto);
+  text-decoration: underline;
+}
+
+.enlace:focus-visible {
+  outline: var(--anillo-foco) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
+}
+
+.fuente {
+  color: var(--color-texto-suave);
+  font-size: var(--texto-0);
+}

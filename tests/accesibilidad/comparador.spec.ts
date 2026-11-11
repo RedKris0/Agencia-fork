@@ -5,7 +5,7 @@ const rutaConTres = '/comparador?carreras=I70S1C41J1V1,I87S1C49J1V3,I72S1C75J1V1
 
 async function abrirComparacion(pagina: Page) {
   await pagina.goto(rutaConTres);
-  test.skip(await pagina.locator('main').getByRole('alert').count() > 0, 'La comparación con contenido requiere una fuente de datos disponible.');
+  await expect(pagina.locator('main').getByRole('alert'), 'La fuente de datos debe estar disponible para comprobar este flujo.').toHaveCount(0);
   await expect(pagina.getByRole('link', { name: 'Quitar carrera', exact: true })).toHaveCount(3);
 }
 
@@ -42,7 +42,7 @@ test('agregar una carrera desde la búsqueda funciona sin JavaScript', async ({ 
   const contexto = await browser.newContext({ javaScriptEnabled: false, baseURL });
   const pagina = await contexto.newPage();
   await pagina.goto('/comparador?q=Enfermer%C3%ADa');
-  test.skip(await pagina.locator('main').getByRole('alert').count() > 0, 'Agregar una carrera requiere una fuente de datos disponible.');
+  await expect(pagina.locator('main').getByRole('alert'), 'La fuente de datos debe estar disponible para comprobar este flujo.').toHaveCount(0);
   const agregar = pagina.getByRole('list', { name: 'Resultados para agregar' }).getByRole('link').first();
   const destino = await agregar.getAttribute('href');
   await agregar.click();

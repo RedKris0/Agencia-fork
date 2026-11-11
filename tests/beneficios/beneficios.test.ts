@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { filtrarBeneficios, hoyEnChile, ordenarPlazos, primerPeriodoCerrado } from "../../app/(portal)/beneficios/beneficios.ts";
+import { filtrarBeneficios, hitosConEstado, hoyEnChile, ordenarPlazos, primerPeriodoCerrado } from "../../app/(portal)/beneficios/beneficios.ts";
 
 test("busca beneficios sin distinguir tildes", () => {
   const beneficios = [
@@ -60,4 +60,36 @@ test("la fecha de hoy se toma en la zona horaria de Chile", () => {
   // 01:00 UTC del 7 de noviembre es todavía el 6 de noviembre en Chile (UTC-3).
   assert.equal(hoyEnChile(new Date("2026-11-07T01:00:00Z")), "2026-11-06");
   assert.equal(hoyEnChile(new Date("2026-11-07T12:00:00Z")), "2026-11-07");
+});
+
+const hitos = [
+  plazo("nivel_socioeconomico_primer_periodo", "2026-12-17", "2026-12-17"),
+  plazo("preseleccion_primer_periodo", "2027-01-15", "2027-01-15"),
+  plazo("asignacion_primer_periodo", "2027-03-10", "2027-03-10"),
+  plazo("apelacion_primer_periodo", "2027-03-10", "2027-03-25"),
+];
+const codigosHitos = hitos.map((hito) => hito.codigo);
+const estados = (hoy: string) => hitosConEstado(hitos, codigosHitos, hoy).map((h) => h.estado);
+
+test("antes del primer hito, el primero es el próximo y el resto queda más adelante", () => {
+  assert.deepEqual(estados("2026-11-11"), ["proximo", "mas_adelante", "mas_adelante", "mas_adelante"]);
+});
+
+test("el día del hito está en curso y el siguiente pasa a ser el próximo", () => {
+  assert.deepEqual(estados("2026-12-17"), ["en_curso", "mas_adelante", "mas_adelante", "mas_adelante"]);
+  assert.deepEqual(estados("2026-12-18"), ["paso", "proximo", "mas_adelante", "mas_adelante"]);
+});
+
+test("un período de varios días está en curso entre su inicio y su término", () => {
+  assert.deepEqual(estados("2027-03-20"), ["paso", "paso", "paso", "en_curso"]);
+  assert.deepEqual(estados("2027-03-26"), ["paso", "paso", "paso", "paso"]);
+});
+
+test("un hito sin fecha publicada no se marca como pasado ni como próximo", () => {
+  const conSinFecha = [...hitos.slice(0, 1), plazo("preseleccion_primer_periodo", null, null)];
+  assert.deepEqual(hitosConEstado(conSinFecha, ["nivel_socioeconomico_primer_periodo", "preseleccion_primer_periodo"], "2026-11-11").map((h) => h.estado), ["proximo", "sin_fecha"]);
+});
+
+test("los códigos que no existen en los datos se omiten", () => {
+  assert.deepEqual(hitosConEstado(hitos, ["no_existe", "preseleccion_primer_periodo"], "2026-11-11").map((h) => h.plazo.codigo), ["preseleccion_primer_periodo"]);
 });

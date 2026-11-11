@@ -4,7 +4,7 @@
 
 La rama local `rediseno-metro` aplica la alternativa **Andén urbano**, elegida
 por Cristóbal el 11 de noviembre de 2026. Su base está registrada en el
-[ADR 0028](decisiones/0028-base-visual-anden-urbano.md).
+[ADR 0029](decisiones/0029-base-visual-anden-urbano.md).
 
 Los encabezados compartidos utilizan el azul marino del logo, su versión clara
 y una línea coral. El contenido mantiene superficies claras. El tema oscuro
@@ -16,7 +16,7 @@ trazabilidad de datos siguen aplicándose.
 La portada y las páginas de carreras, comparador y beneficios comparten ahora
 el logo, la navegación, el tren y las ilustraciones originales del portal.
 El ajuste de continuidad y movimiento se registra en el
-[ADR 0029](decisiones/0029-continuidad-visual-y-movimiento.md).
+[ADR 0030](decisiones/0030-continuidad-visual-y-movimiento.md).
 
 ### Continuidad visual y apariciones
 
@@ -73,7 +73,7 @@ Las definiciones, los períodos, las fuentes y las fechas siguen junto a cada da
 
 Durante el envío del formulario, tres tarjetas de espera reproducen las columnas
 de los resultados y un estado anuncia «Buscando carreras…». Solo varía la opacidad,
-con los tokens de movimiento del ADR 0028. La preferencia de movimiento reducido
+con los tokens de movimiento del ADR 0029. La preferencia de movimiento reducido
 deja las tarjetas estáticas. La navegación GET funciona también sin JavaScript.
 Al restaurar una página desde el historial, se restablece su estado de espera.
 
