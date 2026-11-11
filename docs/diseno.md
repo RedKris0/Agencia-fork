@@ -1,5 +1,21 @@
 # Sistema de diseño · "Mapa de trayecto"
 
+## Base visual vigente en la copia de rediseño
+
+La rama local `rediseno-metro` aplica la alternativa **Andén urbano**, elegida
+por Cristóbal el 11 de noviembre de 2026. Su base está registrada en el
+[ADR 0024](decisiones/0024-base-visual-anden-urbano.md).
+
+Los encabezados compartidos utilizan el azul marino del logo, su versión clara
+y una línea coral. El contenido mantiene superficies claras. El tema oscuro
+utiliza superficies azules. Los valores de neutros y movimiento de las secciones
+históricas siguientes quedan reemplazados por ese ADR y `diseno/tokens.json`.
+Las tipografías locales, los contratos de componentes y las reglas de
+trazabilidad de datos siguen aplicándose.
+
+Esta etapa establece tokens y estilos compartidos. La portada con tren y
+carrusel corresponde a la siguiente etapa de aprobación del rediseño.
+
 > Regla de este proyecto: **ningún elemento visual existe porque "se ve bonito"**. Cada color, letra, espacio y borde responde a una de estas cuatro razones, y aquí queda escrita cuál:
 >
 > 1. **Accesibilidad medible** (WCAG 2.2, daltonismo, legibilidad).

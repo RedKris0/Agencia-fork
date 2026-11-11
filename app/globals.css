@@ -46,6 +46,7 @@
   --text-subtitulo: var(--texto-2);
   --text-titulo: var(--texto-3);
   --text-portada: var(--texto-4);
+  --text-hero: var(--texto-5);
   --radius-agencia: var(--radio);
 }
 
@@ -71,7 +72,39 @@
   h1 {
     line-height: var(--interlineado-titulos);
     overflow-wrap: anywhere;
+    text-wrap: balance;
   }
+
+  ::selection {
+    background: var(--color-linea);
+    color: var(--color-sobre-linea);
+  }
+
+  :where(input, select, textarea, button) {
+    font: inherit;
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea) {
+    box-sizing: border-box;
+    max-inline-size: 100%;
+    min-block-size: var(--objetivo-tactil);
+    padding: var(--espacio-3) var(--espacio-4);
+    border: var(--borde) solid var(--color-borde);
+    border-radius: var(--radio);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    caret-color: var(--color-linea);
+  }
+
+  :where(input, textarea)::placeholder {
+    color: var(--color-texto-suave);
+    opacity: 1;
+  }
+
+  :where(input[type="checkbox"], input[type="radio"]) {
+    accent-color: var(--color-linea);
+  }
+
 }
 
 .portada {
@@ -99,6 +132,7 @@
 }
 
 .saltar-contenido {
+  z-index: 10;
   position: absolute;
   inset-block-start: var(--espacio-2);
   inset-inline-start: var(--espacio-2);
@@ -113,4 +147,13 @@
 
 .saltar-contenido:focus {
   transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --mov-entrada: 0ms;
+    --mov-escalon: 0ms;
+    --mov-fundido: 0ms;
+    --mov-carga: 0ms;
+  }
 }

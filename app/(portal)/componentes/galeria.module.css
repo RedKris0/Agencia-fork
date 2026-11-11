@@ -1,11 +1,16 @@
-.pagina { max-inline-size: var(--medida); margin-inline: auto; color: var(--color-texto); background: var(--color-fondo); }
-.contenido { display: grid; gap: var(--espacio-8); padding: var(--espacio-6) var(--espacio-4); overflow-wrap: anywhere; }
+.pagina { max-inline-size: var(--medida-comparativa); margin-inline: auto; color: var(--color-texto); background: var(--color-fondo); }
+.contenido { display: grid; gap: var(--espacio-12); padding: var(--espacio-8) var(--espacio-4); overflow-wrap: anywhere; }
 .seccion { display: grid; gap: var(--espacio-4); min-inline-size: 0; }
 .fila { display: flex; flex-wrap: wrap; align-items: start; gap: var(--espacio-4); }
-.controles { display: grid; gap: var(--espacio-4); min-inline-size: 0; padding: var(--espacio-4); border: var(--borde) solid var(--color-borde); border-radius: var(--radio); }
+.controles { display: grid; gap: var(--espacio-4); min-inline-size: 0; padding: var(--espacio-6); border: var(--borde) solid var(--color-borde); border-radius: var(--radio); background: var(--color-superficie-suave); }
 .controles legend { padding-inline: var(--espacio-2); }
 .controles label { display: grid; gap: var(--espacio-2); }
 .controles select { inline-size: 100%; min-block-size: var(--objetivo-tactil); padding: var(--espacio-2); border: var(--borde) solid var(--color-borde); border-radius: var(--radio); background: var(--color-superficie); color: var(--color-texto); font: inherit; }
 .controles .casilla { display: flex; align-items: center; min-block-size: var(--objetivo-tactil); }
 .casilla input { inline-size: var(--texto-1); block-size: var(--texto-1); accent-color: var(--color-linea); }
 @media (max-width: 30rem) { .contenido h1 { font-size: var(--texto-2); } }
+
+@media (min-width: 48rem) {
+  .contenido { padding: var(--espacio-12) var(--espacio-8); }
+  .controles { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+}
