@@ -19,7 +19,7 @@ solicitado se realiza en el fork de RedKris0.
 
 ## Decisión
 
-Se adopta Andén urbano. El azul marino `#0D325F`, el coral `#F46E52` y el
+Se propone Andén urbano. El azul marino `#0D325F`, el coral `#F46E52` y el
 azul claro `#8DB2E6` proceden de las versiones del logo ya presentes en el
 repositorio. Se utiliza el logo claro existente sobre los encabezados azules.
 
@@ -48,7 +48,7 @@ próxima etapa. Se agregan espacios de 80 y 96 px para separación de estaciones
 |---|---|---|
 | rápido | 150 ms | Respuesta de botones |
 | normal | 220 ms | Cambios breves de estado |
-| entrada | 500 ms | Secuencia inicial y aparición al scroll |
+| entrada | 850 ms | Secuencia inicial y aparición al scroll |
 | escalón | 60 ms | Escalonado corto de elementos |
 | fundido | 180 ms | Reemplazo visual de carga por contenido |
 | carga | 1600 ms | Ciclo de skeleton durante espera real |
@@ -241,3 +241,26 @@ completos están disponibles sin JavaScript.
 
 Esta etapa verifica la presentación del catálogo existente. La vigencia de
 las fuentes externas requiere la revisión de datos correspondiente.
+
+## Comprobación de la sección coral tras la revisión
+
+Se inspeccionaron los estilos calculados en Edge con el contenido visible,
+los temas claro y oscuro y anchos de 375 y 1280 px, el 11 de noviembre de 2026.
+Las cifras de contraste se calculan con la luminancia relativa de WCAG.
+
+| Texto | Tamaño en teléfono / computador | Mínimo | Claro | Oscuro |
+|---|---|---|---|---|
+| Tu próxima postulación | 25,01 / 39,06 px, negrita | 3 | 5,90 | 6,26 |
+| Beneficios y plazos | 14 / 14 px, negrita | 4,5 | 5,90 | 6,26 |
+| Cada oportunidad tiene su momento | 31,25 / 39,06 px, negrita | 3 | 5,90 | 6,26 |
+| Descripción de beneficios | 16 / 16 px, normal | 4,5 | 5,90 | 6,26 |
+| Revisar beneficios, sobre azul | 16 / 16 px, negrita | 4,5 | 12,82 | 12,82 |
+| Ver el calendario de plazos | 16 / 16 px, negrita | 4,5 | 5,90 | 6,26 |
+| Fecha del catálogo, incluido time | 14 / 14 px, normal | 4,5 | 5,90 | 6,26 |
+
+El fondo coral se conserva. El texto utiliza el token existente
+`--color-sobre-accion`, cuyo par con `accion` ya exige 4,5 en tokens.json.
+El blanco anterior tenía 2,92 y fallaba también el mínimo de texto grande.
+El azul marino tenía 4,39 y fallaba el mínimo de texto normal.
+La prueba de portada desplaza la sección a la vista antes de ejecutar axe
+para comprobar también el contenido que las apariciones podían ocultar.
