@@ -38,6 +38,15 @@ test('quitar una carrera conserva las otras dos sin JavaScript', async ({ browse
   await contexto.close();
 });
 
+test('la hoja de decisión recibe las carreras elegidas en el comparador', async ({ page }) => {
+  await abrirComparacion(page);
+  const enlace = page.getByRole('link', { name: 'Usar estas carreras en mi hoja', exact: true });
+  await expect(enlace).toHaveAttribute('href', '/hoja?carreras=I70S1C41J1V1,I87S1C49J1V3,I72S1C75J1V1');
+  await enlace.click();
+  await expect(page.getByRole('heading', { name: 'Mi hoja de decisión', exact: true })).toBeVisible();
+  expect(new URL(page.url()).searchParams.get('carreras')).toBe('I70S1C41J1V1,I87S1C49J1V3,I72S1C75J1V1');
+});
+
 test('agregar una carrera desde la búsqueda funciona sin JavaScript', async ({ browser, baseURL }) => {
   const contexto = await browser.newContext({ javaScriptEnabled: false, baseURL });
   const pagina = await contexto.newPage();
