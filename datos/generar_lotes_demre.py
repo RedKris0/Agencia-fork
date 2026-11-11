@@ -1,4 +1,4 @@
-"""Genera los lotes SQL 09 y 10 (vacantes y requisitos de admisión del DEMRE).
+"""Genera los lotes SQL 09 a 11 (vacantes, requisitos y nombres verificados con DEMRE).
 
 Va después de los lotes 1 a 8. No escribe en ninguna base; se detiene ante un
 dato que no cumple el esquema.
@@ -11,11 +11,14 @@ Reglas:
 - Un cupo que el DEMRE no publica se guarda nulo con su motivo.
 - Las ponderaciones deben sumar 100 según la regla del esquema; si una fila no
   suma 100, el generador se detiene y la muestra.
+- Un nombre solo recibe tildes y formato si conserva las mismas palabras que
+  Mineduc; cualquier diferencia real queda pendiente.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -59,6 +62,64 @@ def _suma_ponderaciones(r: dict[str, str]) -> int:
     )
 
 
+PALABRAS_MENORES = {
+    "a", "al", "and", "con", "de", "del", "e", "el", "en", "la", "las", "los",
+    "o", "of", "para", "por", "sin", "the", "u", "un", "una", "y",
+}
+PATRON_PALABRA = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+")
+
+
+def _proyectar_tildes(original: str, referencia: str) -> str | None:
+    """Copia solo tildes de DEMRE; conserva palabras y puntuación de Mineduc."""
+    referencia = re.sub(r"\s*(?:\(\*\)|\*)\s*$", "", referencia).strip()
+    origen = list(PATRON_PALABRA.finditer(original))
+    destino = list(PATRON_PALABRA.finditer(referencia))
+    if len(origen) != len(destino) or any(
+        base.normalizar(a.group()) != base.normalizar(b.group()) for a, b in zip(origen, destino)
+    ):
+        return None
+
+    partes: list[str] = []
+    inicio = 0
+    for palabra_origen, palabra_destino in zip(origen, destino):
+        partes.append(original[inicio:palabra_origen.start()])
+        partes.append(palabra_destino.group().upper())
+        inicio = palabra_origen.end()
+    partes.append(original[inicio:])
+    return "".join(partes)
+
+
+def _formatear_nombre(nombre: str) -> str:
+    """Usa mayúscula inicial en palabras relevantes."""
+    primera = True
+
+    def formatear(coincidencia: re.Match[str]) -> str:
+        nonlocal primera
+        palabra = coincidencia.group().lower()
+        if not primera and palabra in PALABRAS_MENORES:
+            return palabra
+        primera = False
+        return palabra[0].upper() + palabra[1:]
+
+    return PATRON_PALABRA.sub(formatear, nombre)
+
+
+def _correcciones_nombres(filas: list[dict[str, str]]) -> dict[str, str]:
+    """Devuelve solo correcciones sin contradicciones entre referencias DEMRE."""
+    candidatas: dict[str, set[str]] = {}
+    for r in filas:
+        original = r["oferta_carrera_nombre_oficial"].strip()
+        referencia = r.get("demre_carrera", "").strip()
+        proyectado = _proyectar_tildes(original, referencia) if original and referencia else None
+        if proyectado:
+            candidatas.setdefault(original, set()).add(proyectado)
+    return {
+        original: _formatear_nombre(next(iter(nombres)))
+        for original, nombres in candidatas.items()
+        if len(nombres) == 1
+    }
+
+
 def construir(filas: list[dict[str, str]]) -> tuple[dict[str, list[str]], dict]:
     con_demre = [r for r in filas if r["demre_codigo"].strip()]
     if not con_demre:
@@ -78,7 +139,11 @@ def construir(filas: list[dict[str, str]]) -> tuple[dict[str, list[str]], dict]:
         f"(select id from fuente where organismo = {base.sql_texto(FUENTE_DEMRE['organismo'])} "
         f"and nombre = {base.sql_texto(FUENTE_DEMRE['nombre'])})"
     )
-    lotes: dict[str, list[str]] = {"09_vacantes_demre": [], "10_requisitos_demre": []}
+    lotes: dict[str, list[str]] = {
+        "09_vacantes_demre": [],
+        "10_requisitos_demre": [],
+        "11_nombres_demre": [],
+    }
     lotes["09_vacantes_demre"].append(
         "insert into fuente (organismo, nombre, url, terminos_de_uso, terminos_revisados_el) values ("
         f"{base.sql_texto(FUENTE_DEMRE['organismo'])}, {base.sql_texto(FUENTE_DEMRE['nombre'])}, "
@@ -126,12 +191,34 @@ def construir(filas: list[dict[str, str]]) -> tuple[dict[str, list[str]], dict]:
             "on conflict (variante_id, periodo) do nothing;"
         )
 
+    correcciones = _correcciones_nombres(con_demre)
+    programas = {
+        (r["oferta_institucion_codigo"], base.normalizar(r["oferta_carrera_nombre_oficial"])):
+        r["oferta_carrera_nombre_oficial"]
+        for r in filas
+    }
+    for (codigo_institucion, nombre_normalizado), nombre_oficial in sorted(programas.items()):
+        nombre = correcciones.get(nombre_oficial)
+        if not nombre:
+            continue
+        lotes["11_nombres_demre"].append(
+            "update programa p set "
+            f"nombre = {base.sql_texto(nombre)}, nombre_verificado = true, "
+            f"nombre_fuente_id = {fuente_sql}, nombre_verificado_el = {base.sql_fecha(fecha)} "
+            "from institucion i where p.institucion_id = i.id "
+            f"and i.codigo_oficial = {base.sql_texto(codigo_institucion)} "
+            f"and p.nombre_normalizado = {base.sql_texto(nombre_normalizado)} "
+            f"and p.nombre_oficial = {base.sql_texto(nombre_oficial)};"
+        )
+
     informe = {
         "carreras_con_demre": len(con_demre),
         "vacantes": cupos_filas,
         "vacantes_sin_dato": cupos_sin_dato,
         "requisitos": len(con_demre),
         "ponderaciones_que_suman_100": len(con_demre),
+        "nombres_corregidos": len(lotes["11_nombres_demre"]),
+        "nombres_pendientes": len(programas) - len(lotes["11_nombres_demre"]),
     }
     return lotes, informe
 

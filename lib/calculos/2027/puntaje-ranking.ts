@@ -1,7 +1,7 @@
 /**
  * Puntaje Ranking, Proceso de Admisión 2027.
  *
- * Según la decisión 0018, la plataforma no calcula este puntaje: la persona
+ * Según la decisión 0024, la plataforma no calcula este puntaje: la persona
  * estudiante ingresa el valor oficial que recibió. Solo se valida su rango.
  */
 const PUNTAJE_MINIMO = 100;

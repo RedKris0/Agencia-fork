@@ -163,8 +163,9 @@ def construir(filas: list[dict[str, str]]) -> tuple[dict[str, list[str]], dict]:
 
     for (cod_inst, norm), r in programas.items():
         lotes["04_programas"].append(
-            "insert into programa (institucion_id, nombre, nombre_normalizado, area, fuente_id) values ("
+            "insert into programa (institucion_id, nombre, nombre_oficial, nombre_normalizado, area, fuente_id) values ("
             f"(select id from institucion where codigo_oficial = {sql_texto(cod_inst)}), "
+            f"{sql_texto(r['oferta_carrera_nombre_oficial'])}, "
             f"{sql_texto(r['oferta_carrera_nombre_oficial'])}, {sql_texto(norm)}, "
             f"{sql_texto(r['oferta_carrera_generica'])}, "
             f"(select id from fuente where organismo = 'Mineduc' and nombre = {sql_texto(nombre_fuente)})) "

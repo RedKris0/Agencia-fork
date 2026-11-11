@@ -24,6 +24,43 @@ export type Plazo = {
   fecha_consulta: string;
 };
 
+export type PrimerPeriodoCerrado = {
+  cierre: string;
+  nivelSocioeconomico: string | null;
+  segundoPeriodo: string | null;
+  fuente: string;
+  url: string;
+  fechaConsulta: string;
+};
+
+// "2026-11-12" en la zona horaria de Chile, para comparar con las fechas ISO de los plazos.
+export function hoyEnChile(ahora: Date = new Date()): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Santiago" }).format(ahora);
+}
+
+// El primer período termina el último día de su extensión. Devuelve null mientras siga abierto
+// o si los datos no traen una fecha de término publicada (nunca se supone una fecha).
+export function primerPeriodoCerrado(plazos: Plazo[], hoy: string): PrimerPeriodoCerrado | null {
+  const porCodigo = (codigo: string) => plazos.find((plazo) => plazo.codigo === codigo);
+  const periodo = ["fuas_primer_periodo", "fuas_extension_primer_periodo"]
+    .map(porCodigo)
+    .filter((plazo): plazo is Plazo => Boolean(plazo?.termino));
+  if (!periodo.length) return null;
+
+  const ultimo = periodo.reduce((a, b) => ((a.termino as string) >= (b.termino as string) ? a : b));
+  const cierre = ultimo.termino as string;
+  if (hoy <= cierre) return null;
+
+  return {
+    cierre,
+    nivelSocioeconomico: porCodigo("nivel_socioeconomico_primer_periodo")?.inicio ?? null,
+    segundoPeriodo: porCodigo("fuas_segundo_periodo")?.periodo_referencial ?? null,
+    fuente: ultimo.fuente,
+    url: ultimo.url,
+    fechaConsulta: ultimo.fecha_consulta,
+  };
+}
+
 export function normalizarTexto(texto: string): string {
   return texto.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLocaleLowerCase("es-CL");
 }

@@ -1,6 +1,6 @@
 # 0016 — Revisión condicionada de la prohibición de predicción
 
-Fecha: 2026-11-07 · Estado: propuesta (pendiente de revisión del líder, @rafajaque) · Revisa: [ADR 0010](0010-modulo-de-permanencia.md), sección 2.4 de AGENTS.md
+Fecha: 2026-11-07 · Estado: aceptada (2026-11-09, por el líder, tras [revisión legal](../revision-legal-adr-pendientes.md); es una compuerta: no habilita ninguna predicción hasta cumplir las 8 precondiciones y la revisión legal del artículo 8° bis) · Revisa: [ADR 0010](0010-modulo-de-permanencia.md), sección 2.4 de AGENTS.md
 
 ## Contexto
 

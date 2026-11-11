@@ -148,7 +148,7 @@ export function Explorador({ carreras, total, pagina, paginas, filtros, error }:
               <p aria-live="polite">{total} {total === 1 ? 'carrera encontrada' : 'carreras encontradas'}</p>
               <p className={estilos.orden}>Las carreras están ordenadas por código del Servicio de Información de Educación Superior (SIES). Mostramos {carreras.length} por página.</p>
             </div>
-            {carreras.length ? carreras.map((carrera) => (
+            {carreras.length ? <div className={estilos.listaResultados}>{carreras.map((carrera) => (
               <article className={estilos.tarjeta} key={carrera.codigo_sies} data-reveal="tarjeta" data-panel>
                 <div className={estilos.identidad}>
                   <h3>{carrera.carrera}</h3>
@@ -161,7 +161,7 @@ export function Explorador({ carreras, total, pagina, paginas, filtros, error }:
                 </div>
                 <Link className={estilos.enlace} href={rutaDeCarrera(carrera)}>Ver ficha de carrera<ArrowUpRight aria-hidden="true" /></Link>
               </article>
-            )) : <div className={estilos.vacio}><Search aria-hidden="true" /><div><h3>No encontramos carreras con esos filtros</h3><p>{sugerencia}</p></div></div>}
+            ))}</div> : <div className={estilos.vacio}><Search aria-hidden="true" /><div><h3>No encontramos carreras con esos filtros</h3><p>{sugerencia}</p></div></div>}
           </section> : null}
 
           {paginas > 1 ? (

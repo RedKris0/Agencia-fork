@@ -2,6 +2,9 @@
 # opencv-python-headless: Apache-2.0 · numpy: BSD-3-Clause
 # pypdf: BSD-3-Clause. Lee el PDF del DEMRE por posición de cada celda (datos/cargar_demre.py); el texto plano del PDF
 # separa los datos de su código. Solo lo necesita ese script: las pruebas con páginas sintéticas corren sin él.
+# pdfplumber: MIT. Recupera la posición de las cifras en las filas que pypdf entrega en un solo trozo de texto
+# (datos/cargar_demre.py, extraer_paginas); sin él esas filas se perdían.
 opencv-python-headless>=4.8
 numpy>=1.26
 pypdf>=5.0
+pdfplumber>=0.11

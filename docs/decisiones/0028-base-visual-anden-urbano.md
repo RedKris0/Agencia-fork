@@ -1,4 +1,4 @@
-# 0024 — Base visual Andén urbano
+# 0028 — Base visual Andén urbano
 
 Fecha: 2026-11-11 · Estado: aceptada por Cristóbal para la copia de rediseño
 

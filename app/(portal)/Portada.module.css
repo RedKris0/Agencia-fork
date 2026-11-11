@@ -160,3 +160,34 @@
   .portada [data-pendiente] { opacity: 1; transform: none; }
   .billeteAlternativo, .cartelPlazos { transform: none; }
 }
+
+/* Separa los párrafos del aviso de plazo (los tokens fijan el espacio; no hay valores sueltos). */
+.textoAviso {
+  display: grid;
+  gap: var(--espacio-3);
+}
+.avisoFuas {
+  grid-column: 1 / -1;
+  min-inline-size: 0;
+  color: var(--color-texto);
+}
+
+/* Acción secundaria de la portada: mismo tamaño que la principal, pero con borde y sin relleno coral
+   para que haya una sola acción principal por pantalla (docs/diseno.md). */
+.accionSecundaria {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--objetivo-tactil);
+  padding: var(--espacio-3) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+  color: var(--color-linea-texto);
+  font-weight: 700;
+  text-decoration: none;
+}
+.accionSecundaria:focus-visible {
+  outline: var(--anillo-foco) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
+}

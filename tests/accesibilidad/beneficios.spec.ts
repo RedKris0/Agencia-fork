@@ -27,7 +27,11 @@ test('los beneficios y plazos conservan sus datos y fuentes sin JavaScript', asy
     await expect(fila.locator('time').last()).toHaveAttribute('datetime', plazo.fecha_consulta);
     if (plazo.inicio && plazo.termino) {
       await expect(fila.locator('time').nth(0)).toHaveAttribute('datetime', plazo.inicio);
-      await expect(fila.locator('time').nth(1)).toHaveAttribute('datetime', plazo.termino);
+      if (plazo.inicio === plazo.termino) {
+        await expect(fila.locator('time')).toHaveCount(2);
+      } else {
+        await expect(fila.locator('time').nth(1)).toHaveAttribute('datetime', plazo.termino);
+      }
     } else {
       await expect(fila).toContainText('Fecha pendiente');
       await expect(fila).toContainText(plazo.motivo_sin_fecha!);

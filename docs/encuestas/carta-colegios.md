@@ -1,6 +1,6 @@
 # Carta de presentación para colegios
 
-Actualizado: 2026-11-06
+Actualizado: 2026-11-10
 
 [Ciudad], [fecha]
 
@@ -17,7 +17,7 @@ Somos estudiantes de último año de Ingeniería en Informática de [nombre de l
 
 **Lo que le pedimos al colegio:**
 
-- Autorizar la aplicación de una encuesta de unos 6 minutos a estudiantes de 3.° y 4.° medio, en el horario y la forma que el colegio estime conveniente: en sala, en el laboratorio de computación o mediante un enlace enviado a los apoderados.
+- Autorizar la aplicación de una encuesta de 10 a 15 minutos a estudiantes de 3.° y 4.° medio, en el horario y la forma que el colegio estime conveniente: en sala, en el laboratorio de computación o mediante un enlace enviado a los apoderados.
 - Ayudarnos a hacer llegar a los apoderados el formulario de consentimiento informado, que adjuntamos.
 
 **Cómo resguardamos a los estudiantes:**
@@ -25,7 +25,7 @@ Somos estudiantes de último año de Ingeniería en Informática de [nombre de l
 - **Solo participan quienes tengan la autorización firmada de su apoderado** y, además, acepten participar ellos mismos al inicio de la encuesta.
 - **La encuesta es anónima:** no pedimos nombre, RUT, correo ni teléfono, ni registramos datos que permitan identificar a un estudiante.
 - **Es voluntaria:** cada estudiante puede no responder una pregunta o dejar la encuesta en cualquier momento, sin ninguna consecuencia.
-- **Las preguntas tratan sobre la búsqueda de información para decidir qué hacer después del colegio, el conocimiento de los beneficios estudiantiles y las preocupaciones al respecto.** Una pregunta sobre el futuro (razón por la que podría no seguir estudiando) ofrece opciones como dinero, trabajo, salud o familia, de forma anónima y se puede omitir. No hay preguntas sobre la salud del estudiante ni sobre la situación económica del hogar.
+- **La encuesta es una escala publicada en una revista científica** (Escala de Autoeficacia para la Elección de Carrera). Pregunta cuánta confianza tiene el estudiante para hacer tareas como buscar información de carreras, fijarse metas o planificar sus estudios. No hay preguntas sobre la salud del estudiante ni sobre la situación económica del hogar.
 - **Los resultados se analizan solo en conjunto**, como porcentajes y promedios. No se informarán resultados por curso ni por colegio que permitan reconocer a alguien.
 - La encuesta cuenta con la revisión de nuestro profesor guía, [nombre].
 

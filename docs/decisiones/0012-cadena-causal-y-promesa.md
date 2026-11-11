@@ -1,6 +1,6 @@
 # 0012 — Cadena causal del problema y promesa verificable
 
-Fecha: 2026-11-04 · Estado: propuesta
+Fecha: 2026-11-04 · Estado: aceptada (2026-11-09, por el líder, tras [revisión legal](../revision-legal-adr-pendientes.md); condición: el argumento de acreditación «la plataforma produce ese tipo de evidencia» se usa solo cuando exista esa evidencia)
 
 Respaldo: [informe de fundamentación](../informe-fundamentacion.md) · [anexo de evidencia](../evidencia-acceso-salud-mental.md) · [series y proyección](../series-y-proyeccion.md) · [cierre de pendientes](../cierre-de-pendientes.md) · [revisión final](../revision-final.md)
 

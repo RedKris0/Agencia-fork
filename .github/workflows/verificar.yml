@@ -1,11 +1,19 @@
 name: Verificar
 
 # Corre en cada PR hacia main. Si falla, el PR no se puede aprobar.
+# Los cambios que solo tocan documentación (docs/ y archivos .md) no la disparan,
+# para no gastar minutos de Actions. Si un PR mezcla documentación y código, sí corre.
 on:
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
   push:
     branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
 
 permissions:
   contents: read
@@ -99,9 +107,15 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Instalar el navegador de las pruebas
-        run: npx playwright install --with-deps chromium
+        # Sin --with-deps: ese modo pide por apt tipos de letra del sistema y los servidores de Ubuntu fallan
+        # desde el runner ("Temporary failure resolving"). El runner ya trae las bibliotecas que Chromium necesita;
+        # axe revisa HTML y contraste, no la tipografía del sistema.
+        run: npx playwright install chromium
       - name: Compilar y revisar cada página con axe (ADR 0021)
         run: npm run test:a11y
+        env:
+          # Sin claves de Supabase en la CI: las páginas en vivo leen la muestra local.
+          OFERTA_LOCAL: "1"
       - name: Guardar el informe si falla
         if: failure()
         uses: actions/upload-artifact@v4

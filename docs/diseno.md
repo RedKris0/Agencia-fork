@@ -4,7 +4,7 @@
 
 La rama local `rediseno-metro` aplica la alternativa **Andén urbano**, elegida
 por Cristóbal el 11 de noviembre de 2026. Su base está registrada en el
-[ADR 0024](decisiones/0024-base-visual-anden-urbano.md).
+[ADR 0028](decisiones/0028-base-visual-anden-urbano.md).
 
 Los encabezados compartidos utilizan el azul marino del logo, su versión clara
 y una línea coral. El contenido mantiene superficies claras. El tema oscuro
@@ -16,9 +16,19 @@ trazabilidad de datos siguen aplicándose.
 La portada y las páginas de carreras, comparador y beneficios comparten ahora
 el logo, la navegación, el tren y las ilustraciones originales del portal.
 El ajuste de continuidad y movimiento se registra en el
-[ADR 0025](decisiones/0025-continuidad-visual-y-movimiento.md).
+[ADR 0029](decisiones/0029-continuidad-visual-y-movimiento.md).
 
 ### Continuidad visual y apariciones
+
+La rama `fix/integrar-portal-backend` integra esta presentación con `main` de
+AE-SE en `1bdf5ae`. Conserva el acceso existente a Supabase y las correcciones
+del calendario del FUAS, incluido el aviso dinámico de cierre en la portada.
+Los ADR visuales se renumeraron como 0028 y 0029 para conservar la numeración
+del repositorio principal. La integración se comprobó con la oferta local de
+pruebas del repositorio. El explorador, una ficha y el comparador del sitio
+publicado también respondieron con datos en la comprobación del 11 de noviembre
+de 2026. La publicación del diseño requiere la revisión y confirmación del
+líder previstas en `AGENTS.md`.
 
 Las cabeceras interiores prolongan la composición de la portada mediante
 superficies azules, ilustraciones amplias y encuentros diagonales. El tren
@@ -46,7 +56,7 @@ presenta todos los bloques. Sin JavaScript, el contenido permanece visible.
 Los encabezados dejan paso al foco de teclado para permitir leer los destinos
 de navegación y las fuentes con texto ampliado. Las fuentes y los datos
 conservan el tratamiento de cada componente. Las referencias de composición
-y movimiento consultadas están documentadas en el ADR 0025.
+y movimiento consultadas están documentadas en el ADR 0029.
 
 ### Explorador de carreras
 
@@ -63,7 +73,7 @@ Las definiciones, los períodos, las fuentes y las fechas siguen junto a cada da
 
 Durante el envío del formulario, tres tarjetas de espera reproducen las columnas
 de los resultados y un estado anuncia «Buscando carreras…». Solo varía la opacidad,
-con los tokens de movimiento del ADR 0024. La preferencia de movimiento reducido
+con los tokens de movimiento del ADR 0028. La preferencia de movimiento reducido
 deja las tarjetas estáticas. La navegación GET funciona también sin JavaScript.
 Al restaurar una página desde el historial, se restablece su estado de espera.
 

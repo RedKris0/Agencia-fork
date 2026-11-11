@@ -93,6 +93,13 @@ class GenerarLotesTest(unittest.TestCase):
     def test_normalizar_quita_tildes_y_espacios(self):
         self.assertEqual(generar.normalizar("  Ingeniería   Civil  "), "ingenieria civil")
 
+    def test_programa_conserva_el_nombre_oficial(self):
+        lotes, _ = self.construir([fila()])
+        sentencia = lotes["04_programas"][0]
+
+        self.assertIn("nombre_oficial", sentencia)
+        self.assertEqual(sentencia.count("'Carrera Ficticia'"), 2)
+
     def test_arancel_en_uf_exige_valor_y_fecha_de_uf(self):
         filas = [fila(oferta_arancel_unidad_original="uf", oferta_arancel_valor_original="30")]
         with self.assertRaises(generar.ErrorDeLote):

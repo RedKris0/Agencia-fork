@@ -1,6 +1,6 @@
 # 0018 — Producto de planificación de oferta y apoyo: finalidad, método y límites
 
-Fecha: 2026-11-07 · Estado: propuesta (pendiente de revisión del líder, @rafajaque, y de revisión legal antes de cualquier oferta comercial) · Relacionado: [ADR 0010](0010-modulo-de-permanencia.md), [ADR 0015](0015-cuenta-del-estudiante-y-vinculo-institucional.md), [ADR 0016](0016-prediccion-condicionada-de-riesgo.md), [ADR 0017](0017-pronostico-agregado-piloto-aiep-san-fernando.md)
+Fecha: 2026-11-07 · Estado: propuesta (pendiente de revisión del líder, @rafajaque, y de revisión legal antes de cualquier oferta comercial; revisión legal completada el 2026-11-10 y confirmada por el líder, que cubre también la base histórica de mifuturo.cl y la aplicación del [ADR 0025](0025-celdas-suprimidas-visibles-sin-cifra.md)) · Relacionado: [ADR 0010](0010-modulo-de-permanencia.md), [ADR 0015](0015-cuenta-del-estudiante-y-vinculo-institucional.md), [ADR 0016](0016-prediccion-condicionada-de-riesgo.md), [ADR 0017](0017-pronostico-agregado-piloto-sede-privada.md)
 
 ## Contexto
 

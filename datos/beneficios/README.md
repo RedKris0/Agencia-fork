@@ -35,4 +35,4 @@ La revisión incluyó la BJGME, cuya página no se pudo consultar automáticamen
 3. Agregar solo fechas exactas publicadas por Mineduc. Si una etapa no tiene fecha, mantener `null` y explicar el motivo.
 4. Ejecutar `python3 -m unittest tests.datos.test_beneficios`.
 
-Fuente principal: [Beneficios Estudiantiles, Mineduc](https://portal.beneficiosestudiantiles.cl/). Calendario: [FUAS, Mineduc](https://www.fuas.cl/en-que-consiste-la-postulacion.html).
+Fuente principal: [Beneficios Estudiantiles, Mineduc](https://portal.beneficiosestudiantiles.cl/). Calendario del primer periodo (contrastado el 2026-11-11): [FUAS, Mineduc](https://postulacion.beneficiosestudiantiles.cl/fuas/). Un hito de un solo día se guarda con `inicio` y `termino` iguales.

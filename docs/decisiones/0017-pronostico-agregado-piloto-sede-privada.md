@@ -1,6 +1,6 @@
 # 0017 — Pronóstico agregado de la próxima generación y piloto en una sede privada
 
-Fecha: 2026-11-07 · Estado: propuesta (pendiente de revisión del líder, @rafajaque) · Relacionado: [ADR 0010](0010-modulo-de-permanencia.md), [ADR 0012](0012-cadena-causal-y-promesa.md), [ADR 0015](0015-cuenta-del-estudiante-y-vinculo-institucional.md), [ADR 0016](0016-prediccion-condicionada-de-riesgo.md)
+Fecha: 2026-11-07 · Estado: aceptada (2026-11-09, por el líder, tras [revisión legal](../revision-legal-adr-pendientes.md); el nombre de la institución no sale del repositorio sin autorización escrita) · Relacionado: [ADR 0010](0010-modulo-de-permanencia.md), [ADR 0012](0012-cadena-causal-y-promesa.md), [ADR 0015](0015-cuenta-del-estudiante-y-vinculo-institucional.md), [ADR 0016](0016-prediccion-condicionada-de-riesgo.md)
 
 ## Contexto
 

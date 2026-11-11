@@ -167,6 +167,7 @@
       <form class="controles" id="exp-controles" onsubmit="return false">
         <div class="campo"><label for="exp-texto">Buscar carrera, sede o institución</label><input type="search" id="exp-texto" autocomplete="off"></div>
         <div class="campo"><label for="exp-region">Región</label><select id="exp-region"></select></div>
+        <div class="campo"><label for="exp-comuna">Comuna</label><select id="exp-comuna"></select></div>
         <div class="campo"><label for="exp-tipo">Tipo de institución</label><select id="exp-tipo"></select></div>
         <div class="campo"><label for="exp-jornada">Jornada</label><select id="exp-jornada"></select></div>
         <div class="campo"><label for="exp-inst">Institución</label><select id="exp-inst"></select></div>
@@ -175,6 +176,7 @@
       </form>
       <div class="resumen-filtro" id="exp-kpis" aria-live="polite"></div>
       <p class="chico suave" id="exp-nota"></p>
+      <div class="chico suave" id="exp-pie"></div>
 
       <figure class="grafico">
         <figcaption>
@@ -187,7 +189,35 @@
 
       <div class="tabla-wrap" tabindex="0" role="region" aria-label="Tabla de celdas filtradas"><table id="tabla-exp"></table></div>
       <div class="paginador" id="exp-pag"></div>
+
+      <h3 id="t-supr">Celdas suprimidas: sin cifra</h3>
+      <p class="bajada">Carreras con menos de 10 estudiantes estimados. Aparecen con su nombre, pero sin número ni intervalo. Usan los mismos filtros de arriba.</p>
+      <p class="chico suave" id="supr-nota" aria-live="polite"></p>
+      <div class="tabla-wrap" tabindex="0" role="region" aria-label="Celdas suprimidas, sin cifra"><table id="tabla-supr"></table></div>
+
+      <h3 id="t-nuevas">Carreras nuevas de 2027: sin historia, sin cifra</h3>
+      <p class="bajada">Carreras de la admisión 2027 que no tuvieron matrícula en 2026, así que no tienen pronóstico. Muestran institución, lugar y nombre. El lugar es el que publica el PDF de DEMRE, no el nombre de sede del SIES. La tabla de admisión no trae jornada ni región, así que los filtros de región y jornada no se aplican a esta tabla.</p>
+      <p class="chico suave" id="nuevas-nota" aria-live="polite"></p>
+      <div class="tabla-wrap" tabindex="0" role="region" aria-label="Carreras nuevas 2027, sin cifra"><table id="tabla-nuevas"></table></div>
       <button type="button" id="exp-csv"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Descargar esta selección (CSV)</button>
+
+      <div class="consulta" aria-labelledby="t-consulta">
+        <h3 id="t-consulta">Consulta: cuántos entrantes estimados</h3>
+        <p class="bajada">Elige de arriba hacia abajo. Cada lista muestra solo lo que existe con la elección anterior.</p>
+        <form class="controles" id="con-controles" onsubmit="return false">
+          <div class="campo"><label for="con-region">Región</label><select id="con-region"></select></div>
+          <div class="campo"><label for="con-comuna">Comuna</label><select id="con-comuna"></select></div>
+          <div class="campo"><label for="con-inst">Institución</label><select id="con-inst"></select></div>
+          <div class="campo"><label for="con-sede">Sede</label><select id="con-sede"></select></div>
+          <div class="campo"><label for="con-carrera">Carrera</label><select id="con-carrera"></select></div>
+          <div class="campo"><label for="con-jornada">Jornada</label><select id="con-jornada"></select></div>
+          <div class="campo"><button type="button" id="con-limpiar">Limpiar elección</button></div>
+        </form>
+        <div class="resumen-filtro" id="con-kpis" aria-live="polite"></div>
+        <p class="chico suave" id="con-nota"></p>
+        <div class="chico suave" id="con-pie"></div>
+        <div class="tabla-wrap" tabindex="0" role="region" aria-label="Celdas de la consulta"><table id="tabla-con"></table></div>
+      </div>
     </section>
 
     <section id="capacidad" aria-labelledby="t-cap">
@@ -296,6 +326,7 @@
 
   <div class="tip" id="tip" role="tooltip" hidden></div>
   <script src="datos.js"></script>
+  <script src="filtros.js"></script>
   <script src="tablero.js"></script>
 </body>
 </html>

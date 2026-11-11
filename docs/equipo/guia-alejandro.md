@@ -282,6 +282,26 @@ Cada tarea tiene: objetivo, pasos, archivos, criterios de aceptación (lo que se
 - Calendario de plazos ordenado por fecha, con los que vencen pronto destacados (ícono + palabra, no solo color).
 - Opción "Agregar a mi calendario" (archivo `.ics`, sin enviar datos a terceros).
 
+#### A15 · "¿En qué estación va el proceso?" en la portada
+**Rama:** `feat/estacion-del-proceso` · **Skills:** `mapa-de-trayecto`, `datos-oficiales`, `lenguaje-claro`
+**Depende de:** la tarea C14 de Cristóbal (fechas de la Admisión 2027 con el campo `estacion`).
+
+**Objetivo:** que quien entra a la portada vea de inmediato en qué estación va el proceso de admisión este año y cuál es el próximo plazo. Responde a la pregunta "¿llego a tiempo?" sin tener que buscar.
+
+**Pasos:**
+1. Una función pura en `lib/calendario/` que reciba la fecha de hoy y las filas de `datos/calendario/admision_2027.json` y `datos/beneficios/plazos_2027.json`, y devuelva la estación actual y el próximo plazo. Las fechas en `null` nunca cuentan como vencidas ni como próximas: se muestran como "fecha por confirmar". Con pruebas: antes del primer plazo, un día de plazo, el día de término, entre dos etapas y después del último.
+2. En la portada, reutiliza la línea de trayecto de [`IndicadorEstacion`](../../app/_componentes/IndicadorEstacion.tsx) con sus cuatro estaciones (Explorar, Postular, Llegar, Avanzar), marcando la estación del proceso. Debajo, el próximo plazo con su fecha, su fuente y la fecha de consulta.
+3. **Movimiento:** solo para mostrar el avance de la línea hasta la estación actual, con las duraciones de `tokens.css` (150 o 220 ms). Nada decorativo: ni estaciones del año, ni partículas, ni animaciones en bucle (`docs/diseno.md`, sección 7). Con `prefers-reduced-motion`, la línea aparece ya avanzada.
+4. Que se entienda sin color: la estación actual se marca con texto ("El proceso va aquí") e ícono, no solo con coral.
+
+**Criterios de aceptación:**
+- [ ] Funciona a 360 px y con teclado; el lector de pantalla anuncia la estación actual y el próximo plazo.
+- [ ] Toda fecha muestra fuente y fecha de consulta.
+- [ ] Ninguna fecha escrita en el código: todo sale de los archivos de datos.
+- [ ] Pruebas de la función de fechas pasan.
+- [ ] Solo variables de `tokens.css`; `python3 scripts/tokens.py --check` pasa.
+- [ ] Sin movimiento con `prefers-reduced-motion`.
+
 ---
 
 ### Semana 4 · Seguir y vender (24 al 30 de noviembre)

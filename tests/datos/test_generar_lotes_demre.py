@@ -16,6 +16,8 @@ base = demre.base
 
 def fila(**cambios):
     f = {
+        "oferta_institucion_codigo": "900",
+        "oferta_carrera_nombre_oficial": "CARRERA FICTICIA",
         "demre_codigo": "9001", "demre_carrera": "Carrera Ficticia", "demre_notas": "", "demre_lugar": "Sede A",
         "demre_nem": "10", "demre_ranking": "20", "demre_lectora": "20", "demre_matematica_1": "20",
         "demre_matematica_2": "10", "demre_historia_cs_sociales": "10", "demre_ciencias": "10",
@@ -61,6 +63,63 @@ class LotesDemreTest(unittest.TestCase):
     def test_cupos_negativos_se_detienen(self):
         with self.assertRaises(base.ErrorDeLote):
             demre.construir([fila(demre_vacantes_regular="-1")])
+
+    def test_tres_nombres_verificados_reciben_tildes_y_formato(self):
+        # DEMRE, oferta definitiva 2027: páginas 500, 267 y 321.
+        # https://demre.cl/publicaciones/pdf/2027-26-09-24-oferta-definitiva-carreras-p2027.pdf
+        casos = [
+            ("INGENIERIA EN CONSTRUCCION", "INGENIERÍA EN CONSTRUCCIÓN", "Ingeniería en Construcción"),
+            ("ACTUACION TEATRAL", "ACTUACIÓN TEATRAL", "Actuación Teatral"),
+            ("PSICOLOGIA", "PSICOLOGÍA", "Psicología"),
+        ]
+
+        for original, referencia, esperado in casos:
+            with self.subTest(original=original):
+                lotes, informe = demre.construir([fila(
+                    oferta_carrera_nombre_oficial=original,
+                    demre_carrera=referencia,
+                )])
+                self.assertIn(f"'{esperado}'", lotes["11_nombres_demre"][0])
+                self.assertIn("nombre_verificado = true", lotes["11_nombres_demre"][0])
+                self.assertEqual(informe["nombres_corregidos"], 1)
+                self.assertEqual(informe["nombres_pendientes"], 0)
+
+    def test_nombre_distinto_queda_original_y_pendiente(self):
+        lotes, informe = demre.construir([fila(
+            oferta_carrera_nombre_oficial="INGENIERIA EN CONSTRUCCION",
+            demre_carrera="CONSTRUCCIÓN CIVIL",
+        )])
+
+        self.assertEqual(lotes["11_nombres_demre"], [])
+        self.assertEqual(informe["nombres_corregidos"], 0)
+        self.assertEqual(informe["nombres_pendientes"], 1)
+
+    def test_referencias_inconsistentes_quedan_pendientes(self):
+        filas = [
+            fila(
+                oferta_carrera_nombre_oficial="ADMINISTRACION PUBLICA",
+                demre_carrera="ADMINISTRACIÓN PÚBLICA",
+            ),
+            fila(
+                oferta_carrera_nombre_oficial="ADMINISTRACION PUBLICA",
+                demre_codigo="9002",
+                demre_carrera="ADMINISTRACIÓN PUBLICA",
+            ),
+        ]
+
+        lotes, informe = demre.construir(filas)
+
+        self.assertEqual(lotes["11_nombres_demre"], [])
+        self.assertEqual(informe["nombres_pendientes"], 1)
+
+    def test_nota_demre_no_pasa_al_nombre(self):
+        lotes, _ = demre.construir([fila(
+            oferta_carrera_nombre_oficial="PEDAGOGIA EN EDUCACION FISICA",
+            demre_carrera="PEDAGOGÍA EN EDUCACIÓN FÍSICA (*)",
+        )])
+
+        self.assertIn("'Pedagogía en Educación Física'", lotes["11_nombres_demre"][0])
+        self.assertNotIn("(*)", lotes["11_nombres_demre"][0])
 
 
 if __name__ == "__main__":

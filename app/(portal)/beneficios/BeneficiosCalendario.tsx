@@ -33,6 +33,11 @@ function RangoDeFechas({ plazo }: { plazo: Plazo }) {
     );
   }
 
+  // Un hito de un solo día (por ejemplo, una publicación de resultados) tiene inicio y término iguales.
+  if (plazo.inicio === plazo.termino) {
+    return <p><strong>Fecha:</strong> <time dateTime={plazo.inicio}>{fechaLarga(plazo.inicio)}</time>.</p>;
+  }
+
   return <p><strong>Fecha:</strong> <time dateTime={plazo.inicio}>{fechaLarga(plazo.inicio)}</time> al <time dateTime={plazo.termino}>{fechaLarga(plazo.termino)}</time>.</p>;
 }
 

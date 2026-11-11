@@ -20,6 +20,7 @@ Desde la raíz del repositorio:
 
 ```bash
 # Entrantes por carrera y sede 2027 (solo celdas publicables con 10 o más)
+# El SIES se lee en latin-1. Un archivo generado antes de este cambio tiene sedes con � y hay que regenerarlo.
 python -I datos/pronosticos/entrada_carrera_sede.py <SIES.csv> datos/procesados/entrada_carrera_sede_2027.csv
 
 # Cobertura del intervalo por carrera y sede (validación 2022-2026)

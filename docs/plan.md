@@ -45,7 +45,7 @@ Se adelantó trabajo de las semanas 3 y 4. Las fechas de la tabla no cambian; es
 
 | Persona | Rol | Guía |
 |---|---|---|
-| Líder (@rafajaque) | Arquitectura, base de datos, privacidad, asistente IA | — |
+| Líder (@rafajaque) | Arquitectura, base de datos, privacidad, asistente IA | [`equipo/guia-rafael.md`](equipo/guia-rafael.md) |
 | Alejandro | Interfaz y diseño | [`equipo/guia-alejandro.md`](equipo/guia-alejandro.md) |
 | Cristóbal | Datos y contenido | [`equipo/guia-cristobal.md`](equipo/guia-cristobal.md) |
 

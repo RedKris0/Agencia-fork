@@ -45,6 +45,62 @@ Según los PR del repositorio en esa fecha. Lo que no aparece en esta tabla est�
 
 ---
 
+## 🎯 Encargo del líder (10 de noviembre): llevar la página publicada al máximo nivel de calidad
+
+**Rama:** `fix/pulido-contenido-portal` (o una rama por página si el cambio crece) · **Skills:** `datos-oficiales`, `lenguaje-claro`
+
+**Objetivo:** que cada página publicada del portal quede impecable en lo que es tuyo: **cada dato correcto y trazable, y cada texto claro**. La meta es que un estudiante, una familia o un evaluador externo no encuentre ningún error, ninguna cifra sin fuente y ninguna frase confusa.
+
+**Alcance:** las páginas que hoy están publicadas: portada, explorador de carreras (`/carreras`), fichas de carrera, comparador (`/comparador`) y beneficios (`/beneficios`). La página `/componentes` es interna y queda fuera.
+
+**Pasos:**
+1. **Recorre cada página en el sitio publicado**, desde el teléfono (o a 360 px de ancho) y con teclado, como lo haría un estudiante de 4.º medio.
+2. **Datos:** en cada página revisa que toda cifra muestre fuente, URL, período y fecha. Compara al menos 10 cifras al azar con su fuente oficial (distintas de las que cargaste tú, si es posible) y anota el resultado. Confirma que las celdas sin dato o suprimidas dicen por qué ([ADR 0025](../decisiones/0025-celdas-suprimidas-visibles-sin-cifra.md)) y que nunca aparece un 0 falso.
+3. **Textos:** pasa todos los textos visibles por la skill `lenguaje-claro`: siglas explicadas la primera vez, tuteo, frases cortas, sin términos que estigmaticen. Actualiza `docs/datos/glosario.md` con cada término nuevo.
+4. **Mediciones:** indica siempre qué mide cada indicador (por ejemplo, "empleabilidad al 1.er año") y el año. Revisa que ninguna comparación mezcle indicadores o períodos distintos.
+5. **Registra los hallazgos** en el PR con una tabla: página, problema, gravedad (alta, media o baja), corrección propuesta.
+6. **Corrige tú** lo que sea dato o texto. Lo que sea visual o de interacción (colores, espaciado, orden de elementos, botones) **no lo cambies**: entrégaselo a Alejandro como lista en su PR o en un issue.
+
+**Criterios de aceptación:**
+- [ ] Las cinco páginas recorridas a 360 px y con teclado.
+- [ ] Ninguna cifra sin fuente, URL, período y fecha.
+- [ ] Al menos 10 cifras comparadas con la fuente oficial, con el resultado anotado.
+- [ ] Todos los textos revisados con `lenguaje-claro` y el glosario al día.
+- [ ] Tabla de hallazgos en el PR, con lo visual derivado a Alejandro.
+- [ ] Ningún dato nuevo inventado: lo que no se pueda verificar queda como `TODO(fuente)`.
+
+**Texto para tu IA:**
+> Lee AGENTS.md, la skill lenguaje-claro, la skill datos-oficiales y el encargo del 10 de noviembre en docs/equipo/guia-cristobal.md. Te voy a pegar los textos y las cifras de cada página del portal. Para los textos, propón una versión más clara solo donde haga falta y explica por qué. Para las cifras, dime cuáles no muestran fuente, URL, período o fecha. No cambies ningún dato ni completes valores por tu cuenta, y no propongas cambios de diseño visual: anótalos aparte para Alejandro.
+
+---
+
+### C14 · Etapas del proceso de admisión ("¿en qué etapa estamos?")
+**Rama:** `datos/calendario-admision-2027` · **Skills:** `datos-oficiales`, `lenguaje-claro`
+
+**Objetivo:** que el portal pueda mostrar en qué etapa del proceso va el año (inscripción a la Prueba de Acceso a la Educación Superior (PAES), rendición, resultados, postulación, selección, matrícula) y cuál es el próximo plazo. Tú entregas las fechas oficiales; Alejandro construye la parte visual con ellas. El movimiento solo puede mostrar el avance de la línea del trayecto, nunca decorar (`docs/diseno.md`, sección 7).
+
+**Qué ya existe:** las etapas del Formulario Único de Acreditación Socioeconómica (FUAS) están en [`datos/beneficios/plazos_2027.json`](../../datos/beneficios/plazos_2027.json). No las dupliques.
+
+**Pasos:**
+1. Busca el calendario oficial de la **Admisión 2027** en el DEMRE (https://demre.cl) y en Acceso Mineduc (https://acceso.mineduc.cl). Guarda la URL exacta de cada fecha.
+2. Crea `datos/calendario/admision_2027.json` con **la misma forma** que `plazos_2027.json`: `codigo`, `proceso`, `descripcion` en lenguaje claro, `inicio`, `termino`, `estado`, `motivo_sin_fecha`, `fuente`, `url` y `fecha_consulta`.
+3. Agrega a cada etapa (aquí y en `plazos_2027.json`) un campo `estacion` con una de las cuatro estaciones que ya usa el portal ([`IndicadorEstacion.tsx`](../../app/_componentes/IndicadorEstacion.tsx)): `explorar`, `postular`, `llegar` o `avanzar`. Así el portal ubica cada fecha en la línea del trayecto. Si una fila no calza en ninguna, pregúntale al líder.
+4. Si una fecha no está publicada, déjala en `null` con su motivo. Nunca la estimes por la fecha del año anterior.
+5. Anota la fuente en `docs/fuentes.md` y la descarga en `datos/registro_descargas.md` si es nueva.
+6. Pide a otra persona que revise 3 fechas al azar contra la fuente y deja anotado en el PR quién lo hizo y cuándo.
+
+**Criterios de aceptación:**
+- [ ] Cada fecha tiene fuente, URL y fecha de consulta.
+- [ ] Ninguna fecha estimada: lo que falta queda en `null` con motivo.
+- [ ] El campo `estacion` está en todas las filas de ambos archivos.
+- [ ] 3 fechas revisadas por otra persona.
+- [ ] Las descripciones pasan la skill `lenguaje-claro`.
+
+**Texto para tu IA:**
+> Lee la skill datos-oficiales, datos/beneficios/plazos_2027.json y la tarea C14 de docs/equipo/guia-cristobal.md. Te voy a pegar el calendario oficial de la Admisión 2027 con sus URL. Arma datos/calendario/admision_2027.json con la misma forma que plazos_2027.json y agrega el campo estacion (explorar, postular, llegar o avanzar) en ambos archivos. Si una fecha no aparece en lo que te pego, déjala en null con el motivo. No completes ni estimes ninguna fecha.
+
+---
+
 ## 1. Tu rol en una frase
 
 Eres el responsable de que **todo lo que la plataforma afirma sea verdad**: cada arancel, puntaje, porcentaje, plazo y requisito sale de una fuente oficial, con su enlace y su fecha.

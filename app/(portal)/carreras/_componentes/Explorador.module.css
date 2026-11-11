@@ -449,3 +449,9 @@
   }
 
 }
+
+.listaResultados {
+  display: grid;
+  gap: var(--espacio-6);
+  min-inline-size: 0;
+}

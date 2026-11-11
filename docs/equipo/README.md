@@ -4,7 +4,7 @@ Este documento es común para todo el equipo. Cada integrante tiene además su g
 
 | Persona | Rol | Guía |
 |---|---|---|
-| Líder ([@rafajaque](https://github.com/rafajaque)) | Líder de arquitectura: base de datos, privacidad, asistente IA, decisiones finales | — |
+| Líder ([@rafajaque](https://github.com/rafajaque)) | Líder de arquitectura: base de datos, privacidad, asistente IA, decisiones finales | [`guia-rafael.md`](guia-rafael.md) |
 | Alejandro | Interfaz y diseño: portal, componentes, accesibilidad, rendimiento | [`guia-alejandro.md`](guia-alejandro.md) |
 | Cristóbal | Datos y contenido: fuentes oficiales, carga de datos, cálculos, textos | [`guia-cristobal.md`](guia-cristobal.md) |
 | Claude | Revisión de cada cambio, documentación, verificación de fuentes, fusión a `main` | — |

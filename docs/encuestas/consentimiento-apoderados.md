@@ -1,6 +1,6 @@
 # Consentimiento informado para apoderados
 
-Actualizado: 2026-11-06
+Actualizado: 2026-11-10
 
 ## Consentimiento informado
 
@@ -10,9 +10,9 @@ Estimado apoderado o apoderada:
 
 Somos estudiantes de último año de Ingeniería en Informática de [nombre de la institución] y estamos haciendo nuestro proyecto de título. Con la autorización del colegio [nombre del establecimiento], invitamos a su pupilo o pupila a responder una encuesta. Antes de decidir, le pedimos leer esta información.
 
-**¿De qué se trata el estudio?** Queremos saber cómo los estudiantes de 3.° y 4.° medio buscan información para decidir qué hacer al terminar el colegio y cuánto conocen los beneficios del Estado para financiar los estudios. Muchos jóvenes llegan a ese momento sin toda la información que necesitan, y queremos entender mejor esa situación.
+**¿De qué se trata el estudio?** Queremos saber cuánta confianza tienen los estudiantes de 3.° y 4.° medio para hacer las tareas necesarias para elegir una carrera, como buscar información, fijarse metas y planificar. Muchos jóvenes llegan a ese momento sin toda la información que necesitan, y queremos entender mejor esa situación.
 
-**¿Qué tendría que hacer su pupilo o pupila?** Responder una encuesta de unos 6 minutos, en el colegio o en un enlace, en la fecha que el colegio defina. Las preguntas son sobre cuánta confianza tiene para buscar información sobre carreras, qué sabe de los beneficios estudiantiles, qué le preocupa de estudiar y de dónde saca información. Hay una pregunta sobre el futuro (la principal razón por la que podría no seguir estudiando) cuyas opciones de respuesta incluyen razones como dinero, trabajo, salud o familia; es una lista de opciones, se puede dejar en blanco y no pregunta si le ocurrió. No hay preguntas sobre su salud, ni sobre la situación económica de su hogar.
+**¿Qué tendría que hacer su pupilo o pupila?** Responder una encuesta de 10 a 15 minutos, en el colegio o en un enlace, en la fecha que el colegio defina. La encuesta es una escala publicada en una revista científica (Escala de Autoeficacia para la Elección de Carrera): para cada tarea, el estudiante marca de 0 a 9 cuánta confianza tiene de poder hacerla. También se pregunta el curso, la región y el tipo de colegio. No hay preguntas sobre su salud ni sobre la situación económica de su hogar.
 
 **¿Es obligatorio?** No. La participación es voluntaria. Aunque usted autorice, su pupilo o pupila también decide si quiere participar, y puede no responder una pregunta o dejar la encuesta en cualquier momento. Decir que no, o retirarse, no tiene ninguna consecuencia en el colegio ni en sus notas.
 
@@ -23,7 +23,7 @@ Somos estudiantes de último año de Ingeniería en Informática de [nombre de l
 - Los datos los guarda solo el equipo del proyecto, con acceso restringido, y se usan únicamente para este estudio, conforme a la legislación chilena de protección de datos personales.
 - Este formulario firmado lo guarda el colegio, separado de las respuestas, de modo que no se pueden unir.
 
-**¿Tiene riesgos o beneficios?** No se esperan riesgos: las preguntas son sobre el futuro académico; la única que menciona temas personales (salud o familia) lo hace como opciones de una lista, de forma anónima y se puede omitir. Participar no entrega un beneficio directo, pero los resultados ayudarán a entender qué información les falta a los jóvenes. El colegio recibirá un resumen con los resultados generales.
+**¿Tiene riesgos o beneficios?** No se esperan riesgos: las preguntas son sobre la confianza para elegir y planificar el futuro académico, de forma anónima, y cualquiera se puede omitir. Participar no entrega un beneficio directo, pero los resultados ayudarán a entender qué información les falta a los jóvenes. El colegio recibirá un resumen con los resultados generales.
 
 **¿A quién puede preguntar?** Al equipo del proyecto, en [correo institucional del equipo], o al profesor o profesora guía, [nombre], en [correo institucional]. Este estudio fue revisado por nuestro profesor guía.
 

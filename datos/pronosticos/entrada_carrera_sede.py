@@ -35,7 +35,9 @@ def leer(ruta: Path):
     total = defaultdict(int)
     ent: dict[int, dict[tuple, int]] = defaultdict(lambda: defaultdict(int))
     muj: dict[int, dict[tuple, int]] = defaultdict(lambda: defaultdict(int))
-    with ruta.open(encoding="utf-8-sig", errors="replace", newline="") as f:
+    # El archivo oficial del SIES está en latin-1: con utf-8 las tildes y eñes salen como �,
+    # y los nombres de sede dejan de coincidir con los de la oferta y los nombres históricos.
+    with ruta.open(encoding="latin-1", newline="") as f:
         rd = csv.DictReader(f, delimiter=";")
         cols = rd.fieldnames or []
         ycol = cols[0]

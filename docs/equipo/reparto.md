@@ -1,6 +1,6 @@
 # Reparto de trabajo hasta el 2 de diciembre
 
-Propuesta del 5 de noviembre de 2026, **pendiente de confirmación del líder**. Complementa las guías de [Alejandro](guia-alejandro.md) y [Cristóbal](guia-cristobal.md); no las reemplaza.
+Propuesta del 5 de noviembre de 2026, **pendiente de confirmación del líder**. Complementa las guías de [Rafael](guia-rafael.md), [Alejandro](guia-alejandro.md) y [Cristóbal](guia-cristobal.md); no las reemplaza.
 
 **Problema que resuelve:** la mayor parte del código la escribe el líder y todos los PR esperan su revisión, así que el producto avanza al ritmo de una sola persona. Esta versión saca a Alejandro y a Cristóbal del camino crítico: lo que ellos entreguen suma, pero el portal no se detiene si se demoran.
 

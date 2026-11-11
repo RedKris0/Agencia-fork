@@ -1,6 +1,6 @@
 # 0013 — Deserción evitable por desinformación: extensión de la promesa y capa comercial
 
-Fecha: 2026-11-05 · Estado: propuesta
+Fecha: 2026-11-05 · Estado: aceptada (2026-11-09, por el líder, tras [revisión legal](../revision-legal-adr-pendientes.md); condición: el costo de deserción se cita siempre como techo y con su fuente; el `TODO(fuente)` sigue abierto)
 
 Respaldo: [ADR 0012](0012-cadena-causal-y-promesa.md) · [anexo de evidencia](../evidencia-acceso-salud-mental.md) (sección 2) · [informe de fundamentación](../informe-fundamentacion.md) (persistencia con y sin beneficios)
 

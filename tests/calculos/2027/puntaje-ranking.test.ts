@@ -3,7 +3,7 @@ import test from 'node:test';
 
 import { validarPuntajeRanking } from '../../../lib/calculos/2027/puntaje-ranking.ts';
 
-// ADR 0018: el Puntaje Ranking lo ingresa la persona estudiante; no se calcula.
+// ADR 0024: el Puntaje Ranking lo ingresa la persona estudiante; no se calcula.
 test('acepta un Puntaje Ranking ingresado dentro del rango oficial', () => {
   assert.equal(validarPuntajeRanking(100), 100);
   assert.equal(validarPuntajeRanking(700), 700);

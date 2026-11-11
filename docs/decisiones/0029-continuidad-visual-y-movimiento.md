@@ -1,4 +1,4 @@
-# 0025 — Continuidad visual y movimiento del portal
+# 0029 — Continuidad visual y movimiento del portal
 
 Fecha: 2026-11-11 · Estado: aceptada por Cristóbal para la copia de rediseño
 

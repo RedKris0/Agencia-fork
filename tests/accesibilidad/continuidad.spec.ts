@@ -1,5 +1,24 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import calendario from '../../datos/beneficios/plazos_2027.json' with { type: 'json' };
+import { hoyEnChile, primerPeriodoCerrado } from '../../app/(portal)/beneficios/beneficios';
+
+test('la portada conserva el acceso al calendario y el aviso vigente del FUAS', async ({ page }) => {
+  await page.goto('/');
+  const acceso = page.getByRole('link', { name: 'Revisar mis plazos de becas y gratuidad (FUAS)', exact: true });
+  await expect(acceso).toHaveAttribute('href', '/beneficios#calendario-plazos');
+  const cerrado = primerPeriodoCerrado(calendario.plazos, hoyEnChile());
+  const aviso = page.getByText('el primer período de postulación ya cerró', { exact: false });
+  if (cerrado) {
+    await expect(aviso).toBeVisible();
+    await expect(page.locator(`time[datetime="${cerrado.cierre}"]`)).toBeVisible();
+    await expect(page.locator(`a[href="${cerrado.url}"]`)).toBeVisible();
+  } else {
+    await expect(aviso).toHaveCount(0);
+  }
+  await acceso.click();
+  await expect(page.getByRole('heading', { name: 'Calendario de plazos', exact: true })).toBeInViewport();
+});
 
 const paginas = [
   { ruta: '/carreras', titulo: 'Explora carreras', parada: 'Carreras' },

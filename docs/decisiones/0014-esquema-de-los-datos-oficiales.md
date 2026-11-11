@@ -1,6 +1,6 @@
 # 0014 — Esquema de los datos oficiales y su carga
 
-Fecha: 2026-11-05 · Estado: propuesta
+Fecha: 2026-11-05 · Estado: aceptada (2026-11-09, por el líder, tras [revisión legal](../revision-legal-adr-pendientes.md); nota: varias fuentes no publican licencia de reutilización, confirmarla por escrito antes de vender informes)
 
 ## Contexto
 

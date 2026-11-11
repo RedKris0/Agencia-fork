@@ -66,9 +66,9 @@ insert into institucion (id, codigo_oficial, nombre, tipo) values
 insert into programa_generico (id, institucion_id, nombre, nombre_normalizado, fuente_id) values
   ('20500000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-000000000001', 'Carrera ficticia', 'carrera ficticia', 'f0000000-0000-0000-0000-000000000001');
 
-insert into programa (id, institucion_id, nombre, nombre_normalizado, fuente_id) values
-  ('20000000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-000000000001', 'Carrera ficticia', 'carrera ficticia', 'f0000000-0000-0000-0000-000000000001'),
-  ('20000000-0000-0000-0000-000000000002', '10000000-0000-0000-0000-000000000002', 'Otra carrera ficticia', 'otra carrera ficticia', 'f0000000-0000-0000-0000-000000000001');
+insert into programa (id, institucion_id, nombre, nombre_oficial, nombre_normalizado, fuente_id) values
+  ('20000000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-000000000001', 'Carrera ficticia', 'Carrera ficticia', 'carrera ficticia', 'f0000000-0000-0000-0000-000000000001'),
+  ('20000000-0000-0000-0000-000000000002', '10000000-0000-0000-0000-000000000002', 'Otra carrera ficticia', 'Otra carrera ficticia', 'otra carrera ficticia', 'f0000000-0000-0000-0000-000000000001');
 
 -- La misma carrera en dos jornadas: dos variantes de un solo programa (ADR 0011).
 insert into programa_variante (id, programa_id, programa_generico_id, codigo_sies, codigo_demre, sede, jornada, fuente_id) values
@@ -90,8 +90,8 @@ set role anon;
 select prueba.afirmar(prueba.contar('select * from programa') = 2, 'un visitante sin sesión ve las carreras');
 select prueba.afirmar(prueba.contar('select * from programa_generico') = 1, 'un visitante sin sesión ve las carreras genéricas');
 select prueba.afirmar(prueba.contar('select * from programa_variante') = 2, 'un visitante sin sesión ve las sedes y jornadas');
-select prueba.debe_fallar($$insert into programa (institucion_id, nombre, fuente_id)
-  values ('10000000-0000-0000-0000-000000000001', 'Falsa', 'f0000000-0000-0000-0000-000000000001')$$,
+select prueba.debe_fallar($$insert into programa (institucion_id, nombre, nombre_oficial, fuente_id)
+  values ('10000000-0000-0000-0000-000000000001', 'Falsa', 'Falsa', 'f0000000-0000-0000-0000-000000000001')$$,
   'un visitante sin sesión no puede crear carreras');
 select prueba.debe_fallar($$insert into programa_variante (programa_id, codigo_sies, fuente_id)
   values ('20000000-0000-0000-0000-000000000001', 'P999', 'f0000000-0000-0000-0000-000000000001')$$,
@@ -268,8 +268,8 @@ select prueba.debe_fallar($$insert into indicador (programa_id, tipo, valor, uni
   values ('20000000-0000-0000-0000-000000000001', 'ingreso_promedio_4to_anio', null, 'pesos', 'titulados 2021',
           'f0000000-0000-0000-0000-000000000001', 'https://ejemplo.cl', current_date, 'Duplicado')$$,
   'un indicador del programa completo no se repite en el mismo período');
-select prueba.debe_fallar($$insert into programa (institucion_id, nombre, nombre_normalizado, fuente_id)
-  values ('10000000-0000-0000-0000-000000000001', 'Carrera ficticia', 'carrera ficticia', 'f0000000-0000-0000-0000-000000000001')$$,
+select prueba.debe_fallar($$insert into programa (institucion_id, nombre, nombre_oficial, nombre_normalizado, fuente_id)
+  values ('10000000-0000-0000-0000-000000000001', 'Carrera ficticia', 'Carrera ficticia', 'carrera ficticia', 'f0000000-0000-0000-0000-000000000001')$$,
   'una carrera aparece una sola vez por institución');
 insert into indicador (programa_id, variante_id, tipo, valor, unidad, periodo, fuente_id, url, fecha_consulta) values
   ('20000000-0000-0000-0000-000000000001', '21000000-0000-0000-0000-000000000001', 'matricula', 120, 'estudiantes',

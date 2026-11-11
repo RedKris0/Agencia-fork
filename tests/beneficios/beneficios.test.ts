@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { filtrarBeneficios, ordenarPlazos } from "../../app/(portal)/beneficios/beneficios.ts";
+import { filtrarBeneficios, hoyEnChile, ordenarPlazos, primerPeriodoCerrado } from "../../app/(portal)/beneficios/beneficios.ts";
 
 test("busca beneficios sin distinguir tildes", () => {
   const beneficios = [
@@ -18,4 +18,46 @@ test("ordena plazos publicados antes de las fechas pendientes", () => {
   ];
 
   assert.deepEqual(ordenarPlazos(plazos).map((plazo) => plazo.codigo), ["publicado", "pendiente"]);
+});
+
+const plazo = (codigo: string, inicio: string | null, termino: string | null, extra = {}) => ({
+  codigo, proceso: codigo, descripcion: "", inicio, termino,
+  estado: inicio ? ("publicado" as const) : ("fecha_pendiente" as const),
+  motivo_sin_fecha: inicio ? null : "Sin fecha", fuente: "FUAS, Mineduc", url: "https://ejemplo.cl", fecha_consulta: "2026-11-11", ...extra,
+});
+
+const primerPeriodo = [
+  plazo("fuas_primer_periodo", "2026-10-01", "2026-10-22"),
+  plazo("fuas_extension_primer_periodo", "2026-10-22", "2026-11-06"),
+  plazo("nivel_socioeconomico_primer_periodo", "2026-12-17", "2026-12-17"),
+  plazo("fuas_segundo_periodo", null, null, { periodo_referencial: "febrero a marzo de 2027" }),
+];
+
+test("el primer período sigue abierto hasta el último día de la extensión", () => {
+  assert.equal(primerPeriodoCerrado(primerPeriodo, "2026-10-30"), null);
+  assert.equal(primerPeriodoCerrado(primerPeriodo, "2026-11-06"), null);
+});
+
+test("el primer período figura cerrado desde el día siguiente a la extensión", () => {
+  const cerrado = primerPeriodoCerrado(primerPeriodo, "2026-11-07");
+  assert.equal(cerrado?.cierre, "2026-11-06");
+  assert.equal(cerrado?.nivelSocioeconomico, "2026-12-17");
+  assert.equal(cerrado?.segundoPeriodo, "febrero a marzo de 2027");
+});
+
+test("sin fecha de término publicada no se afirma que cerró", () => {
+  const sinFecha = [plazo("fuas_primer_periodo", null, null)];
+  assert.equal(primerPeriodoCerrado(sinFecha, "2027-01-01"), null);
+});
+
+test("sin la fecha de nivel socioeconómico o del segundo período, no se inventan", () => {
+  const cerrado = primerPeriodoCerrado([plazo("fuas_primer_periodo", "2026-10-01", "2026-10-22")], "2026-11-11");
+  assert.equal(cerrado?.nivelSocioeconomico, null);
+  assert.equal(cerrado?.segundoPeriodo, null);
+});
+
+test("la fecha de hoy se toma en la zona horaria de Chile", () => {
+  // 01:00 UTC del 7 de noviembre es todavía el 6 de noviembre en Chile (UTC-3).
+  assert.equal(hoyEnChile(new Date("2026-11-07T01:00:00Z")), "2026-11-06");
+  assert.equal(hoyEnChile(new Date("2026-11-07T12:00:00Z")), "2026-11-07");
 });

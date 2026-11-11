@@ -44,8 +44,10 @@ FUENTE = "DEMRE"
 URL_ARCHIVO = "https://demre.cl/publicaciones/pdf/2027-26-09-24-oferta-definitiva-carreras-p2027.pdf"
 PERIODO = "Admisión 2027, oferta definitiva (2026-09-24)"
 RUTA_CORRECCIONES = os.path.join(os.path.dirname(__file__), "correcciones", "demre_2027.csv")
+RUTA_FILAS_PARTIDAS = os.path.join(os.path.dirname(__file__), "correcciones", "demre_2027_filas_partidas.csv")
 CW = 6.1      # ancho de un dígito en puntos, medido en la propia tabla
 GUION = 11.0  # ancho de «---»
+TOLERANCIA_COLUMNA = 10.0  # puntos: distancia máxima entre una cifra y el borde esperado de su columna
 
 # (nombre, patrón del encabezado)
 CANON = [
@@ -77,23 +79,80 @@ SALIDA = [
 
 
 # ------------------------------------------------------------------ lectura del PDF
+PREFIJO_CODIGO_PEGADO = re.compile(r"^\d{5}\s+\S")
+
+
 def extraer_paginas(ruta):
-    """Devuelve [{'p', 'w', 'h', 't': [[y, x, texto], ...]}] con la posición de cada trozo de texto."""
+    """Devuelve [{'p', 'w', 'h', 't': [[y, x, texto], ...]}] con la posición de cada trozo de texto.
+
+    pypdf da un trozo por operación de texto. A veces una fila entera llega en un solo trozo
+    («17000 AGRONOMÍA ... 20 30 15 25 ...»): entonces las cifras no tienen posición propia y la fila se
+    perdía. En esas filas (y solo en ellas) se usan las palabras con coordenadas de pdfplumber.
+    Las palabras de pdfplumber se pasan a la misma convención de y (línea base, de abajo hacia arriba)."""
     try:
         from pypdf import PdfReader
     except ImportError:
         sys.exit("Error: falta pypdf. Instálalo con: python3 -m pip install -r scripts/requirements.txt")
+    try:
+        import pdfplumber
+    except ImportError:
+        sys.exit("Error: falta pdfplumber. Instálalo con: python3 -m pip install -r scripts/requirements.txt")
     paginas = []
-    for n, pg in enumerate(PdfReader(ruta).pages, 1):
-        trozos = []
+    with pdfplumber.open(ruta) as pdf_plumber:
+        for n, (pg, pl) in enumerate(zip(PdfReader(ruta).pages, pdf_plumber.pages), 1):
+            trozos = []
 
-        def visitar(texto, cm, tm, fd, fs, trozos=trozos):
-            s = texto.replace("\t", " ").strip()
-            if s:
-                trozos.append([round(tm[5], 1), round(tm[4], 1), s])
+            def visitar(texto, cm, tm, fd, fs, trozos=trozos):
+                s = texto.replace("\t", " ").strip()
+                if s:
+                    trozos.append([round(tm[5], 1), round(tm[4], 1), s])
 
-        pg.extract_text(visitor_text=visitar)
-        paginas.append({"p": n, "w": float(pg.mediabox.width), "h": float(pg.mediabox.height), "t": trozos})
+            pg.extract_text(visitor_text=visitar)
+            alto = float(pg.mediabox.height)
+            palabras = [(round(alto - w["bottom"] + 2.0, 1), round(w["x0"], 1), w) for w in
+                        pl.extract_words(keep_blank_chars=False, use_text_flow=False, extra_attrs=["upright"])]
+            # una fila es «pegada» si pypdf la trae con el código y el resto juntos, o si pypdf no trae su código
+            # al inicio de la fila (se ve en el PDF por pdfplumber)
+            codigos_pdf = [y for y, x, w in palabras if 55 < x < 95 and CODIGO.match(w["text"])]
+            codigos_pypdf = [y for y, x, s in trozos if 55 < x < 95 and CODIGO.match(s)]
+            filas_pegadas = [y for y, x, s in trozos if 55 < x < 95 and PREFIJO_CODIGO_PEGADO.match(s)]
+            filas_pegadas += [y for y in codigos_pdf if not any(abs(y - c) <= 3 for c in codigos_pypdf)]
+            if filas_pegadas:
+                # banda de la fila: el nombre de dos líneas queda centrado en la fila (unos 4 puntos arriba
+                # y 8 abajo); la fila siguiente empieza a 28 puntos, así que 12 no toca otra fila
+                cerca = lambda y: any(abs(y - f) <= 12 for f in filas_pegadas)  # noqa: E731
+                trozos = [t for t in trozos if not cerca(t[0])]
+                banda = [(y, x, w) for y, x, w in palabras if cerca(y)]
+                # las palabras de texto (no cifras) se separan en nombre y lugar por línea: si una línea tiene dos
+                # tramos separados por un espacio grande, el último es el lugar. El nombre va a x=103 y el lugar a x=300,
+                # que son las posiciones que usa filas_de_pagina.
+                texto_banda = [(y, x, w) for y, x, w in banda if not TOKEN.match(w["text"]) and not CODIGO.match(w["text"])]
+                lineas = {}
+                for y, x, w in texto_banda:
+                    lineas.setdefault(round(y / 4), []).append((x, w))
+                destino = {}
+                for grupo in lineas.values():
+                    grupo.sort()
+                    tramos, actual = [], [grupo[0]]
+                    for (x1, w1), (x2, w2) in zip(grupo, grupo[1:]):
+                        if x2 - (x1 + 6.1 * len(w1["text"])) > 14:
+                            tramos.append(actual)
+                            actual = []
+                        actual.append((x2, w2))
+                    tramos.append(actual)
+                    for k, tramo in enumerate(tramos):
+                        es_lugar = len(tramos) > 1 and k == len(tramos) - 1
+                        for x, w in tramo:
+                            destino[id(w)] = 300.0 if es_lugar else 103.0
+                for y, x, w in banda:
+                    if TOKEN.match(w["text"]) or CODIGO.match(w["text"]):
+                        trozos.append([y, x, w["text"]])
+                    else:
+                        texto = w["text"] if w["upright"] else w["text"][::-1]
+                        trozos.append([y, destino.get(id(w), 103.0), texto])
+            # filas que llegaron pegadas: sus cifras se leyeron de otra manera y no se cargan sin revisión a mano
+            paginas.append({"p": n, "w": float(pg.mediabox.width), "h": alto, "t": trozos,
+                            "pegadas": filas_pegadas if filas_pegadas else []})
     return paginas
 
 
@@ -143,13 +202,15 @@ def asignar(tokens, anclas):
                 costo[i][j], quien[i][j] = saltar, "s"
     if costo[k][m] == inf:
         return None
-    res, i, j = [None] * m, k, m
+    res, dist, i, j = [None] * m, [None] * m, k, m
     while j > 0 and i > 0:
         if quien[i][j] == "p":
             res[j - 1] = tokens[i - 1][1]
+            dist[j - 1] = abs(borde(*tokens[i - 1]) - anclas[j - 1])
             i, j = i - 1, j - 1
         else:
             j -= 1
+    asignar.ultima_distancia = max((d for d in dist if d is not None), default=0.0)
     return res
 
 
@@ -241,13 +302,47 @@ def filas_de_pagina(pagina):
 
 def texto_de(partes):
     """Une las partes de un nombre o de un lugar, de arriba hacia abajo y de izquierda a derecha."""
-    return re.sub(r"\s+", " ", " ".join(s for y, x, s in sorted(partes, key=lambda p: (-p[0], p[1])))).strip()
+    # las palabras de una misma línea pueden tener y distinta en décimas: se agrupan por bandas de 4 puntos
+    return re.sub(r"\s+", " ", " ".join(s for y, x, s in sorted(partes, key=lambda p: (-round(p[0] / 4), p[1])))).strip()
 
 
-def procesar(paginas, fecha_descarga, correcciones=None):
+def en_fila_partida(pagina, y):
+    return any(abs(y - f) <= 12 for f in pagina.get("pegadas", []))
+
+
+def cargar_filas_partidas(ruta=RUTA_FILAS_PARTIDAS):
+    """Filas que llegaron partidas en el PDF y se leyeron a mano del texto (ver la columna «lectura»)."""
+    with open(ruta, encoding="utf-8", newline="") as f:
+        return {fila["demre_codigo"]: fila for fila in csv.DictReader(f)}
+
+
+def fila_partida_revisada(fila, fecha_descarga):
+    """Arma la fila de salida con los datos revisados a mano. Las ponderaciones de estas filas no se cargan."""
+    base = {c: "" for c in SALIDA}
+    base.update({
+        "demre_codigo": fila["demre_codigo"], "carrera": fila["carrera"], "notas": fila["notas"], "lugar": fila["lugar"],
+        "puntaje_promedio_minimo": numero(fila["puntaje_promedio_minimo"]),
+        "vacantes_regular": numero(fila["vacantes_regular"]), "vacantes_bea": numero(fila["vacantes_bea"]),
+        "vacantes_pace": numero(fila["vacantes_pace"]), "pagina_pdf": fila["pagina_pdf"],
+        "fuente": FUENTE, "url_archivo": URL_ARCHIVO, "fecha_descarga": fecha_descarga, "periodo": PERIODO,
+    })
+    return base
+
+
+def procesar(paginas, fecha_descarga, correcciones=None, partidas=None):
     correcciones = cargar_correcciones() if correcciones is None else correcciones
+    partidas = cargar_filas_partidas() if partidas is None else partidas
     validas, revisar = [], []
     resumen = Counter()
+    # lugares conocidos: los que salen completos en filas que no llegaron partidas. Sirven para separar el lugar
+    # del nombre en las filas partidas, que llegan con los dos mezclados.
+    lugares = set()
+    for pagina in paginas:
+        for f in filas_de_pagina(pagina)[0]:
+            if not en_fila_partida(pagina, f["y"]):
+                l = texto_de(f["lugar"])
+                if l:
+                    lugares.add(l)
     for pagina in paginas:
         filas, cols = filas_de_pagina(pagina)
         if not filas:
@@ -270,9 +365,28 @@ def procesar(paginas, fecha_descarga, correcciones=None):
             correccion = correcciones.get(f["codigo"])
             tiene_o = tiene_o_en_pdf or bool(correccion and correccion["historia_o_ciencias"] == "si")
             base = {"demre_codigo": f["codigo"], "pagina_pdf": pagina["p"], "carrera": texto_de(f["nombre"]), "lugar": texto_de(f["lugar"])}
+            if en_fila_partida(pagina, f["y"]):
+                # en una fila partida el nombre y el lugar pueden venir mezclados: el lugar es el lugar conocido
+                # más largo con el que termina el texto completo; si ninguno calza, la fila queda sin lugar y se revisa
+                completo = texto_de(f["nombre"] + f["lugar"])
+                candidatos = [l for l in lugares if completo.endswith(l)]
+                base["lugar"] = max(candidatos, key=len) if candidatos else ""
+                base["carrera"] = completo[: len(completo) - len(base["lugar"])].strip() if base["lugar"] else completo
+                # el nombre y el lugar de estas filas no se separan con seguridad (probado con 17000, 17054 y 54101):
+                # se revisan a mano y no se cargan
+                manual = partidas.get(f["codigo"])
+                if manual:
+                    validas.append(fila_partida_revisada(manual, fecha_descarga))
+                else:
+                    revisar.append({**base, "motivo": "nombre o lugar de fila partida en el PDF: revisar a mano"})
+                continue
             asignadas = asignar(datos, anclas)
             if asignadas is None:
                 revisar.append({**base, "motivo": f"{len(datos)} celdas para {len(nombres)} columnas"})
+                continue
+            if asignar.ultima_distancia > TOLERANCIA_COLUMNA:
+                # una cifra no cae bajo su encabezado (medido en 17000, 17074, 32012): no se asigna a ciegas
+                revisar.append({**base, "motivo": f"cifra fuera de su columna ({asignar.ultima_distancia:.0f} puntos), revisar a mano"})
                 continue
             v = {n: (None if s in (None, "---") else s) for n, s in zip(nombres, asignadas)}
             p = {n: numero(v.get(n)) for n in PESOS}

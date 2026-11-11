@@ -123,15 +123,38 @@ async function cargarCarreras(variantes: Fila[]): Promise<Carrera[]> {
   return construirOferta(datos);
 }
 
+// Modo sin red, solo para la prueba de accesibilidad de la CI (OFERTA_LOCAL=1 en el
+// flujo de GitHub). Lee la muestra que copia `datos:ejemplo-si-falta`. Existe porque la
+// CI no tiene las claves de Supabase y los PR desde copias del repositorio no reciben
+// secretos. En Cloudflare la variable no está definida: el sitio siempre lee la base.
+function modoLocal(): boolean {
+  return process.env.OFERTA_LOCAL === '1';
+}
+
+async function carrerasLocales(): Promise<Carrera[]> {
+  const { listarCarreras } = await import('./carreras.ts');
+  return listarCarreras();
+}
+
 export type ResultadoBusqueda = { carreras: Carrera[]; total: number };
 
 export async function buscarCarreras(filtros: FiltrosBusqueda, pagina: number): Promise<ResultadoBusqueda> {
+  if (modoLocal()) {
+    const { filtrarCarreras } = await import('./buscar.ts');
+    const todas = filtrarCarreras(await carrerasLocales(), filtros as Parameters<typeof filtrarCarreras>[1]);
+    const desde = Math.max(0, pagina - 1) * POR_PAGINA;
+    return { carreras: todas.slice(desde, desde + POR_PAGINA), total: todas.length };
+  }
   const { filas, total } = await consultar('programa_variante', parametrosBusqueda(filtros, pagina), { contar: true });
   return { carreras: await cargarCarreras(filas), total };
 }
 
 export async function carrerasPorCodigos(codigos: readonly string[]): Promise<Carrera[]> {
   if (codigos.length === 0) return [];
+  if (modoLocal()) {
+    const porCodigo = new Map((await carrerasLocales()).map((c) => [c.codigo_sies, c]));
+    return codigos.flatMap((codigo) => (porCodigo.has(codigo) ? [porCodigo.get(codigo)!] : []));
+  }
   const { filas } = await consultar('programa_variante', parametrosPorCodigos(codigos));
   // Respeta el orden en que se pidieron.
   const porCodigo = new Map((await cargarCarreras(filas)).map((c) => [c.codigo_sies, c]));

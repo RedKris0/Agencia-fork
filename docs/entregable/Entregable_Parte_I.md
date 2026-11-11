@@ -14,19 +14,41 @@
 
 El problema de partida es la exclusión de la educación superior causada por desinformación sobre beneficios estudiantiles, y el abandono posterior de quienes ingresan. Del egreso de enseñanza media de 2020 (258.418 personas), 143.191 (55,4 %) no estaban matriculadas en educación superior en 2021; esta cifra mide ingreso inmediato, no «nunca» (Centro de Estudios Mineduc, 2022, Tabla 10, p. 80). Entre quienes ingresan, la retención de primer año de la cohorte 2023 fue de 76,5 % (Servicio de Información de Educación Superior [SIES], s. f.). El proyecto construye la **Agencia de Enlace & Seguimiento Estudiantil (AE-SE)**, una plataforma gratuita para el estudiante que lo acompaña antes, durante y después de entrar a la educación superior. Este punto define para quién se trabaja, qué se innova y bajo qué condiciones; los objetivos medibles se formulan en el Punto 3.
 
+**Segmento objetivo: edad y sector social.** El proyecto no se dirige a «todos los jóvenes». Se acota a quienes muestran el problema en los datos oficiales:
+
+- **Sector social:** estudiantes de establecimientos con financiamiento público, es decir, municipales, Servicios Locales de Educación Pública (SLEP), particulares subvencionados y de administración delegada. Los **particulares pagados quedan fuera del objetivo**.
+- **Edad y etapa:** estudiantes de 3.º y 4.º medio y egresados de hasta cinco años de esos establecimientos, de **16 a 24 años**, más quienes cursan su primer año de educación superior viniendo de ellos. El rango de edad es una decisión del equipo, no un dato: el límite inferior corresponde a 3.º medio y el superior coincide con el indicador de jóvenes de 18 a 24 años que no estudian ni trabajan del Punto 2 y con la ventana de cinco años de acceso acumulado del SIES. Quienes tienen menos de 18 años requieren autorización de su madre, padre o tutor (`AGENTS.md`, 2.2).
+
+**Tabla 1.0.** Acceso a la educación superior según dependencia del establecimiento de origen.
+
+| Dependencia | Acceso inmediato (egreso 2021, matrícula 2022) | Acceso acumulado al 5.º año (egreso 2017) |
+|---|---|---|
+| Municipal | 37,8 % | 68,3 % |
+| Servicio Local de Educación Pública | 36,3 % | sin dato (primera cohorte de egreso en 2018) |
+| Particular subvencionado | 41,9 % | 79,2 % |
+| Administración delegada | 40,1 % | 73,9 % |
+| **Particular pagado** | **68,7 %** | **94,0 %** |
+| Total | 42,5 % | 76,4 % |
+
+Fuente: Servicio de Información de Educación Superior [SIES] (2023), Tabla 3, p. 8, y Tabla 12, p. 16 (en el total, Tabla 1, p. 5, y Tabla 9, p. 14). Es el informe oficial más reciente de esta serie que el equipo pudo descargar y leer (10 de noviembre de 2026); las ediciones posteriores quedan por buscar.
+
+**Por qué se excluyen los particulares pagados.** (1) La brecha es de 30,9 puntos porcentuales en el acceso inmediato (68,7 − 37,8, frente a los municipales) y de 25,7 puntos a los cinco años (94,0 − 68,3). En ese grupo el problema de exclusión que el proyecto ataca es mucho menor. (2) Los beneficios del Estado se asignan según la situación socioeconómica que se acredita en el FUAS, y el proyecto se justifica por la desinformación sobre esos beneficios. (3) El equipo no tiene evidencia de que la falta de información sea una causa de no ingreso en colegios de altos recursos, y no puede afirmar que la solución sea factible allí. **Límite:** la dependencia es una aproximación al sector social, no una medida de ingreso familiar, porque hay familias de ingresos altos en colegios subvencionados y de ingresos bajos en colegios pagados. Para elegir los liceos del piloto puede sumarse un índice de vulnerabilidad oficial `[CONFIRMAR fuente y año]`.
+
+**El segmento no limita el acceso.** El portal sigue siendo gratuito y abierto a cualquier persona, sin pedir el tipo de colegio. El segmento define para quién se diseña, a quién se encuesta y entrevista, y sobre quién se miden las metas del Punto 3.
+
 ### 1.1 Necesidades de los grupos de interés
 
-Los grupos de interés son quienes afectan o son afectados por el logro del proyecto (Freeman, 1984). Las necesidades de la tabla se formulan como verbo más objeto, sin nombrar una solución, y se tipifican como funcionales, emocionales o sociales (Osterwalder et al., 2014). Por ahora son **hipótesis derivadas de datos secundarios y del diseño del proyecto**. Se confirmarán con las encuestas escolar y de adultos (instrumentos en `docs/encuestas/`, muestra por conveniencia, aún no aplicados) y con entrevistas a actores clave `[COMPLETAR con resultados reales tras aplicar el instrumento]`. Los puntajes de poder e interés (1 a 5) son una estimación del equipo; se considera «alto» un valor igual o superior a 4.
+Los grupos de interés son quienes afectan o son afectados por el logro del proyecto (Freeman, 1984). Las necesidades de la tabla se formulan como verbo más objeto, sin nombrar una solución, y se tipifican como funcionales, emocionales o sociales (Osterwalder et al., 2014). Por ahora son **hipótesis derivadas de datos secundarios y del diseño del proyecto**. Se confirmarán con la encuesta escolar (un instrumento estandarizado, en `docs/encuestas/`; muestra por conveniencia; aún no aplicada) y con entrevistas a actores clave `[COMPLETAR con resultados reales tras aplicar el instrumento]`. Los puntajes de poder e interés (1 a 5) son una estimación del equipo; se considera «alto» un valor igual o superior a 4.
 
 **Tabla 1.1.** Actores, necesidades y puntajes.
 
 | N.º | Actor (quién, dónde) | Clasificación | Necesidad (verbo + objeto) | Tipo | Evidencia inicial | Poder | Interés |
 |---|---|---|---|---|---|---|---|
-| 1 | Estudiantes de 4.º medio y egresados recientes de liceos del territorio de prueba `[CONFIRMAR: territorio; se propone la Región de O'Higgins]` | Grupo objetivo | Identificar qué carreras y beneficios les corresponden y en qué plazo postular | Funcional | 55,4 % sin matrícula inmediata (Centro de Estudios Mineduc, 2022). No existe cifra oficial de cuántos no postulan por no saber cómo; se declara como brecha de información | 2 | 5 |
+| 1 | Estudiantes de 3.º y 4.º medio y egresados de hasta cinco años (16 a 24 años) de establecimientos municipales, SLEP, particulares subvencionados y de administración delegada del territorio de prueba `[CONFIRMAR: territorio; se propone la Región de O'Higgins]` | Grupo objetivo | Identificar qué carreras y beneficios les corresponden y en qué plazo postular | Funcional | 55,4 % sin matrícula inmediata (Centro de Estudios Mineduc, 2022). Acceso inmediato de 36,3 % a 41,9 % en el segmento, frente a 68,7 % en particulares pagados (SIES, 2023; Tabla 1.0). No existe cifra oficial de cuántos no postulan por no saber cómo; se declara como brecha de información | 2 | 5 |
 | 2 | Los mismos estudiantes, al decidir y postular | Grupo objetivo | Sentir seguridad de no cometer un error irreparable al postular | Emocional | A confirmar con encuesta escolar (pendiente) | 2 | 5 |
-| 3 | Estudiantes de primer año de educación superior | Grupo objetivo | Conocer qué requisitos de avance deben cumplir para mantener sus beneficios | Funcional | Persistencia al 2.º año de 88,2 % con beneficios y 74,4 % sin ellos, cohorte 2022; diferencia observada, no causal (SIES, s. f.) | 2 | 5 |
-| 4 | Madres, padres o tutores de estudiantes menores de 18 años | Grupo de interés directo | Decidir con información clara sobre el uso de los datos de su hijo o hija | Funcional | Requisito de diseño por la Ley 21.719; a confirmar con encuesta de adultos | 3 | 4 |
-| 5 | Orientadores y profesores jefes de liceos del territorio de prueba | Grupo de interés directo | Disponer de datos oficiales actualizados para orientar a sus estudiantes | Funcional | A confirmar con entrevistas (pendientes) | 3 | 4 |
+| 3 | Estudiantes de primer año de educación superior que egresaron de los establecimientos del segmento | Grupo objetivo | Conocer qué requisitos de avance deben cumplir para mantener sus beneficios | Funcional | Persistencia al 2.º año de 88,2 % con beneficios y 74,4 % sin ellos, cohorte 2022; diferencia observada, no causal (SIES, s. f.) | 2 | 5 |
+| 4 | Madres, padres o tutores de estudiantes menores de 18 años | Grupo de interés directo | Decidir con información clara sobre el uso de los datos de su hijo o hija | Funcional | Requisito de diseño por la Ley 21.719; a confirmar con entrevistas (Tabla 2.D.2) | 3 | 4 |
+| 5 | Orientadores y profesores jefes de liceos del segmento en el territorio de prueba | Grupo de interés directo | Disponer de datos oficiales actualizados para orientar a sus estudiantes | Funcional | A confirmar con entrevistas (pendientes) | 3 | 4 |
 | 6 | Direcciones de liceos y Servicios Locales de Educación Pública | Grupo de interés indirecto | Mostrar a su comunidad que sus egresados continúan estudios | Social | 55,4 % sin matrícula inmediata (contexto); a confirmar con entrevistas | 4 | 3 |
 | 7 | Direcciones de Asuntos Estudiantiles (DAE) de instituciones de educación superior | Cliente potencial | Saber a tiempo, y solo con autorización del estudiante, quién se desconecta de su carrera | Funcional | Retención de primer año 76,5 %, cohorte 2023 (SIES); a confirmar con entrevistas | 4 | 4 |
 | 8 | Vicerrectorías académicas y unidades de acreditación de esas instituciones | Cliente pagador potencial | Demostrar acciones e indicadores de progresión estudiantil ante la Comisión Nacional de Acreditación (CNA) | Funcional y social | El Criterio 2 de la Dimensión I exige apoyo a la progresión con indicadores (`docs/informe-fundamentacion.md`, sección 5) | 5 | 3 |
@@ -47,7 +69,7 @@ Los grupos de interés son quienes afectan o son afectados por el logro del proy
 | | Interés bajo (1 a 3) | Interés alto (4 a 5) |
 |---|---|---|
 | **Poder alto (4 a 5)** | **Mantener satisfechos:** 6 Direcciones de liceos y SLEP; 8 Vicerrectorías y acreditación; 9 Mineduc y Subsecretaría | **Gestionar de cerca:** 7 DAE |
-| **Poder bajo (1 a 3)** | **Monitorear:** 10 Proveedores de infraestructura | **Mantener informados:** 1 y 2 Estudiantes de 4.º medio; 3 Estudiantes de primer año; 4 Tutores; 5 Orientadores |
+| **Poder bajo (1 a 3)** | **Monitorear:** 10 Proveedores de infraestructura | **Mantener informados:** 1 y 2 Estudiantes de 3.º y 4.º medio y egresados recientes del segmento; 3 Estudiantes de primer año; 4 Tutores; 5 Orientadores |
 
 La estrategia de relación y el responsable de cada actor están en la Tabla 1.2 (Anexo 1.B).
 
@@ -59,7 +81,7 @@ La estrategia de relación y el responsable de cada actor están en la Tabla 1.2
 |---|---|
 | Objeto | De proceso: cambia la forma de entregar la orientación y el seguimiento, hoy dispersos en archivos y sitios distintos; se materializa como un servicio digital |
 | Grado | Incremental: reúne y personaliza información oficial que ya existe; no cambia las reglas del sistema |
-| Alcance de la novedad | Nueva para el territorio de prueba y para las instituciones donde se pilotee; no se afirma novedad para el mercado |
+| Alcance de la novedad | Nueva para el segmento (establecimientos con financiamiento público, 16 a 24 años) del territorio de prueba y para las instituciones donde se pilotee; no se afirma novedad para el mercado |
 | Qué cambia respecto de hoy | El estudiante consulta datos oficiales con su fuente y fecha, planifica sus postulaciones y renovaciones, y es dueño de una ficha que comparte solo con consentimiento |
 | Competencias que la sustentan `[CONFIRMAR con el perfil oficial de la carrera]` | Desarrollo de software web; bases de datos y seguridad de la información; análisis de datos e inteligencia de negocios |
 
@@ -91,6 +113,7 @@ Cada decisión nace de una necesidad de la Tabla 1.1 y de un eje.
 |---|---|---|
 | Identificar carreras y beneficios y su plazo (1) | Calidad | Todo dato mostrado lleva fuente, URL y fecha de actualización; beneficios y plazos viven en datos versionados con fecha de vigencia, no en el código |
 | Sentir seguridad al postular (2) | Tiempo | Se prioriza un explorador y un simulador de beneficios con calendario FUAS antes del acompañamiento, con textos en lenguaje claro y siglas explicadas |
+| Identificar carreras y beneficios (1), en el segmento con menor acceso | Incertidumbre de mercado | Se diseña, se encuesta y se mide en establecimientos con financiamiento público y personas de 16 a 24 años; no se afirma utilidad para colegios particulares pagados (Tabla 1.0). El portal sigue abierto a todos |
 | Decidir sobre los datos de un menor (4) | Factibilidad | Un menor de 18 años no otorga consentimientos sin autorización de su tutor; el registro no pide RUT ni teléfono |
 | Mantener beneficios y no sentirse etiquetado (3) | Factibilidad | El pulso de check-in es un sensor por autorreporte y silencio, no un predictor; la interfaz no usa etiquetas como «en riesgo» y deriva a *4141 y Salud Responde 600 360 7777 |
 | Saber quién se desconecta, solo con autorización (7) | Cadena de valor | El panel institucional se construye como demostración con datos de ejemplo, aislado por institución en la base de datos, y muestra solo estudiantes con consentimiento vigente |
@@ -121,7 +144,7 @@ Este punto mide y explica el problema antes de proponer cómo se aborda. Contras
 
 ### 2.1 Contexto y descripción del desafío
 
-**Territorio y grupo afectado.** Personas que egresan o egresaron de la enseñanza media en Chile y quieren acceder a la educación superior, y quienes ingresan y deben mantenerse en ella. Como territorio de referencia se propone la Región de O'Higgins `[CONFIRMAR: coincide con el territorio de prueba del Punto 1]`. Los actores se numeran como en la Tabla 1.1 del Punto 1.
+**Territorio y grupo afectado.** Personas de 16 a 24 años que cursan 3.º o 4.º medio o egresaron hace cinco años o menos de establecimientos municipales, SLEP, particulares subvencionados o de administración delegada, y quieren acceder a la educación superior, más quienes ingresan desde esos establecimientos y deben mantenerse en ella (segmento definido en el Punto 1, Tabla 1.0). Como territorio de referencia se propone la Región de O'Higgins `[CONFIRMAR: coincide con el territorio de prueba del Punto 1]`. Los actores se numeran como en la Tabla 1.1 del Punto 1.
 
 **Problema central.** Una parte importante de las personas que egresan de la enseñanza media no ingresa de inmediato a la educación superior, y una parte de quienes ingresan no continúa, aun cuando existen beneficios estudiantiles cuyo acceso depende de un trámite (el Formulario Único de Acreditación Socioeconómica, FUAS) y de requisitos que cambian cada año.
 
@@ -136,7 +159,7 @@ Este punto mide y explica el problema antes de proponer cómo se aborda. Contras
 **Necesidad de concretar la propuesta.**
 
 1. *El problema se repite cada año.* Si 143.191 egresos de una cohorte no ingresan de inmediato, si una cifra similar se repitiera en tres cohortes serían unos 430.000 (143.191 × 3 = 429.573). Es un orden de magnitud ilustrativo, no un dato observado: cada cohorte tiene tamaño distinto y parte ingresa más tarde.
-2. *Lo central no se puede medir hoy con datos oficiales.* No hay cifra publicable de cuántas personas no postulan por no saber cómo, ni serie pública de postulaciones al FUAS. Por eso el equipo presentó una solicitud de acceso a la información pública a la Subsecretaría de Educación Superior (4 de noviembre de 2026, folio AJ025T0003786; respuesta en torno al 2 de diciembre, prorrogable) y diseñó encuestas con respaldo en instrumentos publicados (Ley 20.285, 2008).
+2. *Lo central no se puede medir hoy con datos oficiales.* No hay cifra publicable de cuántas personas no postulan por no saber cómo, ni serie pública de postulaciones al FUAS. Por eso el equipo presentó una solicitud de acceso a la información pública a la Subsecretaría de Educación Superior (4 de noviembre de 2026, folio AJ025T0003786; respuesta en torno al 2 de diciembre, prorrogable) y diseñó una encuesta con un instrumento estandarizado y entrevistas (Ley 20.285, 2008).
 3. *El acceso mejora, el acompañamiento no necesariamente.* La matrícula de pregrado creció 13,0 % entre 2022 y 2026 y la retención de primer año subió de 75,6 % a 77,3 % entre las cohortes 2020 y 2024 (Subsecretaría de Educación Superior, 2026; SIES, 2026), pero 16,4 % de la cohorte 2023 (100 − 83,6) no tenía matrícula en educación superior al año siguiente.
 4. *No hay obligación legal de acompañar.* La Ley 21.091 no la impone a las instituciones (el artículo 8, letra c, encarga promover la permanencia a la Subsecretaría), aunque el estándar de la Comisión Nacional de Acreditación (CNA) pide apoyo a la progresión con indicadores (Ley 21.091, 2018; CNA, s. f.).
 
@@ -149,6 +172,7 @@ Fórmulas: Porcentaje = (parte ÷ total) × 100; Tasa = (casos ÷ población) ×
 | Indicador | Valor local (Chile; O'Higgins si existe) | Referencia o comparación | Año | Fuente |
 |---|---|---|---|---|
 | Egresados de media sin matrícula en educación superior al año siguiente | 143.191 de 258.418 = 55,4 %; tasa 554,1 por 1.000 | Con matrícula: 115.227 = 44,6 % | Egreso 2020, matrícula 2021 | Centro de Estudios Mineduc (2022) |
+| Acceso inmediato según dependencia (segmento frente a particular pagado) | Municipal 37,8 %; SLEP 36,3 %; particular subvencionado 41,9 %; administración delegada 40,1 % | Particular pagado 68,7 %: brecha de 30,9 pp con el municipal | Egreso 2021, matrícula 2022 | SIES (2023), Tabla 3, p. 8 |
 | Brecha de persistencia al 2.º año, con y sin beneficios | Cohorte 2022: 88,2 − 74,4 = 13,8 pp | Cohorte 2020: 86,3 − 74,2 = 12,1 pp; la brecha creció 1,7 pp | 2020 y 2022 | SIES (2021, 2023) |
 | Retención de primer año | 77,3 % (cohorte 2024) | 75,6 % (cohorte 2020): +1,7 pp (+2,2 %) | 2020-2024 | SIES (2026) |
 | Cohorte sin matrícula en educación superior al año siguiente | 16,4 % (100 − 83,6) | Retención 76,5 % | Cohorte 2023 | SIES (s. f.) |
@@ -176,7 +200,7 @@ Fórmulas: Porcentaje = (parte ÷ total) × 100; Tasa = (casos ÷ población) ×
 
 **Lectura.** (a) Más de la mitad de una cohorte no ingresa de inmediato. (b) Quienes tienen beneficios persisten 12 a 14 puntos más: sugiere que el trámite importa, sin probar causa. (c) El NEET baja desde 2020 pero sigue 5 o 6 puntos sobre la OCDE. (d) Acceso y retención mejoran mientras el indicador general de salud mental del Termómetro Achs–UC empeora (12,7 % en abril de 2025; 18,5 % en junio-agosto de 2026), dato de una ronda sin informe público que se cita solo con cautela (Achs, s. f.; Universidad Católica, 2026).
 
-**Localización.** No se encontró dato comunal publicado sobre ingreso a educación superior ni sobre postulación a beneficios; el dato verificado más desagregado es regional (INJUV, 24,8 % en O'Higgins). Las discrepancias y limitaciones de los datos están en el Anexo 2.D (Tabla 2.D.1). Los dos datos regionales de acceso tienen origen pendiente y no se usan como evidencia hasta rastrearlos a un informe oficial. La encuesta recoge la región (E0.2 y A0.2) y aportará datos primarios de localización.
+**Localización.** No se encontró dato comunal publicado sobre ingreso a educación superior ni sobre postulación a beneficios; el dato verificado más desagregado es regional (INJUV, 24,8 % en O'Higgins). Las discrepancias y limitaciones de los datos están en el Anexo 2.D (Tabla 2.D.1). Los dos datos regionales de acceso tienen origen pendiente y no se usan como evidencia hasta rastrearlos a un informe oficial. La encuesta recoge la región (C2) y aportará datos primarios de localización.
 
 ### 2.3 Levantamiento primario
 
@@ -186,24 +210,23 @@ Fórmulas: Porcentaje = (parte ÷ total) × 100; Tasa = (casos ÷ población) ×
 
 | Instrumento | Objetivo | A quién / cuántos (meta) | Fechas previstas | Responsable |
 |---|---|---|---|---|
-| Juicio de expertos y piloto | Corregir la claridad de las adaptaciones y medir tiempo de respuesta (controles adicionales al respaldo en fuentes) | 3 a 5 expertos; 10 a 15 personas por encuesta | 9 al 15 de noviembre | `[CONFIRMAR]` |
-| Encuesta escolar | Confianza para buscar información, conocimiento de beneficios, preocupaciones, fuentes de información y razón para no continuar | Estudiantes de 3.º y 4.º medio; al menos 100, en al menos dos tipos de colegio | 16 al 27 de noviembre | `[CONFIRMAR]` |
-| Encuesta de adultos | Lo mismo, más beneficios recibidos y, en quienes estudian, apoyo percibido y pertenencia | Personas de 18 años o más; al menos 150, con no menos de 30 por situación (estudia, dejó de estudiar, nunca entró) | 16 al 27 de noviembre | `[CONFIRMAR]` |
+| Permiso, juicio de expertos y piloto | Pedir a los autores permiso para usar la escala; revisar la adaptación de vocabulario y medir el tiempo de respuesta (controles adicionales, no el respaldo) | Autores de la EAEC; 3 a 5 expertos; 10 a 15 estudiantes | 9 al 15 de noviembre | `[CONFIRMAR]` |
+| Encuesta escolar (EAEC, instrumento estandarizado) | Autoeficacia para la elección de carrera, con énfasis en la confianza para obtener información de carreras | Estudiantes de 3.º y 4.º medio de establecimientos del segmento (municipales, SLEP, particulares subvencionados o de administración delegada); al menos 100, en al menos dos establecimientos | 16 al 27 de noviembre | `[CONFIRMAR]` |
 | Entrevistas semiestructuradas | Entender cómo se vive el problema y por qué ocurre | 6 a 8 personas de los actores del Punto 1 (Tabla 2.D.2) | 12 al 27 de noviembre | `[CONFIRMAR]` |
 
 Se elige entrevistas y no *focus group* porque el tema toca ingresos familiares y pérdida de beneficios, que son sensibles (Krueger y Casey, 2015).
 
 #### 2.3.2 Encuesta
 
-Los instrumentos reales están en `docs/encuestas/`: encuesta escolar (4 preguntas de clasificación y 23 de contenido, unos 6 minutos) y de adultos (6 y 33, unos 7 minutos), cada una con su ficha metodológica. Comparten un **núcleo común** de 22 preguntas (módulos 1 a 5; en adultos, los módulos 4 y 5 se formulan en pasado) para comparar escolares con adultos. **Toda pregunta tiene respaldo en un instrumento publicado o en una encuesta oficial, en español, con la adaptación mínima declarada; ninguna es de elaboración propia.** Las preguntas, su fuente y su nivel de respaldo (A a D) están en el Anexo 2.A.
+Se aplica **un solo instrumento de medición estandarizado, completo y en español**: la **Escala de Autoeficacia para la Elección de Carrera (EAEC)** (Ramírez Dorantes y Canto, 2007). Tiene 55 ítems con respuesta de 0 (ninguna confianza) a 9 (confianza absoluta), en cinco subescalas: Autoconocimiento, Información ocupacional, Establecimiento de metas, Solución de problemas y Planeación. Se desarrolló a partir de la versión en español del *Career Decision-Making Self-Efficacy Scale* (Taylor y Betz, 1983) con 343 estudiantes de bachillerato de México. Su confiabilidad es α = 0,95 en la escala total y de 0,79 a 0,88 en las subescalas (Tabla 1, p. 47). Se agregan solo tres preguntas de clasificación (curso, región y tipo de colegio). No hay preguntas de elaboración propia ni ítems de otras fuentes. El instrumento, el formulario y la ficha metodológica están en `docs/encuestas/`; los ítems, en el Anexo 2.A.
 
-- **Objetivo.** Describir cuánta confianza tienen para buscar información de carreras, cuánto creen y cuánto saben de los beneficios para estudiar, qué les preocupa y de dónde sacan la información, y comparar escolares con adultos para ver dónde aparece o se agrava el problema.
-- **Variables.** Confianza para obtener información (subescala de autoeficacia, 0 a 9); conocimiento percibido (4 niveles); conocimiento comprobado (4 frases de verdadero, falso o no sé); brecha entre lo que se cree y lo que se sabe; preocupaciones; fuentes de información; razón principal para no continuar (escolares, hipotética) o para no estudiar hoy (adultos); en adultos, además, beneficios recibidos y, en quienes estudian, apoyo percibido y pertenencia.
-- **Diseño.** Preguntas cerradas con «No sé» y «Otra razón»; ninguna menciona la plataforma. Cada bloque se puntúa como lo define su fuente y se informa por separado, sin índice único. Se eliminó todo lo que no tenía instrumento publicado: intención de postular al FUAS, conocimiento de plazos, barreras del trámite, pérdida de beneficios y las frases de verdadero o falso del equipo; quedan para la medición con datos administrativos. Las claves de verdadero o falso se verificaron en fuentes oficiales el 6 de noviembre de 2026 y se revisan antes de cada aplicación (Ministerio de Educación, s. f.-a, s. f.-c, 2026).
-- **Respaldo y control.** El respaldo es la fuente de cada ítem (Anexo 2.A). Como control adicional, nunca como respaldo: juicio de expertos sobre la claridad de las adaptaciones (Escobar-Pérez y Cuervo-Martínez, 2008), piloto de 10 a 15 personas que no entra al análisis y cálculo del α de Cronbach con los datos propios. Se declaran las brechas de la literatura: no existe una escala validada de conocimiento sobre FUAS, gratuidad o CAE ni de barreras percibidas validada en español para Chile, y nada de lo usado está validado en institutos profesionales ni centros de formación técnica. No se mide salud mental.
-- **Tamaño de muestra.** Con Z = 1,96, p = q = 0,5 y e = 10 %: n₀ = Z² · p · q ÷ e² = (1,96² × 0,25) ÷ 0,10² = 96,04, es decir 96 personas; con poblaciones de miles la corrección por población finita es despreciable (95 con N = 5.000). Las **metas** son 100 escolares y 150 adultos, con 64 por grupo para comparar (Cohen, 1988). No se ha obtenido ninguna respuesta. Si no se alcanzan, los resultados se presentan como exploratorios y sin comparaciones por subgrupo.
-- **Muestreo y limitaciones.** Por conveniencia (colegios que autoricen) y por referencia o bola de nieve (adultos): describe a quienes respondieron y **no es representativa** del país ni de la región. Medición única que muestra asociaciones y no causas; la falta de información se mide de forma indirecta; el recuerdo de los adultos puede fallar.
-- **Ética.** Para menores: carta del colegio, consentimiento del apoderado y asentimiento del estudiante. Anónima (sin nombre, RUT, correo, teléfono ni IP); solo resultados agregados y sin grupos de menos de 5 respuestas (Ley 19.628, 1999; Ley 21.719, 2024). El profesor guía revisa los instrumentos. **Plan alternativo:** si las autorizaciones de los colegios no llegan a tiempo, la encuesta escolar no se aplica antes del 2 de diciembre y se declara.
+- **Por qué este instrumento.** Mide la confianza para realizar las tareas que exige elegir una carrera. Su subescala de Información ocupacional (ítems 12 a 21) corresponde a la causa directa 1 del árbol de problemas: la asimetría de información. Está en español, sus ítems están publicados textualmente y tiene evidencia de confiabilidad y estructura factorial. Se descartaron otras opciones: la versión corta del CDMSE en español (no se obtuvieron sus ítems), la EPEV (su licencia prohíbe el uso comercial) y la E-DTDC (ítems no publicados). No se encontró una escala validada en Chile sobre información de educación superior o beneficios.
+- **Objetivo.** Describir la autoeficacia para la elección de carrera de estudiantes de 3.º y 4.º medio del segmento, con énfasis en la confianza para obtener información de carreras, y compararla entre cursos y tipos de colegio.
+- **Diseño y adaptación.** La escala se aplica completa, con los 55 ítems en su orden original. Solo se adapta el vocabulario de México a Chile («licenciatura» pasa a «carrera», «maestro» a «profesor», «pláticas» a «charlas», entre otros) y se corrigen tres erratas de la fuente; cada cambio está declarado en la ficha metodológica. Se puntúa como en la fuente, con el promedio de 0 a 9 por subescala y total, sin puntos de corte. Por decisión del equipo **no se miden conocimiento de beneficios (FUAS, gratuidad, becas, CAE), preocupaciones ni fuentes de información**, porque no existe una escala validada para medirlos. Esos temas se exploran en las entrevistas y con datos administrativos.
+- **Control adicional (no es el respaldo).** Se pide permiso a los autores. Hay juicio de expertos sobre la adaptación de vocabulario (Escobar-Pérez y Cuervo-Martínez, 2008), un piloto de 10 a 15 estudiantes que no entra al análisis y cálculo del α de Cronbach con los datos propios.
+- **Tamaño de muestra.** Con Z = 1,96, p = q = 0,5 y e = 10 %: n₀ = Z² · p · q ÷ e² = (1,96² × 0,25) ÷ 0,10² = 96,04, es decir 96 personas. Con poblaciones de miles, la corrección por población finita es despreciable (95 con N = 5.000). La **meta** es 100 estudiantes, con 64 por grupo para comparar 3.º con 4.º medio (Cohen, 1988). No se ha obtenido ninguna respuesta. Si no se alcanza, los resultados se presentan como exploratorios y sin comparaciones por subgrupo.
+- **Muestreo y limitaciones.** El muestreo es por conveniencia, en colegios del segmento que autoricen: describe a quienes respondieron y **no es representativo** del país ni de la región. La EAEC no tiene validación ni normas en Chile, y mide la confianza por autoinforme, no la conducta. Es una medición única: muestra asociaciones, no causas.
+- **Ética.** Hay tres autorizaciones: carta del colegio, consentimiento del apoderado y asentimiento del estudiante. La encuesta es anónima (sin nombre, RUT, correo, teléfono ni IP) y no pregunta por salud ni situación económica. Solo se publican resultados agregados, sin grupos de menos de 5 respuestas (Ley 19.628, 1999; Ley 21.719, 2024). El profesor guía revisa el instrumento. **Plan alternativo:** si las autorizaciones o el permiso de los autores no llegan a tiempo, la encuesta no se aplica antes del 2 de diciembre y se declara.
 
 #### 2.3.3 Entrevistas
 
@@ -211,20 +234,18 @@ Se prevén 6 a 8 entrevistas semiestructuradas de 30 a 40 minutos, con consentim
 
 #### 2.3.4 Resultados y triangulación
 
-**Encuesta.** `[COMPLETAR con resultados reales tras aplicar el instrumento]` (n escolar = `[COMPLETAR]`; n adultos = `[COMPLETAR]`; fechas = `[COMPLETAR]`). Porcentajes con intervalo de confianza de 95 %; escolares y adultos se comparan solo en el núcleo común.
+**Encuesta.** `[COMPLETAR con resultados reales tras aplicar el instrumento]` (n = `[COMPLETAR]`; establecimientos = `[COMPLETAR]`; fechas = `[COMPLETAR]`). Promedios con intervalo de confianza de 95 % y α de Cronbach de esta muestra.
 
-**Tabla 2.5.** Resultados de la encuesta (por completar).
+**Tabla 2.5.** Resultados de la EAEC (por completar). Promedio de 0 a 9; más alto, más confianza.
 
-| Indicador (preguntas) | Escolares | Adultos | Diferencia y tamaño del efecto |
-|---|---|---|---|
-| Confianza para obtener información, promedio de 0 a 9 (E1.1-E1.6; A1.1-A1.6) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
-| Conocimiento percibido, % «bien» o «muy bien» en el FUAS (E2.1; A2.1) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
-| Conocimiento comprobado, aciertos de 0 a 4 (E3.1-E3.4; A3.1-A3.4) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
-| Dice conocer el FUAS pero falla o no sabe la frase de postular por separado (E2.1 y E3.3; A2.1 y A3.3) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
-| Preocupación por financiar el arancel y matrícula, % «bastante» o «mucho» (E4.3; A4.3) | `[COMPLETAR]` | `[COMPLETAR]` | comparar con cautela (adultos, en pasado) |
-| Fuente de información con mayor acuerdo (E5; A5) | `[COMPLETAR]` | `[COMPLETAR]` | comparar con cautela (adultos, en pasado) |
-| Razón principal para no seguir (E6.1) o para no estudiar hoy (A6.1) | `[COMPLETAR]` | `[COMPLETAR]` | no comparable |
-| Beneficios recibidos (A7); apoyo percibido (A8) y pertenencia (A9) en quienes estudian | no se pregunta | `[COMPLETAR]` | no comparable |
+| Subescala (ítems) | Total | 3.º medio | 4.º medio | Diferencia y tamaño del efecto | α de la muestra (fuente) |
+|---|---|---|---|---|---|
+| Información ocupacional (12 a 21) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` (0,86) |
+| Autoconocimiento (1 a 11) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` (0,79) |
+| Establecimiento de metas (22 a 34) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` (0,87) |
+| Solución de problemas (35 a 46) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` (0,87) |
+| Planeación (47 a 55) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` (0,88) |
+| Escala total (1 a 55) | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` (0,95) |
 
 **Entrevistas.** `[COMPLETAR con resultados reales tras aplicar el instrumento]` (entrevistas realizadas = `[COMPLETAR]`). La matriz de hallazgos está en el Anexo 2.C.
 
@@ -249,17 +270,17 @@ Sigue la Metodología de Marco Lógico (Ortegón et al., 2005). El problema cent
 | | E3. Menor persistencia de quienes no tienen beneficios: 74,4 % frente a 88,2 % | Diferencia observada, no causal (SIES, 2023) |
 | | E4. Mayor exposición a malestar psicológico asociado a la exclusión | Por analogía con el desempleo, d = 0,51 (Paul y Moser, 2009); no es medición directa |
 | **Problema central (tronco)** | **Exclusión de la educación superior y abandono temprano de personas que egresan de la enseñanza media: 55,4 % no ingresó de inmediato (cohorte 2020) y 16,4 % de la cohorte 2023 no tenía matrícula al año siguiente** | Verificado (Centro de Estudios Mineduc, 2022; SIES, s. f.) |
-| **Causa directa 1** | **Asimetría de información sobre oferta, requisitos y beneficios** | Sin cifra oficial; se mide con E1-E3 y A1-A3 (confianza para buscar información y conocimiento de beneficios) |
+| **Causa directa 1** | **Asimetría de información sobre oferta, requisitos y beneficios** | Sin cifra oficial; la encuesta mide la confianza para obtener información de carreras (EAEC, Información ocupacional, ítems 12 a 21); el conocimiento de beneficios se explora en entrevistas |
 | 1.1 | La información oficial está repartida entre organismos con formatos y períodos distintos | Verificada: hubo que integrar tres fuentes y leer el PDF del DEMRE por posición (`BITACORA.md`) |
-| 1.2 | Las personas creen conocer los beneficios más de lo que los conocen | Hipótesis: E2.1 frente a E3.3 (y A2.1 frente a A3.3) |
+| 1.2 | Las personas creen conocer los beneficios más de lo que los conocen | Hipótesis: se explora en entrevistas (la encuesta no mide conocimiento de beneficios: no hay escala validada) |
 | 1.3 | La orientación escolar tiene poca capacidad para atender a cada estudiante | Hipótesis: sin cifra oficial verificada; se explora en entrevistas |
-| 1.4 | Se recurre a fuentes informales | Hipótesis: E5 y A5 |
+| 1.4 | Se recurre a fuentes informales | Hipótesis: entrevistas; la EAEC mide la confianza para usar fuentes como charlas, ferias, profesores e instituciones (ítems 12 a 21), no cuál se usa |
 | **Causa directa 2** | **Fricción en el trámite de beneficios (FUAS)** | Hipótesis central. La encuesta no la mide (no hay instrumento publicado sobre el trámite del FUAS); se explora en entrevistas y con la solicitud de transparencia |
 | 2.1 | Requisitos, montos y plazos cambian cada año y están en varios sitios | Verificada en parte (FUAS 2027 abrió el 1 de octubre de 2026; Ministerio de Educación, 2026) |
-| 2.2 | Creencias erróneas: que se necesita el puntaje de la Prueba de Acceso a la Educación Superior (PAES) para postular, o que la gratuidad sirve en cualquier institución | Ambas son falsas según fuentes oficiales; cuánta gente las cree es hipótesis que se explora en entrevistas (la encuesta mide otras creencias, E3.3 y E3.4) |
-| 2.3 | Temor a equivocarse en el formulario o desconocimiento de plazos | Hipótesis: entrevistas; la encuesta mide preocupaciones (E4 y A4), no el temor a equivocarse |
+| 2.2 | Creencias erróneas: que se necesita el puntaje de la Prueba de Acceso a la Educación Superior (PAES) para postular, o que la gratuidad sirve en cualquier institución | Ambas son falsas según fuentes oficiales; cuánta gente las cree es hipótesis que se explora en entrevistas |
+| 2.3 | Temor a equivocarse en el formulario o desconocimiento de plazos | Hipótesis: entrevistas; la encuesta no lo mide |
 | 2.4 | No hay serie pública de postulaciones al FUAS | Verificada: solicitud de transparencia en trámite |
-| **Causa directa 3** | **Acompañamiento desarticulado y reactivo después del ingreso** | Hipótesis central: entrevistas; la encuesta aporta contexto con A7 a A9 |
+| **Causa directa 3** | **Acompañamiento desarticulado y reactivo después del ingreso** | Hipótesis central: entrevistas; la encuesta es solo para escolares y no lo mide |
 | 3.1 | La Ley 21.091 no obliga a las instituciones a acompañar | Verificada (Ley 21.091, 2018) |
 | 3.2 | El estándar de acreditación pide indicadores de progresión, pero cada institución define los suyos | Primera parte verificada (CNA, s. f.); segunda, hipótesis |
 | 3.3 | Se pierden beneficios por incumplir el avance mínimo o no renovar a tiempo | Hipótesis (registro de decisión de arquitectura, ADR, 0010): entrevistas 3 y 4; la encuesta ya no mide la pérdida de beneficios |
@@ -284,7 +305,7 @@ Lo interno lo controla el equipo; lo externo es del entorno. Cada factor remite 
 | F + O (ofensiva) | FO-1. Usar datos trazables y procesos con pruebas (F2, F3) sobre datos abiertos (O2) para producir indicadores de progresión que las instituciones necesitan para el Criterio 2 (O1). FO-2. Probar con usuarios reales mientras el proceso FUAS 2027 está abierto (O4), con el portal ya desplegado (F5) |
 | D + O (reorientación) | DO-1. Buscar en las unidades de acompañamiento de las instituciones (que el estándar de acreditación empuja a existir, O1) profesionales que validen contenidos y derivación (D2). DO-2. Cargar primero los datos ya procesados (D4) y publicarlos en infraestructura gratuita (O5), sin presupuesto propio |
 | F + A (defensiva) | FA-1. Diseñar la privacidad desde el inicio (RLS, minimización, consentimiento; F1) para que la vigencia de la Ley 21.719 en 2026 o en 2027 (A1) no obligue a rehacer el sistema. FA-2. Mantener datos con fecha de vigencia y revisar las claves y reglas antes de cada proceso (F3) frente a los cambios anuales (A2) |
-| D + A (supervivencia) | DA-1. Limitar el alcance al mínimo (D1) y mantener la infraestructura tras interfaces que permitan cambiar de proveedor (A3). DA-2. Sin profesional clínico (D2) y sin mandato legal (A4), delimitar la plataforma como puente que deriva y no aconseja (ADR 0010 y 0012). DA-3. Si las autorizaciones llegan tarde (A5), priorizar la encuesta de adultos y declarar la limitación (D3) |
+| D + A (supervivencia) | DA-1. Limitar el alcance al mínimo (D1) y mantener la infraestructura tras interfaces que permitan cambiar de proveedor (A3). DA-2. Sin profesional clínico (D2) y sin mandato legal (A4), delimitar la plataforma como puente que deriva y no aconseja (ADR 0010 y 0012). DA-3. Si las autorizaciones llegan tarde (A5), priorizar las entrevistas a personas de 18 años o más y declarar la limitación (D3) |
 
 **Nota.** Las debilidades (D1 a D5) y las amenazas (A1 a A5) pasan como factores de riesgo al Entregable II.
 
@@ -326,53 +347,43 @@ La IA acelera el trabajo y ayuda a llegar a los documentos originales; **no es f
 
 **Salvaguardas.** No se subieron datos personales a herramientas de IA; no se usaron cifras de IA sin verificar; no se simularon respuestas de encuestados ni entrevistados.
 
-### Anexo 2.A Encuesta: preguntas y respaldo
+### Anexo 2.A Encuesta: instrumento estandarizado
 
-Fuente: `docs/encuestas/encuesta-escolar.md`, `encuesta-adultos.md` y sus fichas metodológicas (actualizadas el 6 de noviembre de 2026). Si una pregunta cambia, se cambia en el instrumento, el formulario y la ficha a la vez.
+Fuente: `docs/encuestas/encuesta-escolar.md`, `ficha-metodologica-escolar.md` y `crear_encuestas.gs` (actualizados el 10 de noviembre de 2026). Si un ítem cambia, se cambia en los tres a la vez.
 
-**Texto de consentimiento y asentimiento.** Escolares: carta del colegio, consentimiento del apoderado y asentimiento del estudiante («¿Quieres responder esta encuesta? Es anónima, voluntaria y puedes dejarla cuando quieras»). Adultos: «Confirmo que tengo 18 años o más, que leí la presentación y que acepto responder esta encuesta anónima. Sé que puedo dejarla en cualquier momento». Al cierre, ambas muestran el portal oficial de Beneficios Estudiantiles; la de adultos agrega *4141 y Salud Responde 600 360 7777.
+**Instrumento.** Escala de Autoeficacia para la Elección de Carrera (EAEC), de Ramírez Dorantes y Canto (2007), aplicada completa: 55 ítems, en su orden original, con respuesta de 0 (ninguna confianza) a 9 (confianza absoluta). La instrucción es «¿Cuánta confianza tienes de que podrías…?». Está en acceso abierto en Redalyc; antes de aplicarla se pide permiso a los autores para la adaptación de vocabulario.
 
-**Niveles de respaldo.** Ninguna pregunta es de elaboración propia. **A:** escala publicada con ítems textuales (se usa una subescala, con la adaptación de redacción declarada y la psicometría de la muestra original). **B:** ítem de una encuesta oficial pública (CASEN), con su redacción citada. **C:** ítem adaptado de un estudio publicado de gran muestra (Fundación Luksic, 2025, más de 48.000 estudiantes) o formato de ítems de conocimiento con «No sabe» de Lusardi y Mitchell, tal como los reproducen García Bohórquez et al. (2013). **D:** variable administrativa del sistema escolar con categorías oficiales del Ministerio de Educación. Un ítem sin fuente no se incluye.
+**Tabla 2.A.1.** Ficha técnica de la EAEC (datos de la fuente).
 
-**Tabla 2.A.1.** Encuesta escolar (3.º y 4.º medio), 4 + 23 preguntas (unos 6 minutos).
+| Atributo | Valor |
+|---|---|
+| Base | Versión en español del *Career Decision-Making Self-Efficacy Scale* (Taylor y Betz, 1983): 28 ítems de ese instrumento y 27 nuevos, revisados por tres expertos en orientación (pp. 42-43) |
+| Muestra de validación | 343 estudiantes de bachillerato de dos preparatorias de la Universidad Autónoma de Yucatán (México), edad promedio de 18,5 años, muestra aleatoria estratificada por curso (p. 42) |
+| Validez | Análisis factorial con 5 factores que explican el 42,2 % de la varianza; KMO = 0,896; 49 de 55 ítems con carga ≥ 0,40 (pp. 44-46) |
+| Confiabilidad (α) | Total 0,95; subescalas de 0,79 a 0,88 (Tabla 1, p. 47) |
+| Puntuación | Promedio de 0 a 9 por subescala y total; sin puntos de corte |
 
-| Código | Pregunta resumida | Tipo | Variable | Respaldo y nivel |
-|---|---|---|---|---|
-| E0.1 a E0.4 | Curso, región, tipo de colegio, modalidad | Clasificación | Caracterización | D. Categorías oficiales del Ministerio de Educación (Ministerio de Educación, s. f.-b); sin edad, género, comuna ni nombre del colegio (minimización). Fuente de las categorías de modalidad: `TODO(fuente)` |
-| E1.1 a E1.6 | «¿Cuánta confianza tienes de que podrías…?» encontrar información de ocupaciones, de instituciones de educación superior, asistir a una institución, a charlas y a un evento vocacional, y preguntar a un profesor por oportunidades de trabajo (escala de 0 a 9) | Escala | Confianza para obtener información de carreras | A. Subescala «Información ocupacional», ítems 12, 14, 15, 17, 19 y 21 (Ramírez Dorantes y Canto, 2007; México, 343 estudiantes de bachillerato, α = ,86 en los 10 ítems de la subescala). Solo cambia el vocabulario; son 6 de 10 ítems, no una versión corta validada |
-| E2.1 a E2.4 | «¿Qué tan bien crees que conoces…?» el FUAS, la gratuidad, las becas de arancel del Estado y el Crédito con Garantía Estatal (muy poco, poco, bien, muy bien) | Escala de 4 niveles | Conocimiento percibido | C. Escala de percepción de conocimiento de Fundación Luksic (2025, p. 8; sin psicometría publicada). El listado textual de aspectos no es público: `TODO(fuente)` |
-| E3.1 | «Debo matricularme en instituciones de educación superior acreditadas para poder optar a becas y créditos del Estado» (clave: verdadero) | Verdadero/falso/No sé | Conocimiento comprobado | C. Frase de Luksic (2025, p. 9); formato con «No sé» de Lusardi y Mitchell (García Bohórquez et al., 2013). Clave verificada en el Portal de Beneficios Estudiantiles, secciones de becas de arancel, créditos y gratuidad (consultado el 6 de noviembre de 2026) |
-| E3.2 | «El ingreso mensual de los egresados de las carreras universitarias siempre es mayor que el de los egresados de carreras de institutos profesionales» (clave: falso) | Verdadero/falso/No sé | Conocimiento comprobado | C. Frase de Luksic (2025). Clave verificada con el Buscador de Empleabilidad e Ingresos 2025-2026 del SIES: hay carreras de instituto profesional en tramos de ingreso superiores a los de algunas universitarias (6 de noviembre de 2026) |
-| E3.3 | «Debo postular a cada beneficio de financiamiento del Estado por separado» (clave: falso, con el matiz de las becas Vocación de Profesor y Reparación, que piden un formulario específico) | Verdadero/falso/No sé | Conocimiento comprobado | C. Frase de Luksic (2025). Clave verificada en la Guía paso a paso del Portal de Beneficios Estudiantiles y en Ministerio de Educación (2026) |
-| E3.4 | «Existe un sistema centralizado para postular a carreras de Institutos Profesionales y Centros de Formación Técnica» (clave: falso) | Verdadero/falso/No sé | Conocimiento comprobado | C. Frase de Luksic (2025). Clave verificada en la ficha del Sistema de Acceso de ChileAtiende: se postula directamente en cada institución (6 de noviembre de 2026) |
-| E4.1 a E4.3 | «¿Qué tanto te preocupa…?» cumplir los requisitos académicos para ser admitido, financiar otros gastos asociados a mis estudios, financiar el arancel y matrícula (nada, poco, bastante, mucho) | Escala de 4 niveles | Preocupaciones | C. Las tres preocupaciones principales de Luksic (2025, p. 5), con textos literales; el formato de respuesta es una adaptación declarada |
-| E5.1 a E5.5 | «La información que tengo de la carrera que pretendo elegir la obtengo de…» mis profesores, el orientador/a de mi colegio, las ferias de orientación, mi familia, páginas web o redes sociales oficiales (1 a 5) | Escala de acuerdo | Fuentes de información | A y C. Factor «Fuentes de información» de la Escala de factores influyentes en la elección de la carrera (EPEV), ítems 6, 7, 1 y 4 (Peña Téllez et al., 2024; Perú, 734 y 448 estudiantes de 14 a 21 años, α = ,754; CC BY-NC-SA 4.0); «psicólogo/a» pasa a «orientador/a» y se quita «virtuales». E5.5 usa la categoría «páginas web y redes sociales oficiales» de Luksic (2025, p. 7) |
-| E6.1 | «Después de salir de 4.º medio, ¿cuál sería la principal razón por la que podrías no seguir estudiando?» (15 opciones y «No lo sé») | Selección única | Razón principal para no continuar | B. Pregunta e5 de CASEN 2011, módulo E (Ministerio de Desarrollo Social, 2011), con sus categorías; se pasa a futuro, se omite «Terminó de estudiar» y se agrega «No lo sé» |
+**Tabla 2.A.2.** Subescalas e ítems.
 
-**Tabla 2.A.2.** Encuesta de adultos (18 años o más), 6 + 33 preguntas (unos 7 minutos).
+| Subescala | Ítems | Qué tareas incluye (ejemplos textuales, versión aplicada) | α en la fuente |
+|---|---|---|---|
+| Autoconocimiento | 1 a 11 | «Evaluar con exactitud tus habilidades»; «Identificar algunas carreras que te interesan» | 0,79 |
+| Información ocupacional | 12 a 21 | «Obtener información acerca de instituciones de educación superior (universidades, institutos profesionales o centros de formación técnica)»; «Asistir a charlas que proporcionen información acerca de las carreras que te interesan» | 0,86 |
+| Establecimiento de metas | 22 a 34 | «Seleccionar una carrera entre varias en las que estás interesado o interesada»; «Determinar el nivel académico que te gustaría obtener» | 0,87 |
+| Solución de problemas | 35 a 46 | «Encontrar alternativas de carrera si no pudieras ingresar a la que elegiste primero»; «Volver a postular a una institución de educación superior después de no quedar seleccionado o seleccionada la primera vez» | 0,87 |
+| Planeación | 47 a 55 | «Hacer un plan de tus metas vocacionales para los próximos cinco años»; «Hablar con alguien de tus planes vocacionales futuros» | 0,88 |
 
-| Código | Pregunta resumida | Tipo | Variable | Respaldo y nivel |
-|---|---|---|---|---|
-| A0.1 a A0.3 y A0.6 | Edad en tramos, región, colegio de egreso y tipo de institución de educación superior | Clasificación | Caracterización | D. Categorías oficiales del Ministerio de Educación (Ministerio de Educación, s. f.-b); los tramos de edad solo minimizan datos |
-| A0.4 | Situación actual: estudia, dejó de estudiar, nunca entró, terminó una carrera | Selección única | Subgrupos de comparación | D. Clasificación operativa del estudio; no es un constructo |
-| A0.5 | «La semana pasada, ¿trabajaste al menos una hora, sin considerar los quehaceres del hogar?» | Sí/No | Trabajo | B. Pregunta o2 de CASEN 2022 (Ministerio de Desarrollo Social y Familia, 2022); solo cambia la persona gramatical |
-| A1.1 a A1.6 | Idénticas a E1.1 a E1.6 | Escala de 0 a 9 | Confianza para obtener información | A. Igual que escolares (Ramírez Dorantes y Canto, 2007) |
-| A2.1 a A2.4 | Idénticas a E2.1 a E2.4 | Escala de 4 niveles | Conocimiento percibido | C. Igual que escolares (Fundación Luksic, 2025) |
-| A3.1 a A3.4 | Idénticas a E3.1 a E3.4 | Verdadero/falso/No sé | Conocimiento comprobado | C. Igual que escolares; mismas claves |
-| A4.1 a A4.3 | «Cuando estabas en 4.º medio… ¿qué tanto te preocupaba…?» los mismos tres ítems | Escala de 4 niveles | Preocupaciones | C. Fundación Luksic (2025, p. 5); pasado |
-| A5.1 a A5.5 | Las mismas cinco fuentes, en pasado («la obtenía de…») | Escala de acuerdo | Fuentes de información | A y C. Peña Téllez et al. (2024) y Fundación Luksic (2025); pasado |
-| A6.1 | «¿Cuál es la principal razón por la cual no asistes actualmente a algún establecimiento educacional?» (solo si dejó de estudiar o nunca entró) | Selección única | Razón para no estudiar hoy | B. Pregunta e5 de CASEN 2011 con sus 15 categorías (Ministerio de Desarrollo Social, 2011) |
-| A7.1 a A7.3 | ¿Has recibido o recibes alguna beca, algún crédito, la Gratuidad? (Sí, No, No sé; solo si entró alguna vez) | Selección única | Beneficios recibidos | B. Estructura de las preguntas e13b (becas) y e18 (créditos) de CASEN 2022; la gratuidad usa el mismo molde y el nombre del Portal de Beneficios Estudiantiles, porque CASEN 2022 no la pregunta en el documento revisado |
-| A8.1 a A8.4 | Apoyo de «otras personas significativas» (por ejemplo, «Hay una persona que se interesa por lo que yo siento»), escala de 1 a 7, solo si estudia hoy | Escala de acuerdo | Apoyo percibido | A. Subescala «otros significativos» de la Escala Multidimensional de Apoyo Social Percibido (López-Angulo et al., 2021; 1.975 universitarios chilenos, ω = ,866). Sin cambios de redacción; no es una versión corta validada |
-| A9.1 a A9.3 | «Me siento integrado dentro de clase», «Tengo afecto por mis compañeros», «En mi institución me siento aceptado por los demás» (1 a 7), solo si estudia hoy | Escala de acuerdo | Pertenencia | A. Factor «Integración social» de la Escala de Sentido de Pertenencia a la Universidad (Alonso García y González Ortiz de Zárate, 2024; España, 812 estudiantes, α = ,83 y ω = ,84; CC BY-NC 4.0). «Universidad» pasa a «institución». No validada en Chile ni en institutos profesionales o centros de formación técnica |
+Los 55 ítems textuales y la tabla de adaptación ítem por ítem (de México a Chile, con tres erratas corregidas) están en `docs/encuestas/`. La agrupación por subescala se deduce de los conteos de la Tabla 1 y de la descripción de los factores de la fuente; se confirma con los autores.
 
-**Brechas de la literatura (búsqueda del 6 de noviembre de 2026).** No existe una escala validada de conocimiento sobre FUAS, gratuidad o CAE, y no se halló una de barreras percibidas validada en español para Chile; por eso se usan las frases y preocupaciones de Fundación Luksic (2025), que no tienen psicometría publicada. No hay validación chilena de la subescala de información ocupacional (Ramírez Dorantes y Canto, 2007) ni de la escala de dificultades en la decisión de carrera de Lozano (2007), cuyos ítems no se pudieron obtener. Ninguna escala está validada en institutos profesionales o centros de formación técnica, ni en personas que ya no estudian. Las cifras de la tabla son las de las muestras originales, no las de esta encuesta.
+**Clasificación (no es parte de la escala).** C1 curso (3.º o 4.º medio), C2 región y C3 tipo de colegio, con las categorías del Ministerio de Educación (Ministerio de Educación, s. f.). Sirven para verificar el segmento y comparar grupos. Si alguien marca «Particular pagado», su respuesta no entra al análisis. Sin edad, género, comuna ni nombre del colegio (minimización).
 
-**Control adicional (no es el respaldo).** Juicio de expertos sobre la claridad de las adaptaciones (Escobar-Pérez y Cuervo-Martínez, 2008), piloto de 10 a 15 personas por encuesta y cálculo del α de Cronbach con los datos propios.
+**Consentimiento y asentimiento.** Carta del colegio, consentimiento del apoderado y asentimiento del estudiante: «¿Quieres responder esta encuesta? Es anónima, voluntaria y puedes dejarla cuando quieras». Al cierre se muestran acceso.mineduc.cl y el portal oficial de Beneficios Estudiantiles.
 
-**Excluido o pendiente, con razón documentada.** PHQ-4 (validado en Chile por Moreno y Moreno, 2024, pero requiere la redacción oficial en español, no obtenida, y un consentimiento separado; la salud mental no es una métrica de producto, ADR 0012); engagement académico UWES-9S (ítems no publicados); QVA-r (60 ítems); DASS-21 (21 ítems); estrés financiero IFDFW (ítems no obtenidos). **Pendientes:** permiso de adaptación a los autores de la subescala de Ramírez Dorantes y Canto; ítems de intención de abandono de Chandía-Muñoz et al. (2025), que se agregarían como módulo 10 para quienes estudian; ítems de la E-DTDC de Lozano (2007); listado textual de aspectos de Fundación Luksic. **Eliminado** por no tener instrumento publicado: intención de postular al FUAS, conocimiento de plazos, barreras del trámite, pérdida de beneficios, peso del dinero y las frases de verdadero o falso del equipo.
+**Qué no mide, por decisión del 10 de noviembre de 2026.** Conocimiento de FUAS, gratuidad, becas y CAE; preocupaciones; fuentes de información usadas; razón para no seguir estudiando; y nada en adultos. Para el conocimiento de beneficios no existe una escala validada. La versión anterior (6 de noviembre) combinaba ítems de seis fuentes sin validación como conjunto y quedó reemplazada; está en el historial del repositorio. Esos temas se exploran en las entrevistas (Anexo 2.B) y con datos administrativos (folio AJ025T0003786).
 
-**Criterios de diseño de las preguntas.** Sin preguntas inducidas ni dobles; las opciones incluyen «No sé», «Otra razón» y «No lo sé» donde corresponde; sin lenguaje técnico (las siglas se explican). Cada bloque se puntúa como lo define su fuente (promedio de 0 a 9 en E1; promedio de 1 a 7 en A8 y A9; porcentajes por categoría en Luksic y CASEN) y no se suman en un índice. Análisis previsto: descriptivos con intervalo de confianza de 95 %; comparaciones con prueba t o U de Mann-Whitney, ANOVA o Kruskal-Wallis y chi cuadrado, siempre con tamaño del efecto.
+**Limitaciones.** La EAEC no tiene validación ni normas en Chile y su estructura factorial no reproduce del todo las cinco subescalas. Mide confianza por autoinforme, no conducta (la fuente lo advierte, p. 49). No está validada en estudiantes técnico-profesionales chilenos.
+
+**Control adicional (no es el respaldo).** Juicio de expertos sobre la adaptación de vocabulario (Escobar-Pérez y Cuervo-Martínez, 2008), piloto de 10 a 15 estudiantes y α de Cronbach con los datos propios. Análisis previsto: descriptivos con intervalo de confianza de 95 %; comparaciones con prueba t o U de Mann-Whitney, y ANOVA o Kruskal-Wallis, siempre con tamaño del efecto.
 
 ### Anexo 2.B Guion de entrevista semiestructurada
 
@@ -417,9 +428,10 @@ Duración: 30 a 40 minutos. Se pide hechos y ejemplos («cuénteme la última ve
 
 | Causa del árbol (Tabla 2.7) | Resultado esperado de la encuesta | Hallazgo de entrevistas | Se confirma / se refuta / se matiza |
 |---|---|---|---|
-| 1.2 Creen conocer más de lo que conocen | `[COMPLETAR]` | `[COMPLETAR]` | `[COMPLETAR]` |
+| 1 Asimetría de información (confianza para obtener información) | `[COMPLETAR]` (EAEC, ítems 12 a 21) | `[COMPLETAR]` | `[COMPLETAR]` |
+| 1.2 Creen conocer más de lo que conocen | no se mide en la encuesta | `[COMPLETAR]` | `[COMPLETAR]` |
 | 1.3 Orientación con poca capacidad | no se mide en la encuesta | `[COMPLETAR]` | `[COMPLETAR]` |
-| 2.2 Creencias erróneas sobre requisitos | `[COMPLETAR]` (E3.3 y E3.4; las otras creencias, solo en entrevistas) | `[COMPLETAR]` | `[COMPLETAR]` |
+| 2.2 Creencias erróneas sobre requisitos | no se mide en la encuesta | `[COMPLETAR]` | `[COMPLETAR]` |
 | 2.3 Temor o desconocimiento de plazos | no se mide en la encuesta | `[COMPLETAR]` | `[COMPLETAR]` |
 | 3.3 Pérdida de beneficios | no se mide en la encuesta | `[COMPLETAR]` | `[COMPLETAR]` |
 
@@ -431,7 +443,7 @@ Duración: 30 a 40 minutos. Se pide hechos y ejemplos («cuénteme la última ve
 |---|---|
 | OCDE: 13 % o 14 %; referencia 2024 o 2025 | Los documentos del proyecto decían 13 %; la lectura de la tabla indica 14 % con referencia 2024. La brecha es de 5 o 6 puntos hasta confirmarla |
 | O'Higgins: −2,62 % o −4,9 % | Probablemente universos distintos, como a nivel nacional (371.067 frente a 397.381). No se usa el dato regional como evidencia |
-| Cifras leídas por Codex y no abiertas por el equipo | Informe de la Cátedra UNESCO, estudio IESALC-UNESCO (año 2005 o 2006), *Evidencias 55*, Barómetro Laboral (CIES-UDD y Asociación de AFP, 2026) y minuta de selección: falta abrirlas con herramienta propia (`docs/verificacion-de-cifras.md`) |
+| Cifras leídas por Codex y no abiertas por el equipo | Informe de la Cátedra UNESCO, estudio IESALC-UNESCO (año 2005 o 2006), Barómetro Laboral (CIES-UDD y Asociación de AFP, 2026) y minuta de selección: falta abrirlas con herramienta propia (`docs/verificacion-de-cifras.md`) |
 | Alcance de los datos | Ingreso inmediato y no «nunca»; costos de abandono y no de no ingreso; falta confirmar qué mide exactamente la persistencia con y sin beneficios (`docs/decisiones/0013-desercion-evitable.md`); rezago del SIES de uno a dos años |
 
 **Tabla 2.D.2.** Actores a entrevistar (meta; ninguna entrevista realizada). Los números remiten a la Tabla 1.1.
@@ -468,7 +480,7 @@ Se descartan como objetivos el modelo predictivo de deserción, los foros entre 
 
 Se redactan con el criterio SMART (Doran, 1981). Fórmula: verbo + qué + para quién y dónde + para qué + cuándo + cuánto.
 
-**Objetivo general (OG).** Implementar una plataforma web gratuita e instalable (PWA) que reúna la oferta oficial de educación superior, simule los beneficios estudiantiles y entregue a cada estudiante el control de su Ficha de Trayectoria, dirigida a personas de enseñanza media y de primer año de educación superior en Chile, para reducir la desinformación y la fricción que llevan a la exclusión formativa evitable, validada en pruebas con 5 usuarios reales al 2 de diciembre de 2026, de modo que al menos el 80 % de las tareas centrales (16 de 20) se complete sin ayuda.
+**Objetivo general (OG).** Implementar una plataforma web gratuita e instalable (PWA) que reúna la oferta oficial de educación superior, simule los beneficios estudiantiles y entregue a cada estudiante el control de su Ficha de Trayectoria, dirigida a personas de 16 a 24 años de establecimientos municipales, SLEP, particulares subvencionados o de administración delegada, que cursan 3.º o 4.º medio, egresaron hace cinco años o menos o cursan su primer año de educación superior (segmento del Punto 1), para reducir la desinformación y la fricción que llevan a la exclusión formativa evitable, validada en pruebas con 5 usuarios reales del segmento al 2 de diciembre de 2026, de modo que al menos el 80 % de las tareas centrales (16 de 20) se complete sin ayuda.
 
 **OE1.** Implementar un explorador y comparador de carreras con datos oficiales del Ministerio de Educación (Mineduc), del Servicio de Información de Educación Superior (SIES) y del Departamento de Evaluación, Medición y Registro Educacional (DEMRE), para postulantes en Chile, de modo que decidan con información comparable, al 23 de noviembre de 2026, con el 100 % de las carreras publicadas mostrando fuente, URL y fecha, y con la ficha de una carrera real desplegada el 16 de noviembre.
 
@@ -805,7 +817,7 @@ La segmentación sigue los factores de Kotler y Keller (2016) y el perfil, el ma
 
 | Factor | Descripción | Fuente o estado |
 |---|---|---|
-| Demográfico | Personas que egresan o egresaron de enseñanza media y quieren ingresar a la educación superior, de cualquier edad; foco inicial en estudiantes de 4.º medio, egresados recientes y estudiantes de primer año (punto 1). De 258.418 egresados de enseñanza media en 2020, 143.191 (55,4 %) no estaban matriculados en educación superior en 2021 (mide ingreso inmediato, no "nunca"). Muchos son menores de 18: sus datos requieren autorización de padre, madre o tutor. | Centro de Estudios Mineduc (2022), Tabla 10, p. 80; `AGENTS.md`, sección 2.2 |
+| Demográfico | Personas de 16 a 24 años de establecimientos municipales, SLEP, particulares subvencionados o de administración delegada: estudiantes de 3.º y 4.º medio, egresados de hasta cinco años y estudiantes de primer año (segmento del punto 1, Tabla 1.0). En esos establecimientos el acceso inmediato va de 36,3 % a 41,9 %, frente a 68,7 % en los particulares pagados (SIES, 2023, Tabla 3). De 258.418 egresados de enseñanza media en 2020, 143.191 (55,4 %) no estaban matriculados en educación superior en 2021 (mide ingreso inmediato, no "nunca"). Muchos son menores de 18: sus datos requieren autorización de padre, madre o tutor. | Centro de Estudios Mineduc (2022), Tabla 10, p. 80; SIES (2023), Tabla 3, p. 8; `AGENTS.md`, sección 2.2 |
 | Geográfico | Alcance nacional, porque los datos oficiales y los beneficios lo son. Territorio de prueba con 5 usuarios: se propone la Región de O'Higgins `[CONFIRMAR: territorio y comuna, como en el punto 1]`. | Decisión de alcance; pruebas por definir |
 | Psicográfico | Hipótesis: incertidumbre al elegir, temor a equivocarse en el trámite o a endeudarse, desconfianza hacia información de origen comercial. | Hipótesis a validar con el punto 2 |
 | Conductual | Hipótesis: buscan información tarde y en canales informales (redes, conocidos) y no siempre saben qué beneficio les corresponde ni qué exige renovarlo. No hay cifra publicable de quienes no saben postular ni de quienes no postulan al FUAS; la solicitud de transparencia (folio AJ025T0003786, respuesta hasta el 2-dic-2026) busca cerrar esa brecha. | Hipótesis a validar con el punto 2; `docs/verificacion-de-cifras.md` |
@@ -917,7 +929,7 @@ Se usa el **Canvas Social** y no el Lean Canvas (Maurya, 2012), por tres razones
 
 | Bloque | Contenido |
 |---|---|
-| Segmentos: beneficiarios y clientes | Beneficiarios: personas que quieren ingresar o ya ingresaron a la educación superior (menores con autorización del apoderado). Clientes potenciales: instituciones de educación superior (supuesto por validar). |
+| Segmentos: beneficiarios y clientes | Beneficiarios: personas de 16 a 24 años de establecimientos con financiamiento público que quieren ingresar o ya ingresaron a la educación superior (menores con autorización del apoderado; segmento del punto 1). Clientes potenciales: instituciones de educación superior (supuesto por validar). |
 | Propuesta de valor social y de cliente | Social: información oficial clara, ayuda para tramitar y mantener beneficios, ficha propia. Cliente: evidencia ordenada de apoyo a la progresión, solo de estudiantes que autorizaron. |
 | Medidas de impacto | Postulaciones FUAS completadas, beneficios obtenidos, matrícula efectiva, renovación de beneficios y continuidad en 2.º año. Ninguna de salud mental. Al 2-dic-2026 solo se medirá usabilidad con 5 usuarios `[COMPLETAR resultados]`; las demás requieren piloto. |
 | Tipo de intervención | Portal web instalable (producto) con información, trámite guiado y avisos; panel para instituciones (servicio por contrato). |
@@ -972,7 +984,7 @@ Cada valor está ligado a una decisión ya escrita en el repositorio; si la deci
 | Campo | Respuesta |
 |---|---|
 | Estrategia genérica (Porter, 1985) | Enfoque con diferenciación: un segmento acotado y un servicio que otros no combinan |
-| Segmento | Personas que postulan a educación superior y estudiantes de primer año, con foco inicial en la Región de O'Higgins, e instituciones de la región con una unidad de apoyo a la progresión (segmento institucional inicial propuesto, a validar con entrevistas) |
+| Segmento | Personas de 16 a 24 años de establecimientos con financiamiento público que postulan a educación superior, y estudiantes de primer año que vienen de ellos, con foco inicial en la Región de O'Higgins, e instituciones de la región con una unidad de apoyo a la progresión (segmento institucional inicial propuesto, a validar con entrevistas) |
 | Vacío que aprovecha | La información genérica sobre postulación y beneficios tiene efectos nulos en los ensayos revisados, y funciona la información personalizada y accionable que reduce la fricción del trámite (`docs/informe-fundamentacion.md`, sección 2A; ensayos mayormente de Estados Unidos, como Hastings et al. en Chile sobre la elección de programa). Además, una institución ya tiene en sus sistemas las notas y la asistencia de sus estudiantes, de modo que no necesita otra alerta construida con menos datos (ADR 0010) |
 | Diferenciación | Datos oficiales citados a su fuente, simulación y calendario de beneficios, seguimiento que el estudiante controla y evidencia de progresión que la institución puede usar en su acreditación |
 | Costos | No compite por precio bajo: el servicio al estudiante es gratuito y la infraestructura se opera hoy en planes gratuitos (Cloudflare y Supabase), con el riesgo documentado en el ADR 0003 de que el proveedor termine el servicio gratuito |
@@ -1114,7 +1126,6 @@ La coherencia entre forma jurídica, etapa y financista queda así: el prototipo
 ## Referencias
 
 - Achs. (s. f.). *Termómetro de la salud mental en Chile Achs-UC* [Resultados de la ronda 11, abril de 2025]. Asociación Chilena de Seguridad. https://www.achs.cl/termometro-salud-mental
-- Alonso García, M. A., y González Ortiz de Zárate, A. (2024). Validación de la Escala de Sentido de Pertenencia a la Universidad en España. *Revista Iberoamericana de Diagnóstico y Evaluación - e Avaliação Psicológica, 73*(3), 5-17. https://doi.org/10.21865/RIDEP73.3.01
 - American Psychological Association. (2023, 7 de abril). *How to cite ChatGPT*. APA Style Blog. https://apastyle.apa.org/blog/how-to-cite-chatgpt
 - Anthropic. (2026). *Claude* (versión Sonnet 5.5) [Modelo de lenguaje de gran tamaño] `[CONFIRMAR versión y fechas de uso]`. https://claude.ai
 - Bettinger, E. P., Long, B. T., Oreopoulos, P., y Sanbonmatsu, L. (2012). The role of application assistance and information in college decisions: Results from the H&R Block FAFSA experiment. *The Quarterly Journal of Economics, 127*(3), 1205-1242.
@@ -1142,9 +1153,7 @@ La coherencia entre forma jurídica, etapa y financista queda así: el prototipo
 - Equipo AE-SE (2026). *Informe integral: fundamentación del problema, evidencia y promesa verificable*. Repositorio del proyecto, `docs/informe-fundamentacion.md`.
 - Escobar-Pérez, J., y Cuervo-Martínez, Á. (2008). Validez de contenido y juicio de expertos: Una aproximación a su utilización. *Avances en Medición, 6*, 27-36. https://www.humanas.unal.edu.co/lab_psicometria/download_file/view/171/250
 - Freeman, R. E. (1984). *Strategic management: A stakeholder approach*. Pitman.
-- Fundación Luksic. (2025, julio). *Programa Aspiraciones sobre el Futuro: Informe general*. https://www.fundacionluksic.cl/content/uploads/25asf-informegeneral.pdf
 - Fundación Por Una Carrera (2026). Sitio institucional (consultado el 6 de noviembre de 2026). https://www.porunacarrera.cl/
-- García Bohórquez, N., Acosta Pardo, F. A., y Rueda Gil, J. L. (2013). *Determinantes de la alfabetización financiera de la población bogotana bancarizada* (Borradores de Economía, núm. 792). Banco de la República. https://d1b4gd4m8561gs.cloudfront.net/sites/default/files/publicaciones/archivos/be_792.pdf
 - González, L. E., Uribe, D., y González, S. (2005). *Estudio sobre la repitencia y deserción en la educación superior chilena* `[CONFIRMAR año: 2005 o 2006]`. IESALC-UNESCO. https://unesdoc.unesco.org/ark:/48223/pf0000140087
 - Google. (2026). *Antigravity* [Entorno de desarrollo con agentes de IA] `[CONFIRMAR versión y fechas de uso]`. https://antigravity.google
 - Hernández-Sampieri, R., y Mendoza, C. P. (2018). *Metodología de la investigación: Las rutas cuantitativa, cualitativa y mixta*. McGraw-Hill.
@@ -1164,20 +1173,15 @@ La coherencia entre forma jurídica, etapa y financista queda así: el prototipo
 - Ley 21.091. Sobre educación superior (2018). Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile
 - Ley 21.091. Sobre educación superior. 29 de mayo de 2018. Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile/navegar?idNorma=1118991
 - Ley 21.719. Regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales. 13 de diciembre de 2024. Biblioteca del Congreso Nacional de Chile. https://www.bcn.cl/leychile
-- López-Angulo, Y., Pérez-Villalobos, M. V., Bernardo, A. B., Cobo Rendón, R., Sáez Delgado, F., y Díaz-Mujica, A. (2021). Propiedades psicométricas de la Escala Multidimensional de Apoyo Social Percibido en estudiantes universitarios chilenos. *Revista Iberoamericana de Diagnóstico y Evaluación - e Avaliação Psicológica, 1*(58), 127-140. https://doi.org/10.21865/RIDEP58.11
 - Lozano Santiago, S. (2007). Validación de un modelo de medida de las dificultades en los procesos de toma de decisiones sobre la carrera profesional. *Revista de Educación, 343* `[CONFIRMAR páginas; ítems no obtenidos]`.
 - Mankins, J. C. (1995). *Technology readiness levels: A white paper*. NASA, Office of Space Access and Technology.
 - Maurya, A. (2012). *Running lean: Iterate from plan A to a plan that works* (2.ª ed.). O'Reilly Media.
 - Mendelow, A. (1991). Stakeholder mapping. En *Proceedings of the 2nd International Conference on Information Systems*. Cambridge, MA.
-- Ministerio de Desarrollo Social. (2011). *Encuesta CASEN 2011: Cuestionario* [Módulo E, Educación]. Observatorio Social. https://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2011/cuestionario_2011.pdf
-- Ministerio de Desarrollo Social y Familia, División Observatorio Social. (2022, 30 de noviembre). *Documento metodológico. Cuestionario Casen: preguntas incluidas en el Cuestionario Casen 2022* [Pregunta o2 del módulo O y preguntas e13b y e18 del módulo E]. https://bid-ckan.ministeriodesarrollosocial.gob.cl:443/dataset/29b86502-9491-4090-8f6c-896fb22c48f0/resource/e914f506-be83-4afa-8569-5ec226cab6d0/download/221130_documento_metodologico_cuestionario_casen_2022.pdf
 - Ministerio de Educación. (2026, 1 de octubre). *FUAS 2027: Ya está abierta la postulación a becas, créditos y gratuidad para la educación superior*. https://www.mineduc.cl/fuas-2027-ya-esta-abierta-la-postulacion-a-becas-creditos-y-gratuidad-para-la-educacion-superior/
 - Ministerio de Educación de Chile (2026). *Mi Futuro* (consultado el 6 de noviembre de 2026). https://www.mifuturo.cl/
 - Ministerio de Educación de Chile (2026). *Portal Beneficios Estudiantiles* (consultado el 6 de noviembre de 2026). https://portal.beneficiosestudiantiles.cl/
 - Ministerio de Educación de Chile, Subsecretaría de Educación Superior (2026). *Acceso a la Educación Superior* (consultado el 6 de noviembre de 2026). https://acceso.mineduc.cl/
-- Ministerio de Educación. (s. f.-a). *Gratuidad*. Portal de Beneficios Estudiantiles. https://portal.beneficiosestudiantiles.cl/gratuidad
-- Ministerio de Educación. (s. f.-b). *Tipos de establecimiento según financiamiento*. Ayuda Mineduc (consultado el 6 de noviembre de 2026). https://ayudamineduc.cl/ficha/tipos-de-establecimiento-segun-financiamiento-4
-- Ministerio de Educación. (s. f.-c). *Becas de arancel*, *Créditos de educación superior* y *Guía paso a paso de postulación*. Portal de Beneficios Estudiantiles (consultados el 6 de noviembre de 2026). https://portal.beneficiosestudiantiles.cl/
+- Ministerio de Educación. (s. f.). *Tipos de establecimiento según financiamiento*. Ayuda Mineduc (consultado el 6 de noviembre de 2026). https://ayudamineduc.cl/ficha/tipos-de-establecimiento-segun-financiamiento-4
 - Moore, G. A. (1991). *Crossing the chasm: Marketing and selling technology products to mainstream customers*. HarperBusiness.
 - Moreno, X., y Moreno, F. (2024). Factor structure and measurement invariance of the Patient Health Questionnaire-4 among the Chilean population. *PLoS ONE, 19*(5), e0304623. https://doi.org/10.1371/journal.pone.0304623
 - Naciones Unidas. (2015). *Transformar nuestro mundo: La Agenda 2030 para el Desarrollo Sostenible* (A/RES/70/1). https://sdgs.un.org/es/2030agenda
@@ -1194,15 +1198,16 @@ La coherencia entre forma jurídica, etapa y financista queda así: el prototipo
 - Paul, K. I., y Moser, K. (2009). Unemployment impairs mental health: Meta-analyses. *Journal of Vocational Behavior, 74*(3), 264-282. https://eric.ed.gov/?id=EJ836788
 - Porter, M. E. (1985). *Competitive advantage: Creating and sustaining superior performance*. Free Press.
 - Servicio de Impuestos Internos. (s. f.). *¿Cuáles son los requisitos para optar al Régimen Pro Pyme?* https://www.sii.cl/preguntas_frecuentes/declaracion_renta/001_140_7530.htm (consultado el 6 de noviembre de 2026).
-- Peña Téllez, N. C., Del Carpio Llamoc, G., Barreda Parra, V. A., y Yana Calla, V. R. (2024). Construcción y validación de una escala para medir factores influyentes en la elección de la carrera profesional en adolescentes. *Psicoespacios, 18*(33). https://doi.org/10.25057/21452776.1641
 - Ramírez Dorantes, M. C., y Canto y Rodríguez, J. E. (2007). Desarrollo y evaluación de una escala de autoeficacia en la elección de carrera en estudiantes mexicanos. *Revista Electrónica de Investigación Psicoeducativa, 5*(1), 37-56. https://www.redalyc.org/articulo.oa?id=293121941004
 - Servicio de Información de Educación Superior. (2021). *Informe de retención de primer año de pregrado 2021* [Cohorte 2020]. Ministerio de Educación. https://www.mifuturo.cl/wp-content/uploads/2021/08/Informe_Retencion_SIES_2021.pdf
 - Servicio de Información de Educación Superior. (2023). *Retención de primer año de pregrado 2023* [Cohortes 2018-2022]. Ministerio de Educación. https://www.mifuturo.cl/wp-content/uploads/2023/09/Retencion_de_Pregrado_2023_SIES.pdf
+- Servicio de Información de Educación Superior. (2023, enero). *Acceso a la educación superior en Chile 2022* [Cohortes de egreso de enseñanza media 2017-2021]. Subsecretaría de Educación Superior, Ministerio de Educación. https://www.mifuturo.cl/wp-content/uploads/2023/01/Acceso_a_Educacion_Superior_2022_SIES.pdf
 - Servicio de Información de Educación Superior. (2025). *Buscador de empleabilidad e ingresos 2025-2026* [Archivo de datos]. Mi Futuro, Ministerio de Educación. https://mifuturo.cl/wp-content/uploads/2025/12/Buscador_Empleabilidad_ingresos_2025_2026_SIES.xlsx
 - Servicio de Información de Educación Superior. (2026, marzo). *Informe de brechas en educación superior 2025* [Serie de retención por cohorte]. Ministerio de Educación. https://mifuturo.cl/wp-content/uploads/2026/03/Informe-de-Brechas-en-Educacio%CC%81n-Superior-2025-marzo-2026.pdf
 - Servicio de Información de Educación Superior (s. f.). *Informe de retención de primer año de pregrado 2019-2023*. Subsecretaría de Educación Superior. https://bibliotecadigital.mineduc.cl/bitstream/handle/20.500.12365/22088/SIES_Retencion_2019-2023.pdf
 - Servicio de Información de Educación Superior. (s. f.). *Retención de primer año de pregrado, cohortes 2019-2023* [Informe] `[CONFIRMAR año de publicación]`. Ministerio de Educación. https://bibliotecadigital.mineduc.cl/bitstream/handle/20.500.12365/22088/SIES_Retencion_2019-2023.pdf
 - Subsecretaría de Educación Superior. (2026, 30 de julio). *Matrícula en educación superior crece por quinto año consecutivo* [Matrícula de pregrado 2022-2026; pendiente archivar el PDF del informe SIES de matrícula 2026]. Ministerio de Educación. https://educacionsuperior.mineduc.cl/2026/07/30/matricula-en-educacion-superior-crece-por-quinto-ano-consecutivo/
+- Taylor, K. M., y Betz, N. E. (1983). Applications of self-efficacy theory to the understanding and treatment of career indecision. *Journal of Vocational Behavior, 22*(1), 63-81.
 - Universidad Católica. (2026, 6 de octubre). *Salud mental de chilenos decae a peores niveles desde la pandemia* [Nota institucional sobre la ronda 12 del Termómetro; sin informe público]. Visión Universitaria UC. https://visionuniversitaria.uc.cl/universidad-y-sociedad/salud-menta-chilenos-decae-peores-niveles-desde-pandemia/
 - uPlanner (2026). Sitio institucional (consultado el 6 de noviembre de 2026). https://www.uplanner.com/
 - Weihrich, H. (1982). The TOWS matrix: A tool for situational analysis. *Long Range Planning, 15*(2), 54-66.

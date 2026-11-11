@@ -74,11 +74,25 @@ class PruebasPlazos(unittest.TestCase):
         plazo = self.por_codigo["fuas_primer_periodo"]
         self.assertEqual((plazo["inicio"], plazo["termino"]), ("2026-10-01", "2026-10-22"))
 
+    def test_extension_y_hitos_del_primer_periodo_contrastados_con_la_fuente(self):
+        # Contrastado el 2026-11-11 con https://postulacion.beneficiosestudiantiles.cl/fuas/
+        esperado = {
+            "fuas_extension_primer_periodo": ("2026-10-22", "2026-11-06"),
+            "nivel_socioeconomico_primer_periodo": ("2026-12-17", "2026-12-17"),
+            "preseleccion_primer_periodo": ("2027-01-15", "2027-01-15"),
+            "asignacion_primer_periodo": ("2027-03-10", "2027-03-10"),
+            "apelacion_primer_periodo": ("2027-03-10", "2027-03-25"),
+        }
+        for codigo, fechas in esperado.items():
+            plazo = self.por_codigo[codigo]
+            self.assertEqual((plazo["inicio"], plazo["termino"]), fechas, codigo)
+            self.assertEqual(plazo["estado"], "publicado", codigo)
+
     def test_fechas_publicadas_son_iso_y_ordenadas(self):
         for fila in self.plazos:
             for campo in ("fuente", "url", "fecha_consulta"):
                 self.assertTrue(fila.get(campo), (fila["codigo"], campo))
-            self.assertIn(urlparse(fila["url"]).hostname, {"www.fuas.cl", "portal.beneficiosestudiantiles.cl"})
+            self.assertIn(urlparse(fila["url"]).hostname, {"www.fuas.cl", "portal.beneficiosestudiantiles.cl", "postulacion.beneficiosestudiantiles.cl"})
             date.fromisoformat(fila["fecha_consulta"])
             if fila["estado"] == "publicado":
                 inicio = date.fromisoformat(fila["inicio"])

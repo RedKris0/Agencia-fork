@@ -1,6 +1,6 @@
 # Plan de análisis: pronóstico generacional e individual
 
-Fecha: 2026-11-07 · Estado: propuesta · Decisiones de respaldo: [ADR 0014](../decisiones/0014-esquema-de-los-datos-oficiales.md), [0015](../decisiones/0015-cuenta-del-estudiante-y-vinculo-institucional.md), [0016](../decisiones/0016-prediccion-condicionada-de-riesgo.md), [0017](../decisiones/0017-pronostico-agregado-piloto-aiep-san-fernando.md)
+Fecha: 2026-11-07 · Estado: aceptada (2026-11-09, por el líder, tras [revisión legal](../revision-legal-adr-pendientes.md)). **Bloqueados:** A5 (lectura automática semanal de sitios) hasta que `docs/fuentes.md` registre la revisión de términos de cada fuente, y la parte B hasta cumplir el ADR 0016 · Decisiones de respaldo: [ADR 0014](../decisiones/0014-esquema-de-los-datos-oficiales.md), [0015](../decisiones/0015-cuenta-del-estudiante-y-vinculo-institucional.md), [0016](../decisiones/0016-prediccion-condicionada-de-riesgo.md), [0017](../decisiones/0017-pronostico-agregado-piloto-sede-privada.md)
 
 ## Principio de trabajo
 
