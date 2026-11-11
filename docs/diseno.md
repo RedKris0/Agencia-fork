@@ -39,6 +39,27 @@ El error de consulta muestra una explicación propia y el estado vacío permite
 ajustar filtros. El conteo de resultados se presenta cuando la consulta responde.
 Los cambios de esta página utilizan exclusivamente los tokens existentes.
 
+### Comparador de carreras
+
+El comparador comparte la cabecera azul y la búsqueda coral del explorador.
+Las opciones elegidas separan carrera, institución, sede y jornada para reconocer
+variantes del mismo programa. En escritorio, se disponen una junto a otra.
+
+La tabla alinea los indicadores por carrera y conserva sus definiciones,
+unidades, períodos, fuentes y fechas. Las cifras usan Atkinson Mono y se alinean
+a la derecha. Las ausencias conservan su explicación y un separador discontinuo.
+La cantidad de columnas se adapta a las opciones presentes. En teléfono se ven
+las dos elegidas mediante el selector existente, según el ADR 0011.
+
+Los encabezados acompañan la lectura al desplazarse por los indicadores.
+Cuando el foco entra en la tabla, dejan de fijarse para permitir leer y activar
+las fuentes con teclado y texto ampliado. Cada celda tiene un nombre accesible
+con la carrera, institución, sede y jornada a las que corresponde.
+
+El error de consulta se identifica con ícono y texto. La búsqueda sin resultados
+mantiene una sugerencia para probar otra palabra. Los enlaces de agregar y quitar
+carreras, el formulario GET y la dirección compartible mantienen su comportamiento.
+
 > Regla de este proyecto: **ningún elemento visual existe porque "se ve bonito"**. Cada color, letra, espacio y borde responde a una de estas cuatro razones, y aquí queda escrita cuál:
 >
 > 1. **Accesibilidad medible** (WCAG 2.2, daltonismo, legibilidad).

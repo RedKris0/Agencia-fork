@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, ArrowLeft, ArrowUpRight, Columns3, Search, X } from 'lucide-react';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 
@@ -54,7 +54,7 @@ function Celda({ carrera, fila, ocultaEnMovil }: { carrera: Carrera; fila: Fila;
   const sinDato = !indicador || indicador.valor === null;
 
   return (
-    <div className={`${estilos.celda} ${ocultaEnMovil ? estilos.ocultaEnMovil : ''}`}>
+    <div className={`${estilos.celda} ${ocultaEnMovil ? estilos.ocultaEnMovil : ''}`} data-sin-dato={sinDato || undefined} role="group" aria-label={`${carrera.carrera} · ${carrera.institucion.nombre} · ${carrera.sede} · ${carrera.jornada}`}>
       <p className={sinDato ? estilos.sinDato : estilos.valor}>{sinDato ? 'Sin datos suficientes' : formatoNumero(indicador)}</p>
       {sinDato ? (
         <p>{indicador && 'motivo_sin_dato' in indicador ? indicador.motivo_sin_dato : 'Este dato aún no está cargado.'}</p>
@@ -96,7 +96,7 @@ function FilaComparacion({ carreras, fila, visiblesEnMovil }: { carreras: Carrer
         ))}
       </div>
       {hayPeriodosDistintos ? (
-        <p className={estilos.aviso}><AlertTriangle aria-hidden="true" /> <strong>Aviso:</strong> los períodos no son iguales. Revísalos antes de comparar.</p>
+        <p className={estilos.aviso}><AlertTriangle aria-hidden="true" /><span><strong>Aviso</strong>. Los períodos no son iguales. Revísalos antes de comparar.</span></p>
       ) : null}
     </section>
   );
@@ -119,92 +119,102 @@ export function Comparador({ seleccionadas, quitarHref, resultados, q, carrerasA
 
   return (
     <main id="contenido" tabIndex={-1} className={estilos.comparador}>
-      <Link className={estilos.volver} href="/carreras">Volver al explorador</Link>
       <header className={estilos.encabezado}>
-        <IndicadorEstacion actual={1} />
-        <h1>Compara carreras</h1>
-        <p>Revisa los datos de hasta tres opciones. Esta página no ordena ni recomienda instituciones.</p>
+        <div className={estilos.interior}>
+          <Link className={estilos.volver} href="/carreras"><ArrowLeft aria-hidden="true" />Volver al explorador</Link>
+          <div className={estilos.presentacion}>
+            <div>
+              <h1>Compara carreras</h1>
+              <p>Revisa los datos de hasta tres opciones. Esta página no ordena ni recomienda instituciones.</p>
+            </div>
+            <Columns3 className={estilos.senal} aria-hidden="true" />
+          </div>
+        </div>
       </header>
 
-      {error ? <p role="alert">No pudimos cargar las carreras en este momento. Intenta de nuevo en unos minutos.</p> : null}
+      <div className={estilos.contenido}>
+        <div className={estilos.trayecto}><IndicadorEstacion actual={1} /></div>
 
-      <section className={estilos.selector} aria-labelledby="elige-carreras">
-        <h2 id="elige-carreras">Elige hasta tres carreras</h2>
-        {seleccionadas.length ? (
-          <ul className={estilos.seleccionadas}>
-            {seleccionadas.map((carrera) => (
-              <li key={carrera.codigo_sies}>
-                <span>{carrera.carrera} · {carrera.institucion.nombre} · {carrera.sede} · {carrera.jornada}</span>
-                <Link href={quitarHref[carrera.codigo_sies]}>Quitar carrera</Link>
-              </li>
-            ))}
-          </ul>
-        ) : <p>Agrega carreras para comparar sus datos oficiales.</p>}
+        {error ? <div role="alert" className={estilos.error}><AlertTriangle aria-hidden="true" /><p>No pudimos cargar las carreras en este momento. Intenta de nuevo en unos minutos.</p></div> : null}
 
-        {seleccionadas.length < 3 ? (
-          <form method="get" action="/comparador" className={estilos.buscarCarrera}>
-            {carrerasActuales ? <input type="hidden" name="carreras" value={carrerasActuales} /> : null}
-            <label htmlFor="buscar-carrera">Busca una carrera para agregar</label>
-            <div className={estilos.entrada}>
-              <input id="buscar-carrera" name="q" defaultValue={q} />
-              <button type="submit">Buscar</button>
-            </div>
-          </form>
-        ) : <p>Ya elegiste tres carreras. Quita una para agregar otra.</p>}
-
-        {q && seleccionadas.length < 3 ? (
-          resultados.length ? (
-            <ul className={estilos.resultadosComparador} aria-label="Resultados para agregar">
-              {resultados.map(({ carrera, href }) => (
+        <section className={estilos.selector} aria-labelledby="elige-carreras">
+          <h2 id="elige-carreras">Elige hasta tres carreras</h2>
+          {seleccionadas.length ? (
+            <ul className={estilos.seleccionadas}>
+              {seleccionadas.map((carrera) => (
                 <li key={carrera.codigo_sies}>
-                  <Link href={href}>Agregar: {carrera.carrera} · {carrera.institucion.nombre} · {carrera.sede} · {carrera.jornada}</Link>
+                  <div><strong>{carrera.carrera}</strong><span>{carrera.institucion.nombre} · {carrera.sede} · {carrera.jornada}</span></div>
+                  <Link href={quitarHref[carrera.codigo_sies]}><X aria-hidden="true" />Quitar carrera</Link>
                 </li>
               ))}
             </ul>
-          ) : <p>No encontramos carreras con «{q}». Prueba con otra palabra.</p>
-        ) : null}
+          ) : <p>Agrega carreras para comparar sus datos oficiales.</p>}
 
-        {seleccionadas.length === 3 ? (
-          <fieldset className={estilos.elegirMovil}>
-            <legend>En teléfono, elige dos carreras para ver lado a lado</legend>
-            {seleccionadas.map((carrera) => {
-              const estaVisible = visiblesEnMovil.includes(carrera.codigo_sies);
-              const estaDeshabilitada = !estaVisible && visiblesEnMovil.length === 2;
-              const idDeAyuda = `limite-visible-${carrera.codigo_sies}`;
+          {seleccionadas.length < 3 ? (
+            <form method="get" action="/comparador" className={estilos.buscarCarrera}>
+              {carrerasActuales ? <input type="hidden" name="carreras" value={carrerasActuales} /> : null}
+              <label htmlFor="buscar-carrera">Busca una carrera para agregar</label>
+              <div className={estilos.entrada}>
+                <input id="buscar-carrera" name="q" defaultValue={q} />
+                <button type="submit"><Search aria-hidden="true" />Buscar</button>
+              </div>
+            </form>
+          ) : <p>Ya elegiste tres carreras. Quita una para agregar otra.</p>}
 
-              return (
-                <Fragment key={carrera.codigo_sies}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={estaVisible}
-                      disabled={estaDeshabilitada}
-                      aria-describedby={estaDeshabilitada ? idDeAyuda : undefined}
-                      onChange={() => alternarVisible(carrera.codigo_sies)}
-                    />
-                    {carrera.carrera} · {carrera.institucion.nombre}
-                  </label>
-                  {estaDeshabilitada ? <p id={idDeAyuda} role="status">Ya ves dos carreras. Quita una para ver esta.</p> : null}
-                </Fragment>
-              );
-            })}
-          </fieldset>
-        ) : null}
-        {seleccionadas.length ? <p>La dirección de esta página guarda solo las carreras elegidas. Puedes copiarla para compartir esta comparación.</p> : null}
-      </section>
+          {q && !error && seleccionadas.length < 3 ? (
+            resultados.length ? (
+              <ul className={estilos.resultadosComparador} aria-label="Resultados para agregar">
+                {resultados.map(({ carrera, href }) => (
+                  <li key={carrera.codigo_sies}>
+                    <Link href={href}><span>Agregar: {carrera.carrera} · {carrera.institucion.nombre} · {carrera.sede} · {carrera.jornada}</span><ArrowUpRight aria-hidden="true" /></Link>
+                  </li>
+                ))}
+              </ul>
+            ) : <p className={estilos.vacio}>No encontramos carreras con «{q}». Prueba con otra palabra.</p>
+          ) : null}
 
-      {seleccionadas.length ? (
-        <section className={estilos.tabla} aria-label="Datos comparados">
-          <div className={estilos.columnas}>
-            {seleccionadas.map((carrera) => (
-              <p className={visiblesEnMovil.includes(carrera.codigo_sies) ? '' : estilos.ocultaEnMovil} key={carrera.codigo_sies}>
-                {carrera.carrera} · {carrera.institucion.nombre} · {carrera.sede} · {carrera.jornada}
-              </p>
-            ))}
-          </div>
-          {filas.map((fila) => <FilaComparacion key={fila.tipo} carreras={seleccionadas} fila={fila} visiblesEnMovil={visiblesEnMovil} />)}
+          {seleccionadas.length === 3 ? (
+            <fieldset className={estilos.elegirMovil}>
+              <legend>En teléfono, elige dos carreras para ver lado a lado</legend>
+              {seleccionadas.map((carrera) => {
+                const estaVisible = visiblesEnMovil.includes(carrera.codigo_sies);
+                const estaDeshabilitada = !estaVisible && visiblesEnMovil.length === 2;
+                const idDeAyuda = `limite-visible-${carrera.codigo_sies}`;
+
+                return (
+                  <Fragment key={carrera.codigo_sies}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={estaVisible}
+                        disabled={estaDeshabilitada}
+                        aria-describedby={estaDeshabilitada ? idDeAyuda : undefined}
+                        onChange={() => alternarVisible(carrera.codigo_sies)}
+                      />
+                      {carrera.carrera} · {carrera.institucion.nombre}
+                    </label>
+                    {estaDeshabilitada ? <p id={idDeAyuda} role="status">Ya ves dos carreras. Quita una para ver esta.</p> : null}
+                  </Fragment>
+                );
+              })}
+            </fieldset>
+          ) : null}
+          {seleccionadas.length ? <p className={estilos.compartir}>La dirección de esta página guarda solo las carreras elegidas. Puedes copiarla para compartir esta comparación.</p> : null}
         </section>
-      ) : null}
+
+        {seleccionadas.length ? (
+          <section className={estilos.tabla} aria-label="Datos comparados">
+            <div className={estilos.columnas}>
+              {seleccionadas.map((carrera) => (
+                <p className={visiblesEnMovil.includes(carrera.codigo_sies) ? '' : estilos.ocultaEnMovil} key={carrera.codigo_sies}>
+                  <strong>{carrera.carrera}</strong><span>{carrera.institucion.nombre}</span><span>{carrera.sede} · {carrera.jornada}</span>
+                </p>
+              ))}
+            </div>
+            {filas.map((fila) => <FilaComparacion key={fila.tipo} carreras={seleccionadas} fila={fila} visiblesEnMovil={visiblesEnMovil} />)}
+          </section>
+        ) : null}
+      </div>
     </main>
   );
 }

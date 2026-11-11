@@ -1,96 +1,216 @@
 .comparador {
-  max-inline-size: var(--medida-comparativa);
-  margin-inline: auto;
-  padding: var(--espacio-8) var(--espacio-4);
+  background: var(--color-fondo);
 }
 
-.volver,
-.celda a {
-  color: var(--color-linea-texto);
-  text-decoration: underline;
-}
-
-.encabezado,
-.selector,
-.tabla,
-.fila,
-.etiqueta,
-.celda,
-.seleccionadas,
-.seleccionadas li,
-.elegirMovil {
-  display: grid;
-  gap: var(--espacio-3);
-}
-
-.encabezado {
-  margin-block: var(--espacio-6);
-  padding-block-end: var(--espacio-6);
-  border-block-end: var(--borde-linea) solid var(--color-linea);
-}
-
-.encabezado h1,
-.encabezado p,
-.selector h2,
-.selector p,
-.selector label,
-.tabla p,
-.fila h2,
-.fila p,
-.celda p {
+.comparador :where(h1, h2, p) {
   margin: 0;
 }
 
-.encabezado h1 {
-  font-size: var(--texto-3);
+.comparador :where(a, input, button):focus-visible {
+  outline: var(--anillo-foco) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
 }
 
-.estacion {
+.comparador a {
+  text-underline-offset: var(--espacio-1);
+}
+
+.comparador svg {
+  inline-size: var(--espacio-6);
+  block-size: var(--espacio-6);
+  flex-shrink: 0;
+}
+
+.interior, .contenido {
+  max-inline-size: var(--ancho-sitio);
+  margin-inline: auto;
+  padding-inline: var(--espacio-4);
+}
+
+.encabezado {
+  --color-foco: var(--color-marca-texto);
+  background: var(--color-marca-fondo);
+  color: var(--color-marca-texto);
+  padding-block: var(--espacio-4) var(--espacio-8);
+  border-block-end: var(--borde-linea) solid var(--color-marca-linea);
+}
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  min-block-size: var(--objetivo-tactil);
+  color: inherit;
+}
+
+.presentacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--espacio-8);
+  padding-block-start: var(--espacio-6);
+}
+
+.presentacion h1 {
+  font-size: var(--texto-4);
+  line-height: var(--interlineado-titulos);
+  text-wrap: balance;
+}
+
+.presentacion p {
+  margin-block-start: var(--espacio-3);
+  max-inline-size: var(--medida);
+  color: var(--color-marca-linea);
+}
+
+.senal {
+  display: none;
+}
+
+.contenido {
+  padding-block: var(--espacio-6) var(--espacio-12);
+}
+
+.trayecto {
+  max-inline-size: var(--medida);
+  margin-block-end: var(--espacio-8);
+}
+
+.selector, .buscarCarrera, .seleccionadas, .seleccionadas li, .seleccionadas li > div, .etiqueta, .celda, .elegirMovil {
+  display: grid;
+  gap: var(--espacio-3);
+  min-inline-size: 0;
+}
+
+.selector h2 {
+  font-size: var(--texto-2);
+}
+
+.seleccionadas, .resultadosComparador {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seleccionadas li {
+  padding-block: var(--espacio-2);
+  border-block-end: var(--borde) solid var(--color-borde);
+}
+
+.seleccionadas li > div {
+  gap: var(--espacio-1);
+}
+
+.seleccionadas strong {
+  font-size: var(--texto-0);
+  color: var(--color-linea-texto);
+}
+
+.seleccionadas span, .compartir {
   color: var(--color-texto-suave);
+}
+
+.seleccionadas span {
+  font-size: var(--texto-m1);
+}
+
+.seleccionadas a {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--espacio-2);
+  min-block-size: var(--objetivo-tactil);
+  color: var(--color-linea-texto);
+}
+
+.seleccionadas a svg {
+  inline-size: var(--espacio-4);
+  block-size: var(--espacio-4);
+}
+
+.buscarCarrera {
+  max-inline-size: var(--medida-comparativa);
+  margin-block: var(--espacio-4);
+}
+
+.buscarCarrera label {
   font-weight: 700;
 }
 
-.selector {
+.entrada {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--espacio-2);
+}
+
+.entrada input {
   min-inline-size: 0;
-  padding: var(--espacio-4);
+  min-block-size: var(--espacio-16);
+  padding: var(--espacio-3) var(--espacio-4);
   border: var(--borde) solid var(--color-borde);
   border-radius: var(--radio);
   background: var(--color-superficie);
-}
-
-.selector h2,
-.selector label,
-.etiqueta h2 {
-  font-size: var(--texto-1);
-  font-weight: 700;
-}
-
-.selector select,
-.seleccionadas button {
-  box-sizing: border-box;
-  inline-size: 100%;
-  max-inline-size: 100%;
-  min-inline-size: 0;
-  min-block-size: var(--objetivo-tactil);
-  padding: var(--espacio-3) var(--espacio-4);
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio);
-  background: var(--color-superficie);
-  color: var(--color-linea-texto);
+  color: var(--color-texto);
   font: inherit;
+  font-size: var(--texto-1);
+}
+
+.buscarCarrera button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  min-block-size: var(--objetivo-tactil);
+  padding-inline: var(--espacio-4);
+  border: var(--borde) solid var(--color-accion-texto);
+  border-radius: var(--radio);
+  background: var(--color-accion);
+  color: var(--color-sobre-accion);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buscarCarrera button svg {
+  display: none;
+}
+
+.resultadosComparador a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  min-block-size: var(--objetivo-tactil);
+  padding: var(--espacio-4);
+  border-block-end: var(--borde) solid var(--color-borde);
+  color: var(--color-linea-texto);
+}
+
+.resultadosComparador li:first-child {
+  border-block-start: var(--borde) solid var(--color-borde);
+}
+
+.resultadosComparador span, .seleccionadas li, .columnas p, .celda {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
 }
 
 .elegirMovil {
-  min-inline-size: 0;
-  padding: var(--espacio-3);
+  margin: 0;
+  padding: var(--espacio-4);
   border: var(--borde) solid var(--color-borde);
   border-radius: var(--radio);
+}
+
+.elegirMovil legend {
+  padding-inline: var(--espacio-2);
+  font-weight: 700;
 }
 
 .elegirMovil label {
   display: flex;
   align-items: flex-start;
-  gap: var(--espacio-2);
+  gap: var(--espacio-3);
   min-block-size: var(--objetivo-tactil);
   padding-block: var(--espacio-2);
 }
@@ -98,75 +218,96 @@
 .elegirMovil input {
   inline-size: var(--espacio-4);
   block-size: var(--espacio-4);
-  flex: none;
+  flex-shrink: 0;
+  margin-block-start: var(--espacio-1);
 }
 
-.selector select:disabled {
+.elegirMovil input:disabled {
   cursor: not-allowed;
-  border-style: dashed;
-  border-color: var(--color-borde);
-  color: var(--color-texto-suave);
 }
 
-.seleccionadas {
-  min-inline-size: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.seleccionadas li {
-  min-inline-size: 0;
-  padding-block-end: var(--espacio-3);
-  border-block-end: var(--borde) solid var(--color-borde);
-}
-
-.seleccionadas span {
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
+.elegirMovil p, .compartir {
+  font-size: var(--texto-m1);
+  max-inline-size: var(--medida);
 }
 
 .tabla {
-  margin-block-start: var(--espacio-8);
+  margin-block-start: var(--espacio-12);
 }
 
-.columnas,
-.celdas {
+.columnas, .celdas {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--espacio-3);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
 }
 
 .columnas {
-  padding: var(--espacio-3);
-  border: var(--borde) solid var(--color-borde);
-  border-radius: var(--radio);
-  background: var(--color-superficie);
-  font-weight: 700;
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  background: var(--color-superficie-suave);
+  border-block: var(--borde) solid var(--color-borde);
 }
 
-.columnas p,
-.etiqueta,
-.celda {
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
+/* El encabezado deja paso al foco, también cuando el texto se amplía. */
+.tabla:focus-within .columnas {
+  position: static;
+}
+
+.columnas p {
+  display: grid;
+  align-content: start;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3);
+}
+
+.columnas strong {
+  color: var(--color-linea-texto);
+}
+
+.columnas span {
+  color: var(--color-texto-suave);
+  font-size: var(--texto-m1);
 }
 
 .fila {
-  padding-block: var(--espacio-4);
   border-block-end: var(--borde) solid var(--color-borde);
+  padding-block: var(--espacio-6);
 }
 
 .etiqueta {
+  align-content: start;
+  margin-block-end: var(--espacio-4);
+}
+
+.etiqueta h2 {
+  font-size: var(--texto-1);
+}
+
+.etiqueta p, .celda p {
+  font-size: var(--texto-m1);
+}
+
+.etiqueta p {
   color: var(--color-texto-suave);
+  max-inline-size: var(--medida);
 }
 
 .celda {
+  align-content: start;
   padding: var(--espacio-3);
-  border-inline-start: var(--borde-linea) solid var(--color-linea);
+  border-block-start: var(--borde) solid var(--color-borde);
 }
 
-.valor {
+.celda + .celda {
+  border-inline-start: var(--borde) solid var(--color-borde);
+}
+
+.celda[data-sin-dato] {
+  border-block-start-style: dashed;
+}
+
+.celda .valor {
   color: var(--color-texto);
   font-family: var(--fuente-cifras);
   font-size: var(--texto-1);
@@ -179,117 +320,148 @@
   font-weight: 700;
 }
 
-.aviso {
+.celda a {
+  color: var(--color-linea-texto);
+  scroll-margin-block-start: calc(var(--espacio-24) * 2);
+}
+
+.aviso, .error {
   display: flex;
   align-items: flex-start;
-  gap: var(--espacio-2);
+  gap: var(--espacio-3);
+  padding: var(--espacio-4);
+  border: var(--borde) solid var(--color-alerta);
+  border-radius: var(--radio);
+}
+
+.aviso {
+  margin-block-start: var(--espacio-4) !important;
+  flex-wrap: wrap;
   color: var(--color-alerta-texto);
+  font-size: var(--texto-m1);
 }
 
 .aviso svg {
-  flex: none;
   inline-size: var(--espacio-4);
   block-size: var(--espacio-4);
 }
 
-@media (min-width: 64rem) {
-  .columnas,
-  .celdas {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+.error {
+  margin-block-end: var(--espacio-6);
+}
+
+.error svg {
+  color: var(--color-alerta-texto);
+}
+
+.vacio {
+  padding: var(--espacio-6);
+  border: var(--borde) dashed var(--color-borde);
+  background: var(--color-superficie-suave);
+}
+
+@media (width < 64rem) {
+  .comparador .ocultaEnMovil {
+    display: none;
+  }
+}
+
+@media (min-width: 48rem) {
+  .interior, .contenido {
+    padding-inline: var(--espacio-8);
+  }
+
+  .encabezado {
+    padding-block-end: var(--espacio-12);
+  }
+
+  .presentacion h1 {
+    font-size: var(--texto-5);
+  }
+
+  .presentacion p {
+    font-size: var(--texto-1);
+  }
+
+  .buscarCarrera button svg {
+    display: block;
   }
 
   .seleccionadas li {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
   }
+}
 
-  .seleccionadas button {
-    inline-size: auto;
+@media (min-width: 64rem) {
+  .seleccionadas {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ancho-logo)), 1fr));
+    gap: var(--espacio-6);
+  }
+
+  .seleccionadas li {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: space-between;
+    padding-block: var(--espacio-4);
+  }
+
+  .seleccionadas strong {
+    font-size: var(--texto-1);
+  }
+
+  .comparador .senal {
+    display: block;
+    inline-size: var(--espacio-24);
+    block-size: var(--espacio-24);
+    color: var(--color-marca-linea);
+    stroke-width: 1;
   }
 
   .elegirMovil {
     display: none;
   }
 
-  .ocultaEnMovil {
+  .columnas {
+    margin-inline-start: 25%;
+  }
+
+  .columnas p {
+    padding: var(--espacio-6);
+  }
+
+  .fila {
     display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    padding-block: 0;
+  }
+
+  .etiqueta, .celda {
+    padding: var(--espacio-6);
+    margin: 0;
+  }
+
+  .celda {
+    border-block-start: 0;
+    border-inline-start: var(--borde) solid var(--color-borde);
+  }
+
+  .celda .valor {
+    font-size: var(--texto-2);
+  }
+
+  .aviso {
+    grid-column: 1 / -1;
+    margin-block: 0 var(--espacio-4) !important;
   }
 }
 
-@media (max-width: 64rem) {
-  .ocultaEnMovil {
-    display: none;
+@media (hover: hover) {
+  .resultadosComparador a:hover {
+    background: var(--color-superficie-suave);
   }
-}
 
-/* Buscador para agregar carreras: la etiqueta no es un título, la caja y el botón van en una fila. */
-.buscarCarrera {
-  display: grid;
-  gap: var(--espacio-2);
-  margin-block: var(--espacio-4);
-}
-
-.buscarCarrera label {
-  font-size: var(--texto-0);
-}
-
-.entrada {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--espacio-2);
-}
-
-.buscarCarrera input {
-  min-inline-size: 0;
-  min-block-size: var(--objetivo-tactil);
-  padding-inline: var(--espacio-3);
-  border: var(--borde) solid var(--color-borde);
-  border-radius: var(--radio);
-  background: var(--color-superficie);
-  color: var(--color-texto);
-  font: inherit;
-}
-
-.buscarCarrera button,
-.seleccionadas a {
-  min-block-size: var(--objetivo-tactil);
-  padding-inline: var(--espacio-4);
-  border: var(--borde) solid var(--color-accion);
-  border-radius: var(--radio);
-  background: var(--color-accion);
-  color: var(--color-sobre-accion);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-}
-
-.seleccionadas a {
-  border-color: var(--color-linea);
-  background: var(--color-superficie);
-  color: var(--color-linea-texto);
-}
-
-.resultadosComparador {
-  display: grid;
-  gap: var(--espacio-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.resultadosComparador a {
-  display: block;
-  min-block-size: var(--objetivo-tactil);
-  padding-block: var(--espacio-2);
-  color: var(--color-linea-texto);
-}
-
-.buscarCarrera button:focus-visible,
-.buscarCarrera input:focus-visible,
-.seleccionadas a:focus-visible,
-.resultadosComparador a:focus-visible {
-  outline: var(--anillo-foco) solid var(--color-foco);
-  outline-offset: 2px;
+  .buscarCarrera button:hover {
+    text-decoration: underline;
+    text-underline-offset: var(--espacio-1);
+  }
 }

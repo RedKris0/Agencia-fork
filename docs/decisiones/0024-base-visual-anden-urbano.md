@@ -185,3 +185,29 @@ Para revisar tarjetas con contenido se utilizó únicamente la muestra existente
 servida por una simulación local temporal de Supabase. Los datos de producción,
 las consultas y sus filtros conservan su implementación. La conexión real queda
 pendiente de las variables de entorno que necesita el proyecto.
+
+### Comparador de carreras
+
+La presentación del comparador adopta la cabecera del explorador y organiza las
+opciones elegidas en columnas en escritorio. La tabla alinea nombres, indicadores
+y cifras, conservando las definiciones, fuentes y fechas presentes. En teléfono
+se muestran las dos opciones elegidas con el control existente del ADR 0011.
+
+Los encabezados permanecen visibles durante la lectura. Al entrar el foco en la
+tabla, dejan de fijarse para permitir la navegación de fuentes con texto ampliado.
+Las celdas anuncian su carrera, institución, sede y jornada mediante un nombre
+accesible. El error de consulta tiene su propio tratamiento visual.
+
+Las consultas, el límite de tres opciones, los enlaces compartibles y el estado
+que elige las columnas conservan su implementación. Los estilos reutilizan los
+tokens existentes. La validación con contenido utiliza la muestra local mediante
+la simulación temporal descrita arriba. La conexión real continúa pendiente.
+
+- Compilación directa de Next, lint, tipos y 189 pruebas de Node aprobados.
+- 16 pruebas Playwright aprobadas con Edge, seis del comparador y las diez
+  existentes de portada y explorador. Incluyen agregar y quitar carreras sin
+  JavaScript, selección móvil con teclado, ausencia de desbordamiento a 360,
+  375, 768, 1024 y 1280 px y fuentes enfocables con texto al 200 %.
+- Axe sin infracciones detectadas en el comparador con contenido, tanto en
+  teléfono como en escritorio y en ambos temas.
+- Revisión visual de las columnas a 375, 768 y 1280 px y en tema oscuro.
