@@ -158,3 +158,30 @@ explicación textual. Estos cambios afectan únicamente estilos y tokens.
 El comando `npm run build` conserva su requisito de variables de Supabase
 para exportar la oferta. Las comprobaciones de esta etapa utilizan la compilación
 directa de Next y la muestra existente para pruebas.
+
+### Explorador de carreras y espera de búsqueda
+
+El explorador incorpora la cabecera azul, búsqueda principal coral, filtros
+nativos y tarjetas con identidad e indicadores alineados. Su composición se
+adapta a una columna en teléfono. El estado de espera del formulario usa tarjetas
+con las mismas columnas, animación de opacidad y un anuncio textual.
+
+La espera se activa como mejora del formulario GET. Se descartó `loading.tsx`
+tras comprobar que su respuesta transmitida dejaba visible la espera con
+JavaScript desactivado. El formulario y los resultados conservan su renderizado
+completo desde el servidor. Los errores de consulta tienen una presentación
+propia, y el estado vacío mantiene la sugerencia para ajustar filtros.
+
+- Compilación directa de Next, lint y verificación de tokens aprobados.
+- 189 pruebas existentes de Node aprobadas.
+- 10 pruebas Playwright aprobadas en producción con Edge, incluidas las cinco
+  de portada y cinco del explorador. Las cinco del explorador también pasan
+  contra el entorno de desarrollo sin configuración de Supabase.
+- Capturas revisadas a 375, 768 y 1280 px, junto con tema oscuro, teclado,
+  texto al 200 %, estado vacío y tarjetas de espera.
+- Axe sin infracciones WCAG detectadas en ambos temas con los filtros abiertos.
+
+Para revisar tarjetas con contenido se utilizó únicamente la muestra existente,
+servida por una simulación local temporal de Supabase. Los datos de producción,
+las consultas y sus filtros conservan su implementación. La conexión real queda
+pendiente de las variables de entorno que necesita el proyecto.

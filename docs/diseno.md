@@ -16,6 +16,29 @@ trazabilidad de datos siguen aplicándose.
 Esta etapa establece tokens y estilos compartidos. La portada con tren y
 carrusel corresponde a la siguiente etapa de aprobación del rediseño.
 
+### Explorador de carreras
+
+La cabecera azul marino y la señal de búsqueda prolongan la identidad de la
+portada. El formulario conserva su envío GET y los filtros utilizan el control
+desplegable nativo. Buscar concentra la acción coral. Aplicar filtros utiliza
+el azul de línea para mantener una jerarquía de acciones reconocible.
+
+Las tarjetas separan carrera e institución de sus indicadores. En escritorio,
+empleabilidad y arancel ocupan columnas alineadas. En teléfono, la lectura sigue
+una sola columna. Las cifras presentes usan Atkinson Mono. La ausencia de datos
+usa texto y un separador discontinuo, conservando la explicación existente.
+Las definiciones, los períodos, las fuentes y las fechas siguen junto a cada dato.
+
+Durante el envío del formulario, tres tarjetas de espera reproducen las columnas
+de los resultados y un estado anuncia «Buscando carreras…». Solo varía la opacidad,
+con los tokens de movimiento del ADR 0024. La preferencia de movimiento reducido
+deja las tarjetas estáticas. La navegación GET funciona también sin JavaScript.
+Al restaurar una página desde el historial, se restablece su estado de espera.
+
+El error de consulta muestra una explicación propia y el estado vacío permite
+ajustar filtros. El conteo de resultados se presenta cuando la consulta responde.
+Los cambios de esta página utilizan exclusivamente los tokens existentes.
+
 > Regla de este proyecto: **ningún elemento visual existe porque "se ve bonito"**. Cada color, letra, espacio y borde responde a una de estas cuatro razones, y aquí queda escrita cuál:
 >
 > 1. **Accesibilidad medible** (WCAG 2.2, daltonismo, legibilidad).
