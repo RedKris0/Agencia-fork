@@ -104,8 +104,7 @@
 .listaFuentes svg { inline-size: var(--espacio-6); block-size: var(--espacio-6); flex-shrink: 0; }
 .notaFuentes { max-inline-size: var(--medida); font-size: var(--texto-m1); color: var(--color-marca-linea); }
 .soloLectores { position: absolute; inline-size: var(--borde); block-size: var(--borde); overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.portada [data-reveal] { transition: transform var(--mov-entrada) var(--mov-curva), opacity var(--mov-entrada) var(--mov-curva); }
-.portada [data-pendiente] { opacity: 0; transform: translateY(var(--espacio-4)); }
+.seccionInterior > [data-reveal]:nth-child(2) { transition-delay: var(--mov-escalon); }
 @keyframes entrar { from { opacity: 0; transform: translateY(var(--espacio-4)); } to { opacity: 1; transform: none; } }
 @keyframes profundidad { from { transform: translateY(0); } to { transform: translateY(var(--espacio-8)); } }
 @media (prefers-reduced-motion: no-preference) {

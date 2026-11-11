@@ -1,5 +1,37 @@
 import { expect, test } from "@playwright/test";
 
+test("las estaciones desplazan suavemente y el contenido vuelve a aparecer al regresar", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await expect.poll(() => page.locator("html").evaluate(elemento => getComputedStyle(elemento).scrollBehavior)).toBe("smooth");
+  const contenidoComparar = page.locator("#comparar [data-reveal]").first();
+  const estaciones = page.getByRole("navigation", { name: "Estaciones de esta página" });
+  const posiciones = page.evaluate(() => new Promise<number[]>(resolver => {
+    const recorrido: number[] = [];
+    const registrar = () => recorrido.push(scrollY);
+    addEventListener("scroll", registrar);
+    setTimeout(() => {
+      removeEventListener("scroll", registrar);
+      resolver(recorrido);
+    }, 1800);
+  }));
+  await estaciones.getByRole("link", { name: "Comparar", exact: true }).click();
+  expect(new Set(await posiciones).size).toBeGreaterThan(2);
+  await expect(contenidoComparar).not.toHaveAttribute("data-pendiente");
+  await estaciones.getByRole("link", { name: "Fuentes", exact: true }).click();
+  await expect(contenidoComparar).toHaveAttribute("data-pendiente", "");
+  await estaciones.getByRole("link", { name: "Comparar", exact: true }).click();
+  await expect(contenidoComparar).not.toHaveAttribute("data-pendiente");
+  await estaciones.getByRole("link", { name: "Explorar", exact: true }).click();
+  const fuentes = page.locator("#fuentes [data-reveal]").last();
+  await expect(fuentes).toHaveAttribute("data-pendiente", "");
+  await page.locator("#fuentes a").first().focus();
+  await expect(fuentes).not.toHaveAttribute("data-pendiente");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  expect(await page.locator("html").evaluate(elemento => getComputedStyle(elemento).scrollBehavior)).toBe("auto");
+  await expect(page.locator("[data-pendiente]")).toHaveCount(0);
+});
+
 test("la portada ofrece cuatro diapositivas con destinos reales y controles de teclado", async ({ page }) => {
   await page.goto("/");
   const carrusel = page.getByRole("region", { name: "Encuentra tu próximo paso" });

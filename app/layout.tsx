@@ -30,7 +30,7 @@ export default function LayoutRaiz({ children }: Readonly<{ children: React.Reac
     crossOrigin: "anonymous",
   });
   return (
-    <html lang="es-CL">
+    <html lang="es-CL" data-scroll-behavior="smooth">
       <body>
         <a className="saltar-contenido" href="#contenido">Ir al contenido</a>
         {children}

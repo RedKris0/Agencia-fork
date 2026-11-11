@@ -115,6 +115,19 @@ comparación, calendario y fuentes. La revisión de teclado incluye el foco
 interior de los paneles recortados y la navegación desde sus enlaces.
 Las cuatro pruebas de portada, la compilación directa de Next y lint pasan.
 
+### Navegación y aparición al recorrer la portada
+
+Los enlaces a estaciones usan desplazamiento suave nativo. La preferencia de
+movimiento reducido conserva el desplazamiento inmediato. Al salir completamente
+de la pantalla, los bloques quedan preparados para volver a aparecer con un
+desplazamiento corto y opacidad. El foco de teclado muestra el bloque de inmediato.
+La mejora se activa con JavaScript y conserva el contenido completo al desactivarlo.
+Una prueba adicional comprueba el recorrido, el regreso, el foco y ambas preferencias.
+
+Por indicación explícita de Cristóbal, el texto y los elementos de Beneficios
+se muestran blancos sobre el mismo coral. Esta combinación queda bajo el
+contraste AA y se registra como excepción visual solicitada.
+
 ### Refinamiento solicitado tras la revisión visual
 
 Cristóbal pidió mayor profesionalismo después de revisar la base. La guía

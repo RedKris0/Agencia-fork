@@ -2,6 +2,14 @@
 @import "../diseno/tokens.css";
 @import "./fuentes.css";
 
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  [data-reveal] {
+    transition: transform var(--mov-entrada) var(--mov-curva), opacity var(--mov-entrada) var(--mov-curva);
+  }
+  [data-pendiente] { opacity: 0; transform: translateY(var(--espacio-6)); }
+}
+
 /* Se elimina el tema predeterminado para admitir únicamente nuestros tokens. */
 @theme {
   --*: initial;

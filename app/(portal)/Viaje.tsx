@@ -47,16 +47,20 @@ export function CabeceraViaje() {
 
     const observador = new IntersectionObserver(entradas => {
       for (const entrada of entradas) {
-        if (entrada.isIntersecting) {
+        if (reduccion.matches || entrada.isIntersecting || entrada.target.contains(document.activeElement)) {
           entrada.target.removeAttribute("data-pendiente");
-          observador.unobserve(entrada.target);
+        } else {
+          entrada.target.setAttribute("data-pendiente", "");
         }
       }
-    }, { threshold: 0.12 });
+    });
     const elementos = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    if (!reduccion.matches) for (const elemento of elementos) {
-      if (elemento.getBoundingClientRect().top > innerHeight) elemento.setAttribute("data-pendiente", "");
+    for (const elemento of elementos) {
+      if (!reduccion.matches && elemento.getBoundingClientRect().top >= innerHeight) elemento.setAttribute("data-pendiente", "");
       observador.observe(elemento);
+    }
+    function mostrarFoco(evento: FocusEvent) {
+      (evento.target as HTMLElement).closest("[data-reveal]")?.removeAttribute("data-pendiente");
     }
     function cambiarPreferencia() {
       for (const elemento of elementos) elemento.removeAttribute("data-pendiente");
@@ -67,11 +71,13 @@ export function CabeceraViaje() {
     addEventListener("scroll", programar, { passive: true });
     addEventListener("resize", programar);
     reduccion.addEventListener("change", cambiarPreferencia);
+    document.addEventListener("focusin", mostrarFoco);
     return () => {
       cancelAnimationFrame(cuadro);
       removeEventListener("scroll", programar);
       removeEventListener("resize", programar);
       reduccion.removeEventListener("change", cambiarPreferencia);
+      document.removeEventListener("focusin", mostrarFoco);
       observador.disconnect();
       for (const elemento of elementos) elemento.removeAttribute("data-pendiente");
     };
