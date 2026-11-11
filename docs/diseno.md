@@ -23,12 +23,15 @@ El ajuste de continuidad y movimiento se registra en el
 La rama `fix/integrar-portal-backend` integra esta presentación con `main` de
 AE-SE en `1bdf5ae`. Conserva el acceso existente a Supabase y las correcciones
 del calendario del FUAS, incluido el aviso dinámico de cierre en la portada.
-Los ADR visuales se renumeraron como 0028 y 0029 para conservar la numeración
+Los ADR visuales se proponen como 0029 y 0030 para conservar la numeración
 del repositorio principal. La integración se comprobó con la oferta local de
 pruebas del repositorio. El explorador, una ficha y el comparador del sitio
 publicado también respondieron con datos en la comprobación del 11 de noviembre
 de 2026. La publicación del diseño requiere la revisión y confirmación del
 líder previstas en `AGENTS.md`.
+
+La sección coral utiliza `--color-sobre-accion` para texto y foco. El mismo
+par sobre coral ya se verifica con mínimo 4,5 en el generador de tokens.
 
 Las cabeceras interiores prolongan la composición de la portada mediante
 superficies azules, ilustraciones amplias y encuentros diagonales. El tren
@@ -56,7 +59,7 @@ presenta todos los bloques. Sin JavaScript, el contenido permanece visible.
 Los encabezados dejan paso al foco de teclado para permitir leer los destinos
 de navegación y las fuentes con texto ampliado. Las fuentes y los datos
 conservan el tratamiento de cada componente. Las referencias de composición
-y movimiento consultadas están documentadas en el ADR 0029.
+y movimiento consultadas están documentadas en el ADR 0030.
 
 ### Explorador de carreras
 

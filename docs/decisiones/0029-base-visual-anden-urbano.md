@@ -124,9 +124,12 @@ desplazamiento corto y opacidad. El foco de teclado muestra el bloque de inmedia
 La mejora se activa con JavaScript y conserva el contenido completo al desactivarlo.
 Una prueba adicional comprueba el recorrido, el regreso, el foco y ambas preferencias.
 
-Por indicación explícita de Cristóbal, el texto y los elementos de Beneficios
-se muestran blancos sobre el mismo coral. Esta combinación queda bajo el
-contraste AA y se registra como excepción visual solicitada.
+La revisión de contraste reemplaza el texto blanco de Beneficios por
+`--color-sobre-accion` sobre el mismo fondo coral. El par ya forma parte de
+`contraste_requerido` con mínimo 4,5. La acción azul conserva texto blanco.
+Los resultados por texto, tema y ancho se registran junto a las pruebas de
+la portada. La numeración 0029 se propone para evitar el ADR 0028 del PR #139
+y queda pendiente de confirmación del líder.
 
 ### Refinamiento solicitado tras la revisión visual
 

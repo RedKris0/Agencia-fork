@@ -1,4 +1,21 @@
 import { expect, test } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+
+for (const tema of ['light', 'dark'] as const) {
+  test(`la sección coral visible conserva contraste en tema ${tema}`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: tema, reducedMotion: 'reduce' });
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+    for (const ancho of [375, 1280]) {
+      await page.setViewportSize({ width: ancho, height: 960 });
+      await page.locator('#beneficios').scrollIntoViewIfNeeded();
+      await expect(page.locator('#beneficios [data-reveal][data-pendiente]')).toHaveCount(0);
+      const informe = await new AxeBuilder({ page }).include('#beneficios')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+      expect(informe.violations, `${tema}, ${ancho} px`).toEqual([]);
+    }
+  });
+}
 
 test("las estaciones desplazan suavemente y el contenido vuelve a aparecer al regresar", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
