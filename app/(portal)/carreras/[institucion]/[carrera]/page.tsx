@@ -11,6 +11,7 @@ import { rutaDelComparador } from '@/lib/datos/comparador';
 import { codigoDeSegmento, rutaDeCarrera } from '@/lib/datos/ruta';
 
 import estilos from './FichaCarrera.module.css';
+import { CabeceraInterior } from '@/app/_componentes/CabeceraInterior';
 
 // Se atiende en vivo: consulta Supabase por el código SIES de la ruta.
 export const dynamic = 'force-dynamic';
@@ -83,40 +84,43 @@ export default async function PaginaCarrera({ params }: { params: Promise<Params
   // TODO(fuente): la duración formal (campo duracion_semestres) no se muestra: el dato no registra fuente ni período
   // y AGENTS.md 2.1 prohíbe publicar lo que no se puede verificar. Vuelve cuando C3 documente su origen.
   return (
-    <main id="contenido" tabIndex={-1} className={estilos.ficha}>
-      <header className={estilos.encabezado}>
-        <h1>{carrera.carrera}</h1>
+    <div className={estilos.ficha} data-pagina-interior>
+      <CabeceraInterior pagina="ficha" titulo={carrera.carrera}>
         <p className={estilos.institucion}>{carrera.institucion.nombre}</p>
         <p className={estilos.ubicacion}>{carrera.sede} · {carrera.comuna} · Región: {carrera.region}</p>
-      </header>
+      </CabeceraInterior>
+      <main id="contenido" tabIndex={-1} aria-labelledby="titulo-pagina">
+        <div className={estilos.contenido}>
 
-      <section className={estilos.seccion} aria-labelledby="datos-principales">
-        <h2 id="datos-principales">Datos para comparar</h2>
-        <div className={estilos.datos}>
-          <DatoOficial titulo="Empleabilidad al 1.er año" queMide="Porcentaje de personas tituladas que ganaron al menos el sueldo mínimo durante el primer año después de titularse. Solo considera a quienes registran ingresos." indicador={empleabilidad} valor={empleabilidad?.valor === null || !empleabilidad ? undefined : formatoNumero(empleabilidad.valor, empleabilidad.unidad)} />
-          <DatoOficial titulo="Ingreso promedio al 4.º año" queMide="Tramo del ingreso bruto mensual al cuarto año después de titularse. Pesos de septiembre de 2025." indicador={ingreso} valor={ingreso?.valor === null || !ingreso ? undefined : formatoNumero(ingreso.valor, ingreso.unidad)} />
-          <DatoOficial titulo="Arancel anual" queMide="Precio de un año de la carrera, antes de aplicar beneficios." indicador={arancel} valor={arancel?.valor === null || !arancel ? undefined : formatoNumero(arancel.valor, arancel.unidad)} />
-          <DatoOficial titulo="Duración real" queMide="Semestres que tardaron quienes se titularon" indicador={duracionReal} valor={duracionReal?.valor === null || !duracionReal ? undefined : formatoNumero(duracionReal.valor, duracionReal.unidad)} />
-          <DatoOficial titulo="Vacantes" queMide="Cupos disponibles para postular" indicador={vacantes} valor={vacantes?.valor === null || !vacantes ? undefined : formatoNumero(vacantes.valor, vacantes.unidad)} />
-          <DatoOficial titulo="Acreditación de la institución" queMide="Años de acreditación y fecha hasta la que está vigente." />
-          <DatoOficial titulo="Puntaje de corte del año anterior" queMide="Puntaje de la última persona que se matriculó el año pasado." indicador={indicador(carrera, 'puntaje_corte')} valor={valorTexto(indicador(carrera, 'puntaje_corte'))} />
-          <DatoOficial titulo="Ponderaciones para postular" queMide="Porcentaje que aporta cada factor al cálculo de tu puntaje." />
+          <section className={estilos.seccion} aria-labelledby="datos-principales">
+            <h2 id="datos-principales">Datos para comparar</h2>
+            <div className={estilos.datos}>
+              <DatoOficial titulo="Empleabilidad al 1.er año" queMide="Porcentaje de personas tituladas que ganaron al menos el sueldo mínimo durante el primer año después de titularse. Solo considera a quienes registran ingresos." indicador={empleabilidad} valor={empleabilidad?.valor === null || !empleabilidad ? undefined : formatoNumero(empleabilidad.valor, empleabilidad.unidad)} />
+              <DatoOficial titulo="Ingreso promedio al 4.º año" queMide="Tramo del ingreso bruto mensual al cuarto año después de titularse. Pesos de septiembre de 2025." indicador={ingreso} valor={ingreso?.valor === null || !ingreso ? undefined : formatoNumero(ingreso.valor, ingreso.unidad)} />
+              <DatoOficial titulo="Arancel anual" queMide="Precio de un año de la carrera, antes de aplicar beneficios." indicador={arancel} valor={arancel?.valor === null || !arancel ? undefined : formatoNumero(arancel.valor, arancel.unidad)} />
+              <DatoOficial titulo="Duración real" queMide="Semestres que tardaron quienes se titularon" indicador={duracionReal} valor={duracionReal?.valor === null || !duracionReal ? undefined : formatoNumero(duracionReal.valor, duracionReal.unidad)} />
+              <DatoOficial titulo="Vacantes" queMide="Cupos disponibles para postular" indicador={vacantes} valor={vacantes?.valor === null || !vacantes ? undefined : formatoNumero(vacantes.valor, vacantes.unidad)} />
+              <DatoOficial titulo="Acreditación de la institución" queMide="Años de acreditación y fecha hasta la que está vigente." />
+              <DatoOficial titulo="Puntaje de corte del año anterior" queMide="Puntaje de la última persona que se matriculó el año pasado." indicador={indicador(carrera, 'puntaje_corte')} valor={valorTexto(indicador(carrera, 'puntaje_corte'))} />
+              <DatoOficial titulo="Ponderaciones para postular" queMide="Porcentaje que aporta cada factor al cálculo de tu puntaje." />
+            </div>
+          </section>
+
+          <section className={estilos.seccion} aria-labelledby="matricula">
+            <h2 id="matricula">Cuántas personas estudian aquí</h2>
+            <div className={estilos.datos}>
+              <DatoOficial titulo="Matrícula total" queMide="Personas matriculadas en esta carrera, sumando todos sus años." indicador={matricula} valor={valorTexto(matricula)} />
+            </div>
+          </section>
+
+          <section className={estilos.acciones} aria-label="Próximas acciones">
+            <Boton principal href={rutaDelComparador([carrera])}>Comparar con otra carrera</Boton>
+            <Boton nota="Disponible pronto">Simular mi puntaje para esta carrera</Boton>
+          </section>
+
+          <Fuentes carrera={carrera} />
         </div>
-      </section>
-
-      <section className={estilos.seccion} aria-labelledby="matricula">
-        <h2 id="matricula">Cuántas personas estudian aquí</h2>
-        <div className={estilos.datos}>
-          <DatoOficial titulo="Matrícula total" queMide="Personas matriculadas en esta carrera, sumando todos sus años." indicador={matricula} valor={valorTexto(matricula)} />
-        </div>
-      </section>
-
-      <section className={estilos.acciones} aria-label="Próximas acciones">
-        <Boton principal href={rutaDelComparador([carrera])}>Comparar con otra carrera</Boton>
-        <Boton nota="Disponible pronto">Simular mi puntaje para esta carrera</Boton>
-      </section>
-
-      <Fuentes carrera={carrera} />
-    </main>
+      </main>
+    </div>
   );
 }

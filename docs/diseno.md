@@ -13,13 +13,45 @@ históricas siguientes quedan reemplazados por ese ADR y `diseno/tokens.json`.
 Las tipografías locales, los contratos de componentes y las reglas de
 trazabilidad de datos siguen aplicándose.
 
-Esta etapa establece tokens y estilos compartidos. La portada con tren y
-carrusel corresponde a la siguiente etapa de aprobación del rediseño.
+La portada y las páginas de carreras, comparador y beneficios comparten ahora
+el logo, la navegación, el tren y las ilustraciones originales del portal.
+El ajuste de continuidad y movimiento se registra en el
+[ADR 0025](decisiones/0025-continuidad-visual-y-movimiento.md).
+
+### Continuidad visual y apariciones
+
+Las cabeceras interiores prolongan la composición de la portada mediante
+superficies azules, ilustraciones amplias y encuentros diagonales. El tren
+identifica la página actual en la navegación. Las etapas de la trayectoria
+se presentan dentro de la cabecera con los mismos colores de marca.
+La ficha individual recibe esa cabecera y tarjetas de indicadores con el mismo
+tratamiento, para continuar el recorrido al abrir una carrera del explorador.
+
+Las tarjetas de carreras separan la identidad del programa, sobre azul marino,
+de sus indicadores y fuentes. Las tarjetas de beneficios tienen una cabecera
+azul clara con recorte diagonal. Las opciones seleccionadas del comparador
+utilizan el mismo tratamiento de identidad y sus filas alternan superficies
+para facilitar el seguimiento horizontal de los datos.
+
+Las apariciones al recorrer el portal duran 850 ms. El escalonado de tarjetas
+alterna dos posiciones separadas por 90 ms, con una demora máxima de 90 ms.
+El movimiento acompaña el ingreso de un bloque a la pantalla y la reacción de
+sus acciones. Los controles mantienen respuestas breves. Las tarjetas que se
+desplazan fuera de la vista se preparan para entrar por el lado correspondiente
+al volver a recorrerlas. Las tarjetas insertadas al filtrar reciben el mismo
+tratamiento. El foco muestra el contenido
+inmediatamente. La reducción de movimiento elimina las entradas espaciales y
+presenta todos los bloques. Sin JavaScript, el contenido permanece visible.
+
+Los encabezados dejan paso al foco de teclado para permitir leer los destinos
+de navegación y las fuentes con texto ampliado. Las fuentes y los datos
+conservan el tratamiento de cada componente. Las referencias de composición
+y movimiento consultadas están documentadas en el ADR 0025.
 
 ### Explorador de carreras
 
-La cabecera azul marino y la señal de búsqueda prolongan la identidad de la
-portada. El formulario conserva su envío GET y los filtros utilizan el control
+El explorador reutiliza la cabecera compartida del portal.
+El formulario conserva su envío GET y los filtros utilizan el control
 desplegable nativo. Buscar concentra la acción coral. Aplicar filtros utiliza
 el azul de línea para mantener una jerarquía de acciones reconocible.
 

@@ -20,51 +20,17 @@
 .pagina a {
   text-underline-offset: var(--espacio-1);
 }
-
-.interior, .contenido {
+.contenido {
   max-inline-size: var(--ancho-sitio);
   margin-inline: auto;
   padding-inline: var(--espacio-4);
 }
-
-.encabezado {
-  --color-foco: var(--color-marca-texto);
-  padding-block: var(--espacio-4) var(--espacio-8);
-  border-block-end: var(--borde-linea) solid var(--color-marca-linea);
-  background: var(--color-marca-fondo);
-  color: var(--color-marca-texto);
-}
-
-.volver, .enlaceHero, .accion {
+.enlaceHero, .accion {
   display: inline-flex;
   align-items: center;
   gap: var(--espacio-2);
   min-block-size: var(--objetivo-tactil);
   color: inherit;
-}
-
-.presentacion {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--espacio-8);
-  padding-block-start: var(--espacio-6);
-}
-
-.presentacion h1 {
-  font-size: var(--texto-4);
-  line-height: var(--interlineado-titulos);
-  text-wrap: balance;
-}
-
-.presentacion p {
-  max-inline-size: var(--medida);
-  margin-block-start: var(--espacio-4);
-  color: var(--color-marca-linea);
-}
-
-.senal {
-  display: none;
 }
 
 .accesos {
@@ -90,14 +56,12 @@
   padding-block: var(--espacio-6) var(--espacio-12);
 }
 
-.trayecto {
-  max-inline-size: var(--medida);
-  margin-block-end: var(--espacio-8);
-}
 
 .seccion {
   display: grid;
   gap: var(--espacio-4);
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
 }
 
 .seccion + .seccion {
@@ -175,10 +139,11 @@
 
 .tarjeta {
   display: grid;
+  grid-template-rows: auto 1fr auto;
   align-content: start;
-  gap: var(--espacio-6);
+  gap: 0;
   min-inline-size: 0;
-  padding: var(--espacio-6) var(--espacio-4);
+  padding: 0;
   border: var(--borde) solid var(--color-borde);
   border-radius: var(--radio);
   background: var(--color-superficie);
@@ -190,8 +155,22 @@
 }
 
 .resumenBeneficio {
-  padding-block-end: var(--espacio-4);
-  border-block-end: var(--borde) solid var(--color-borde);
+  padding: var(--espacio-6);
+  background: var(--color-marca-linea);
+  color: var(--color-marca-fondo);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--espacio-6)), calc(100% - var(--espacio-6)) 100%, 0 100%);
+}
+
+.resumenBeneficio h3 {
+  color: var(--color-marca-fondo);
+}
+
+.detalleBeneficio {
+  padding: var(--espacio-6);
+}
+
+.tarjeta > .fuente {
+  padding: var(--espacio-4) var(--espacio-6);
 }
 
 .tarjeta ul {
@@ -268,7 +247,8 @@
 
 .fechaPlazo > p {
   padding: var(--espacio-4);
-  background: var(--color-superficie-suave);
+  background: var(--color-marca-fondo);
+  color: var(--color-marca-texto);
   border: var(--borde) solid var(--color-borde);
   border-radius: var(--radio);
 }
@@ -284,25 +264,12 @@
 }
 
 @media (min-width: 48rem) {
-  .interior, .contenido {
+.contenido {
     padding-inline: var(--espacio-8);
-  }
-
-  .encabezado {
-    padding-block-end: var(--espacio-12);
-  }
-
-  .presentacion h1 {
-    max-inline-size: var(--medida);
-    font-size: var(--texto-5);
   }
 
   .listaBeneficios {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tarjeta {
-    padding: var(--espacio-6);
   }
 
   .plazo {
@@ -316,13 +283,6 @@
 }
 
 @media (min-width: 64rem) {
-  .pagina .senal {
-    display: block;
-    inline-size: var(--espacio-24);
-    block-size: var(--espacio-24);
-    color: var(--color-marca-linea);
-    stroke-width: 1;
-  }
 
   .resumenBeneficio h3 {
     font-size: var(--texto-2);

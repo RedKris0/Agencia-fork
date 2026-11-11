@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { Apariciones } from '@/app/_componentes/Apariciones';
 
 import estilos from '@/app/_componentes/componentes.module.css';
 
@@ -8,6 +9,7 @@ import estilos from '@/app/_componentes/componentes.module.css';
 export default function LayoutPortal({ children }: { children: ReactNode }) {
   return (
     <>
+      <Apariciones />
       {children}
       <footer className={estilos.pie}>
         <p>Datos oficiales de Mineduc (SIES y Datos Abiertos) y DEMRE. Cada dato muestra su fuente y su fecha de consulta.</p>

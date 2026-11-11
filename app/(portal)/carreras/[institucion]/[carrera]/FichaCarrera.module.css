@@ -1,10 +1,13 @@
 .ficha {
-  max-inline-size: var(--medida);
+  background: var(--color-fondo);
+}
+
+.contenido {
+  max-inline-size: var(--ancho-sitio);
   margin-inline: auto;
   padding: var(--espacio-8) var(--espacio-4);
 }
 
-.encabezado,
 .seccion,
 .acciones,
 .fuentes {
@@ -12,22 +15,11 @@
   gap: var(--espacio-4);
 }
 
-.encabezado {
-  padding-block-end: var(--espacio-6);
-  border-block-end: var(--borde-linea) solid var(--color-linea);
-}
-
-.encabezado h1,
 .seccion h2,
 .fuentes h2,
-.encabezado p,
 .seccion p,
 .fuentes p {
   margin: 0;
-}
-
-.encabezado h1 {
-  font-size: var(--texto-3);
 }
 
 .institucion {
@@ -44,10 +36,14 @@
   margin-block-start: var(--espacio-8);
 }
 
+.seccion h2, .fuentes h2 {
+  font-size: var(--texto-2);
+}
+
 .datos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--medida)), 1fr));
-  gap: var(--espacio-3);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-6);
 }
 
 .acciones {
@@ -69,4 +65,9 @@
 
 .fuentes a {
   color: var(--color-linea-texto);
+}
+
+@media (min-width: 48rem) {
+  .contenido { padding-inline: var(--espacio-8); }
+  .datos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

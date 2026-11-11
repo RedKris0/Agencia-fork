@@ -58,8 +58,8 @@
   --alto-arte: 15rem;
   --mov-rapido: 150ms;
   --mov-normal: 220ms;
-  --mov-entrada: 500ms;
-  --mov-escalon: 60ms;
+  --mov-entrada: 850ms;
+  --mov-escalon: 90ms;
   --mov-fundido: 180ms;
   --mov-carga: 1600ms;
   --mov-curva: cubic-bezier(0.22, 1, 0.36, 1);

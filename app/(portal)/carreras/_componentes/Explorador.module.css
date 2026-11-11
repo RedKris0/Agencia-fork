@@ -20,61 +20,16 @@
 .explorador a {
   text-underline-offset: var(--espacio-1);
 }
-
-.interior, .contenido {
+.contenido {
   max-inline-size: var(--ancho-sitio);
   margin-inline: auto;
   padding-inline: var(--espacio-4);
-}
-
-.encabezado {
-  --color-foco: var(--color-marca-texto);
-  background: var(--color-marca-fondo);
-  color: var(--color-marca-texto);
-  padding-block: var(--espacio-4) var(--espacio-8);
-  border-block-end: var(--borde-linea) solid var(--color-marca-linea);
-}
-
-.volver {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--espacio-2);
-  min-block-size: var(--objetivo-tactil);
-  color: inherit;
-}
-
-.presentacion {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--espacio-8);
-  padding-block-start: var(--espacio-6);
-}
-
-.presentacion h1 {
-  font-size: var(--texto-4);
-  line-height: var(--interlineado-titulos);
-  text-wrap: balance;
-}
-
-.presentacion p {
-  margin-block-start: var(--espacio-3);
-  max-inline-size: var(--medida);
-  color: var(--color-marca-linea);
-}
-
-.senal {
-  display: none;
 }
 
 .contenido {
   padding-block: var(--espacio-6) var(--espacio-12);
 }
 
-.trayecto {
-  max-inline-size: var(--medida);
-  margin-block-end: var(--espacio-8);
-}
 
 .buscador, .campo {
   display: grid;
@@ -223,8 +178,8 @@
 
 .tarjeta {
   display: grid;
-  gap: var(--espacio-6);
-  padding: var(--espacio-6) var(--espacio-4);
+  gap: 0;
+  padding: 0;
   border: var(--borde) solid var(--color-borde);
   border-radius: var(--radio);
   background: var(--color-superficie);
@@ -232,9 +187,14 @@
 }
 
 .identidad {
+  --color-linea-texto: var(--color-marca-texto);
+  --color-texto-suave: var(--color-marca-linea);
   display: grid;
   align-content: start;
   gap: var(--espacio-3);
+  padding: var(--espacio-6);
+  background: var(--color-marca-fondo);
+  color: var(--color-marca-texto);
 }
 
 .identidad h3 {
@@ -265,6 +225,7 @@
 .datos {
   display: grid;
   gap: var(--espacio-6);
+  padding: var(--espacio-6);
 }
 
 .dato {
@@ -315,7 +276,8 @@
   gap: var(--espacio-4);
   min-block-size: var(--objetivo-tactil);
   border-block-start: var(--borde) solid var(--color-borde);
-  padding-block-start: var(--espacio-3);
+  padding: var(--espacio-4) var(--espacio-6);
+  background: var(--color-superficie-suave);
   font-weight: 700;
 }
 
@@ -406,36 +368,8 @@
 }
 
 @media (min-width: 48rem) {
-  .interior, .contenido {
+.contenido {
     padding-inline: var(--espacio-8);
-  }
-
-  .encabezado {
-    padding-block-end: var(--espacio-12);
-  }
-
-  .presentacion h1 {
-    font-size: var(--texto-5);
-  }
-
-  .presentacion p {
-    font-size: var(--texto-1);
-  }
-
-  .senal {
-    align-items: center;
-    gap: var(--espacio-6);
-    color: var(--color-marca-linea);
-  }
-
-  .senal svg {
-    inline-size: var(--espacio-20);
-    block-size: var(--espacio-20);
-    stroke-width: 1;
-  }
-
-  .senal svg:last-child {
-    color: var(--color-marca-texto);
   }
 
   .buscador {
@@ -454,7 +388,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .tarjeta {
+  .identidad, .datos {
     padding: var(--espacio-8);
   }
 
@@ -471,17 +405,13 @@
     grid-column: 1 / -1;
   }
 
-
 }
 
 @media (min-width: 64rem) {
-  .senal {
-    display: flex;
-  }
 
   .tarjeta {
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: var(--espacio-6) var(--espacio-8);
+    gap: 0;
   }
 
   .datos {
@@ -491,7 +421,6 @@
   .enlace {
     grid-column: 1 / -1;
   }
-
 
 }
 
@@ -505,7 +434,6 @@
     background: var(--color-superficie-suave);
   }
 
-
 }
 
 @keyframes cargar {
@@ -513,13 +441,11 @@
     opacity: 0.5;
   }
 
-
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .esqueleto {
     animation: cargar var(--mov-carga) ease-in-out infinite;
   }
-
 
 }

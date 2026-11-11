@@ -2,12 +2,13 @@
 .portada :where(a, button, summary, [tabindex="0"]):focus-visible { outline: var(--anillo-foco) solid var(--color-foco); outline-offset: var(--espacio-1); }
 .cabecera, .hero, .fuentes { --color-foco: var(--color-marca-texto); background: var(--color-marca-fondo); color: var(--color-marca-texto); }
 .cabecera { position: sticky; inset-block-start: 0; z-index: 5; border-block-end: var(--borde) solid var(--color-marca-linea); }
-.navegacion { max-inline-size: var(--ancho-sitio); margin-inline: auto; padding: var(--espacio-3) var(--espacio-4); display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-6); }
+.navegacion { max-inline-size: var(--ancho-sitio); margin-inline: auto; padding: var(--espacio-3) var(--espacio-4); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--espacio-6); }
 .navegacion > a { flex-shrink: 0; }
 .logo { inline-size: var(--ancho-logo); max-inline-size: 60vw; block-size: auto; }
 .menuEscritorio { display: none; gap: var(--espacio-8); }
 .menuEscritorio a, .menuMovil a { display: flex; align-items: center; min-block-size: var(--objetivo-tactil); text-decoration: none; font-weight: 700; }
 .menuEscritorio a:hover, .menuMovil a:hover { text-decoration: underline; text-underline-offset: var(--espacio-2); }
+.menuEscritorio a[aria-current="page"], .menuMovil a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--color-accion); text-underline-offset: var(--espacio-2); }
 .menuMovil summary { min-block-size: var(--objetivo-tactil); display: flex; align-items: center; padding-inline: var(--espacio-3); cursor: pointer; border: var(--borde) solid var(--color-marca-linea); border-radius: var(--radio); }
 .menuMovil nav { position: absolute; inset-block-start: calc(var(--espacio-16) + var(--espacio-2)); inset-inline: var(--espacio-4); padding: var(--espacio-4); background: var(--color-marca-fondo); border: var(--borde) solid var(--color-marca-linea); z-index: 2; }
 .recorrido { max-inline-size: var(--ancho-sitio); margin-inline: auto; padding: var(--espacio-3) var(--espacio-8) var(--espacio-2); }

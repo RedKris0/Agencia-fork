@@ -5,9 +5,19 @@
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
   [data-reveal] {
-    transition: transform var(--mov-entrada) var(--mov-curva), opacity var(--mov-entrada) var(--mov-curva);
+    transition: transform var(--mov-entrada) var(--mov-curva), opacity var(--mov-entrada) var(--mov-curva), translate var(--mov-normal) var(--mov-curva);
   }
-  [data-pendiente] { opacity: 0; transform: translateY(var(--espacio-6)); }
+  [data-pendiente] { opacity: 0; transform: translateY(var(--espacio-8)); }
+  [data-pendiente][data-desde="arriba"] { transform: translateY(calc(var(--espacio-8) * -1)); }
+  [data-reveal="tarjeta"]:nth-child(2n) { transition-delay: var(--mov-escalon); }
+}
+
+[data-reveal]:focus-within { opacity: 1; transform: none; transition: none; }
+[data-pagina-interior] :is([id], a, input, summary) { scroll-margin-block-start: calc(var(--alto-arte) + var(--espacio-16)); }
+[data-pagina-interior]:has(:focus-visible) [data-cabecera-portal] { position: static; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  [data-panel]:not([data-pendiente]):hover { translate: 0 calc(var(--espacio-1) * -1); }
 }
 
 /* Se elimina el tema predeterminado para admitir únicamente nuestros tokens. */

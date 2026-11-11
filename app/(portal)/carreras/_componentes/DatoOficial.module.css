@@ -1,11 +1,24 @@
 .dato {
   display: grid;
-  gap: var(--espacio-2);
-  padding: var(--espacio-4);
+  align-content: start;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+  gap: var(--espacio-3);
   border: var(--borde) solid var(--color-borde);
   border-radius: var(--radio);
   background: var(--color-superficie);
 }
+
+.dato h3 {
+  padding: var(--espacio-4) var(--espacio-6);
+  background: var(--color-marca-fondo);
+  color: var(--color-marca-texto);
+  font-size: var(--texto-1);
+}
+
+.dato p { padding-inline: var(--espacio-6); }
+.dato p:last-child { padding-block-end: var(--espacio-6); }
+.dato[data-sin-dato] { border-style: dashed; }
 
 .dato h3,
 .dato p {

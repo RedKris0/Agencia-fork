@@ -20,61 +20,16 @@
   block-size: var(--espacio-6);
   flex-shrink: 0;
 }
-
-.interior, .contenido {
+.contenido {
   max-inline-size: var(--ancho-sitio);
   margin-inline: auto;
   padding-inline: var(--espacio-4);
-}
-
-.encabezado {
-  --color-foco: var(--color-marca-texto);
-  background: var(--color-marca-fondo);
-  color: var(--color-marca-texto);
-  padding-block: var(--espacio-4) var(--espacio-8);
-  border-block-end: var(--borde-linea) solid var(--color-marca-linea);
-}
-
-.volver {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--espacio-2);
-  min-block-size: var(--objetivo-tactil);
-  color: inherit;
-}
-
-.presentacion {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--espacio-8);
-  padding-block-start: var(--espacio-6);
-}
-
-.presentacion h1 {
-  font-size: var(--texto-4);
-  line-height: var(--interlineado-titulos);
-  text-wrap: balance;
-}
-
-.presentacion p {
-  margin-block-start: var(--espacio-3);
-  max-inline-size: var(--medida);
-  color: var(--color-marca-linea);
-}
-
-.senal {
-  display: none;
 }
 
 .contenido {
   padding-block: var(--espacio-6) var(--espacio-12);
 }
 
-.trayecto {
-  max-inline-size: var(--medida);
-  margin-block-end: var(--espacio-8);
-}
 
 .selector, .buscarCarrera, .seleccionadas, .seleccionadas li, .seleccionadas li > div, .etiqueta, .celda, .elegirMovil {
   display: grid;
@@ -93,8 +48,12 @@
 }
 
 .seleccionadas li {
-  padding-block: var(--espacio-2);
-  border-block-end: var(--borde) solid var(--color-borde);
+  position: relative;
+  padding: var(--espacio-4);
+  border: var(--borde) solid var(--color-marca-linea);
+  border-radius: var(--radio);
+  background: var(--color-marca-fondo);
+  --color-foco: var(--color-marca-texto);
 }
 
 .seleccionadas li > div {
@@ -103,15 +62,16 @@
 
 .seleccionadas strong {
   font-size: var(--texto-0);
-  color: var(--color-linea-texto);
+  color: var(--color-marca-texto);
 }
 
-.seleccionadas span, .compartir {
+.compartir {
   color: var(--color-texto-suave);
 }
 
 .seleccionadas span {
   font-size: var(--texto-m1);
+  color: var(--color-marca-linea);
 }
 
 .seleccionadas a {
@@ -120,7 +80,7 @@
   justify-self: start;
   gap: var(--espacio-2);
   min-block-size: var(--objetivo-tactil);
-  color: var(--color-linea-texto);
+  color: var(--color-marca-texto);
 }
 
 .seleccionadas a svg {
@@ -243,9 +203,9 @@
 
 .columnas {
   position: sticky;
-  inset-block-start: 0;
+  inset-block-start: calc(var(--espacio-24) + var(--espacio-16));
   z-index: 2;
-  background: var(--color-superficie-suave);
+  background: var(--color-marca-fondo);
   border-block: var(--borde) solid var(--color-borde);
 }
 
@@ -262,17 +222,21 @@
 }
 
 .columnas strong {
-  color: var(--color-linea-texto);
+  color: var(--color-marca-texto);
 }
 
 .columnas span {
-  color: var(--color-texto-suave);
+  color: var(--color-marca-linea);
   font-size: var(--texto-m1);
 }
 
 .fila {
   border-block-end: var(--borde) solid var(--color-borde);
   padding-block: var(--espacio-6);
+}
+
+.fila:nth-of-type(2n) {
+  background: var(--color-superficie-suave);
 }
 
 .etiqueta {
@@ -367,20 +331,8 @@
 }
 
 @media (min-width: 48rem) {
-  .interior, .contenido {
+.contenido {
     padding-inline: var(--espacio-8);
-  }
-
-  .encabezado {
-    padding-block-end: var(--espacio-12);
-  }
-
-  .presentacion h1 {
-    font-size: var(--texto-5);
-  }
-
-  .presentacion p {
-    font-size: var(--texto-1);
   }
 
   .buscarCarrera button svg {
@@ -402,19 +354,11 @@
   .seleccionadas li {
     grid-template-columns: minmax(0, 1fr);
     align-content: space-between;
-    padding-block: var(--espacio-4);
+    padding: var(--espacio-6);
   }
 
   .seleccionadas strong {
     font-size: var(--texto-1);
-  }
-
-  .comparador .senal {
-    display: block;
-    inline-size: var(--espacio-24);
-    block-size: var(--espacio-24);
-    color: var(--color-marca-linea);
-    stroke-width: 1;
   }
 
   .elegirMovil {

@@ -14,6 +14,24 @@ const ESTACIONES = [
   { id: "fuentes", nombre: "Fuentes" },
 ] as const;
 
+export function NavegacionPortal({ actual }: { actual?: string }) {
+  return (
+    <div className={estilos.navegacion}>
+      <Link href="/" aria-label="Agencia de Enlace y Seguimiento Estudiantil, inicio"><Image src="/marca/logo-horizontal-oscuro.svg" alt="Agencia de Enlace & Seguimiento Estudiantil" width={1547} height={314} priority className={estilos.logo} /></Link>
+      <nav className={estilos.menuEscritorio} aria-label="Navegación principal">
+        <Link href="/carreras" aria-current={actual === "/carreras" ? "page" : undefined}>Carreras</Link>
+        <Link href="/comparador" aria-current={actual === "/comparador" ? "page" : undefined}>Comparador</Link>
+        <Link href="/beneficios" aria-current={actual === "/beneficios" ? "page" : undefined}>Beneficios y plazos</Link>
+      </nav>
+      <details key={actual ?? "/"} className={estilos.menuMovil}><summary>Menú</summary><nav aria-label="Navegación móvil">
+        <Link href="/carreras" aria-current={actual === "/carreras" ? "page" : undefined}>Carreras</Link>
+        <Link href="/comparador" aria-current={actual === "/comparador" ? "page" : undefined}>Comparador</Link>
+        <Link href="/beneficios" aria-current={actual === "/beneficios" ? "page" : undefined}>Beneficios y plazos</Link>
+      </nav></details>
+    </div>
+  );
+}
+
 export function CabeceraViaje() {
   const via = useRef<HTMLDivElement>(null);
   const tren = useRef<HTMLDivElement>(null);
@@ -45,51 +63,21 @@ export function CabeceraViaje() {
       if (!cuadro) cuadro = requestAnimationFrame(actualizar);
     }
 
-    const observador = new IntersectionObserver(entradas => {
-      for (const entrada of entradas) {
-        if (reduccion.matches || entrada.isIntersecting || entrada.target.contains(document.activeElement)) {
-          entrada.target.removeAttribute("data-pendiente");
-        } else {
-          entrada.target.setAttribute("data-pendiente", "");
-        }
-      }
-    });
-    const elementos = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    for (const elemento of elementos) {
-      if (!reduccion.matches && elemento.getBoundingClientRect().top >= innerHeight) elemento.setAttribute("data-pendiente", "");
-      observador.observe(elemento);
-    }
-    function mostrarFoco(evento: FocusEvent) {
-      (evento.target as HTMLElement).closest("[data-reveal]")?.removeAttribute("data-pendiente");
-    }
-    function cambiarPreferencia() {
-      for (const elemento of elementos) elemento.removeAttribute("data-pendiente");
-      programar();
-    }
-
     programar();
     addEventListener("scroll", programar, { passive: true });
     addEventListener("resize", programar);
-    reduccion.addEventListener("change", cambiarPreferencia);
-    document.addEventListener("focusin", mostrarFoco);
+    reduccion.addEventListener("change", programar);
     return () => {
       cancelAnimationFrame(cuadro);
       removeEventListener("scroll", programar);
       removeEventListener("resize", programar);
-      reduccion.removeEventListener("change", cambiarPreferencia);
-      document.removeEventListener("focusin", mostrarFoco);
-      observador.disconnect();
-      for (const elemento of elementos) elemento.removeAttribute("data-pendiente");
+      reduccion.removeEventListener("change", programar);
     };
   }, []);
 
   return (
     <header className={estilos.cabecera}>
-      <div className={estilos.navegacion}>
-        <Link href="/" aria-label="Agencia de Enlace y Seguimiento Estudiantil, inicio"><Image src="/marca/logo-horizontal-oscuro.svg" alt="Agencia de Enlace & Seguimiento Estudiantil" width={1547} height={314} priority className={estilos.logo} /></Link>
-        <nav className={estilos.menuEscritorio} aria-label="Navegación principal"><Link href="/carreras">Carreras</Link><Link href="/comparador">Comparador</Link><Link href="/beneficios">Beneficios y plazos</Link></nav>
-        <details className={estilos.menuMovil}><summary>Menú</summary><nav aria-label="Navegación móvil"><Link href="/carreras">Carreras</Link><Link href="/comparador">Comparador</Link><Link href="/beneficios">Beneficios y plazos</Link></nav></details>
-      </div>
+      <NavegacionPortal />
       <nav className={estilos.recorrido} aria-label="Estaciones de esta página">
         <div className={estilos.via} ref={via}>
           <div ref={tren} className={estilos.trenPosicion} data-tren><Tren compacto /></div>

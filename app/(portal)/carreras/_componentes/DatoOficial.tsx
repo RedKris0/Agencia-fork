@@ -18,7 +18,7 @@ export function DatoOficial({ titulo, queMide, indicador, valor, periodo }: Prop
   const sinDato = !valor || indicador?.valor === null;
 
   return (
-    <article className={estilos.dato}>
+    <article className={estilos.dato} data-sin-dato={sinDato || undefined} data-reveal="tarjeta" data-panel>
       <h3>{titulo}</h3>
       {sinDato ? (
         <>

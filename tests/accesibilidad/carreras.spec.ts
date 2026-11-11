@@ -24,7 +24,7 @@ test('el formulario GET conserva búsqueda y filtros sin JavaScript', async ({ b
   expect(parametros.get('tipo')).toBe(valores[1]);
   expect(parametros.get('jornada')).toBe(valores[2]);
   await expect(pagina.getByRole('textbox')).toHaveValue('Enfermería');
-  await pagina.locator('summary').click();
+  await pagina.locator('form summary').click();
   await expect(pagina.locator('input[name="region"]:checked')).toHaveCount(1);
   await expect(pagina.locator('input[name="tipo"]:checked')).toHaveCount(1);
   await expect(pagina.locator('input[name="jornada"]:checked')).toHaveCount(1);
@@ -35,12 +35,12 @@ test('el formulario GET conserva búsqueda y filtros sin JavaScript', async ({ b
 
 test('los filtros se abren con teclado y el foco es visible', async ({ page }) => {
   await page.goto('/carreras');
-  const resumen = page.locator('summary');
+  const resumen = page.locator('form summary');
   await resumen.focus();
   await expect(resumen).toBeFocused();
   expect(await resumen.evaluate(elemento => getComputedStyle(elemento).outlineStyle)).toBe('solid');
   await resumen.press('Enter');
-  await expect(page.locator('details')).toHaveAttribute('open', '');
+  await expect(page.locator('form details')).toHaveAttribute('open', '');
   await page.keyboard.press('Tab');
   await expect(page.locator('input[name="region"]').first()).toBeFocused();
   await page.keyboard.press('Space');
@@ -79,7 +79,7 @@ for (const tema of ['light', 'dark'] as const) {
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       await expect(page.getByRole('heading', { name: 'Explora carreras', exact: true })).toBeVisible();
     }
-    await page.locator('summary').click();
+    await page.locator('form summary').click();
     const informe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     expect(informe.violations).toEqual([]);
     if (await page.locator('main').getByRole('alert').count()) {
