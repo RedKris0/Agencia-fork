@@ -81,6 +81,40 @@ utilizadas por las pruebas existentes.
 
 ## Verificación local de esta etapa
 
+### Portada construida tras la revisión del usuario
+
+La portada `/` implementa el recorrido aprobado. El encabezado permanece
+visible y su tren se desplaza entre Explorar, Comparar, Beneficios y Fuentes
+según la posición real de cada sección. La entrada está orquestada y los
+contenidos posteriores aparecen una vez mediante IntersectionObserver.
+El arte del tren es un SVG original con los colores de marca.
+
+El carrusel contiene cuatro acciones reales, desplazamiento nativo con
+`scroll-snap`, botones anterior/siguiente, indicadores, estado anunciado y
+teclas izquierda, derecha, Inicio y Fin. No se reproduce automáticamente.
+La mejora interactiva reserva su espacio para evitar desplazamientos al
+hidratar. Sin JavaScript, las cuatro diapositivas conservan contenido y enlaces.
+
+Las capas, el contraste de superficies y los encuentros diagonales entre
+secciones se inspiran en el ritmo de la referencia ZZZ. El arte y código son
+propios del proyecto. Se reutilizan las fuentes locales y Lucide.
+El parallax decorativo utiliza CSS scroll-driven cuando el navegador lo admite;
+el recorrido del tren usa requestAnimationFrame y escucha pasiva de scroll.
+La reducción de movimiento deja todo visible y el tren se posiciona por estación.
+
+La fecha de beneficios se lee del catálogo versionado existente. Las fuentes
+de carreras y sus fechas permanecen disponibles en las fichas y el comparador.
+
+Se agregaron cuatro pruebas Playwright de carrusel, teclado, tren, reducción
+de movimiento, contenido sin JavaScript y gesto táctil. Se ejecutan con
+`PLAYWRIGHT_CANAL=msedge npx playwright test portada.spec.ts` después de compilar.
+Las capturas de la portada se revisan a 375, 768 y 1280 px.
+El recorrido continúa mediante una línea vertical y ramales hacia los nombres
+de estación. Los cuatro paneles usan ilustraciones SVG originales de tren,
+comparación, calendario y fuentes. La revisión de teclado incluye el foco
+interior de los paneles recortados y la navegación desde sus enlaces.
+Las cuatro pruebas de portada, la compilación directa de Next y lint pasan.
+
 ### Refinamiento solicitado tras la revisión visual
 
 Cristóbal pidió mayor profesionalismo después de revisar la base. La guía
