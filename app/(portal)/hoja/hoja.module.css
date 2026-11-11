@@ -1,0 +1,232 @@
+/* Hoja de decisión. Solo valores de diseno/tokens.css (docs/diseno.md); la impresión usa los mismos. */
+.hoja {
+  max-inline-size: var(--medida-comparativa);
+  margin-inline: auto;
+  padding: var(--espacio-8) var(--espacio-4);
+  display: grid;
+  gap: var(--espacio-6);
+}
+
+.encabezado,
+.vacia,
+.respaldo,
+.anotaciones,
+.opcion,
+.datos,
+.dato,
+.campo,
+.acciones {
+  display: grid;
+  gap: var(--espacio-3);
+}
+
+.encabezado h1,
+.encabezado p,
+.vacia h2,
+.vacia p,
+.respaldo h2,
+.respaldo p,
+.anotaciones h2,
+.opcion h2,
+.dato dt,
+.dato dd,
+.campo p,
+.acciones p {
+  margin: 0;
+}
+
+.encabezado {
+  padding-block-end: var(--espacio-6);
+  border-block-end: var(--borde-linea) solid var(--color-linea);
+}
+
+.encabezado h1 {
+  font-size: var(--texto-3);
+}
+
+.vacia,
+.respaldo,
+.anotaciones,
+.opcion {
+  min-inline-size: 0;
+  padding: var(--espacio-4);
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+}
+
+.opcion h2,
+.respaldo h2,
+.anotaciones h2,
+.vacia h2 {
+  font-size: var(--texto-1);
+  font-weight: 700;
+}
+
+/* «Opción 1», «Respaldo»: palabra y número, nunca solo color. */
+.etiqueta {
+  color: var(--color-linea-texto);
+  font-weight: 700;
+}
+
+.datos {
+  margin: 0;
+}
+
+.dato {
+  padding-block-start: var(--espacio-3);
+  border-block-start: var(--borde) solid var(--color-borde);
+}
+
+.dato dt {
+  font-weight: 700;
+}
+
+.valor {
+  font-family: var(--fuente-cifras);
+  font-size: var(--texto-2);
+}
+
+.sinDato,
+.nota {
+  color: var(--color-texto-suave);
+}
+
+.nota {
+  font-size: var(--texto-0);
+}
+
+.nota a,
+.hoja a {
+  color: var(--color-linea-texto);
+  text-decoration: underline;
+}
+
+.campo label {
+  font-weight: 700;
+}
+
+.campo textarea,
+.buscar input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--objetivo-tactil);
+  padding: var(--espacio-3);
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font: inherit;
+}
+
+.campo textarea:focus-visible,
+.buscar input:focus-visible,
+.buscar button:focus-visible,
+.enlaceBoton:focus-visible,
+.hoja a:focus-visible {
+  outline: var(--anillo-foco) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
+}
+
+/* Enlace que se toca solo (no va dentro de un párrafo): objetivo táctil de 44 px. */
+.enlaceSuelto {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--objetivo-tactil);
+}
+
+.buscar {
+  display: grid;
+  gap: var(--espacio-2);
+}
+
+.buscar label {
+  font-weight: 700;
+}
+
+.entrada {
+  display: grid;
+  gap: var(--espacio-2);
+}
+
+.buscar button {
+  min-block-size: var(--objetivo-tactil);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+  color: var(--color-linea-texto);
+  font: inherit;
+  font-weight: 700;
+}
+
+.respaldo ul {
+  display: grid;
+  gap: var(--espacio-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.respaldo li a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--objetivo-tactil);
+}
+
+.acciones {
+  justify-items: start;
+}
+
+/* Enlaces con aspecto de botón secundario: la única acción principal es «Imprimir». */
+.enlaceBoton {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--objetivo-tactil);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.soloImprimir,
+.pieImpreso {
+  display: none;
+  margin: 0;
+  color: var(--color-texto-suave);
+  font-size: var(--texto-0);
+}
+
+@media (min-width: 40rem) {
+  .entrada {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media print {
+  .noImprimir {
+    display: none !important;
+  }
+
+  .pieImpreso,
+  .soloImprimir {
+    display: block;
+    white-space: pre-wrap;
+  }
+
+  .hoja {
+    max-inline-size: none;
+    padding: 0;
+  }
+
+  .opcion {
+    break-inside: avoid;
+    border-color: var(--color-borde);
+  }
+
+  .campo textarea {
+    display: none;
+  }
+}

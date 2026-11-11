@@ -409,3 +409,23 @@
     text-underline-offset: var(--espacio-1);
   }
 }
+
+/* Lleva las carreras elegidas a la hoja de decisión. Acción secundaria: borde, sin relleno. */
+.usarEnHoja {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-block-size: var(--objetivo-tactil);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+  color: var(--color-linea-texto);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.usarEnHoja:focus-visible {
+  outline: var(--anillo-foco) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
+}
