@@ -62,7 +62,7 @@ test('la espera de la búsqueda muestra tarjetas y respeta movimiento reducido',
   });
   await page.getByRole('button', { name: 'Buscar', exact: true }).click();
   await expect(page.getByRole('status')).toHaveText('Buscando carreras…');
-  const tarjetas = page.locator('[data-cargando] > div[aria-hidden="true"] > div');
+  const tarjetas = page.locator('[data-espera-resultados] > div');
   await expect(tarjetas).toHaveCount(3);
   await expect(tarjetas.first()).toBeVisible();
   expect(await tarjetas.first().locator('span').first().evaluate(elemento => getComputedStyle(elemento).animationName)).toBe('none');
