@@ -14,10 +14,12 @@ export function CargaExplorador({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className={estilos.contenido} data-cargando={cargando || undefined} onSubmit={() => establecerCargando(true)}>
+    <div className={estilos.contenido} data-cargando={cargando || undefined} onSubmit={(evento) => {
+      if (evento.target instanceof HTMLFormElement && evento.target.checkValidity() && !evento.defaultPrevented) establecerCargando(true);
+    }}>
       {children}
       <p role="status" className={estilos.estadoCarga}>{cargando ? 'Buscando carreras…' : ''}</p>
-      <div hidden={!cargando} aria-hidden="true" className={estilos.carga}>
+      <div hidden={!cargando} aria-hidden="true" className={estilos.carga} data-espera-resultados>
         {[0, 1, 2].map((indice) => (
           <div className={estilos.tarjeta} key={indice}>
             <div className={estilos.identidad}>
