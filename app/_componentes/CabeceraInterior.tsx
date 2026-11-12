@@ -25,11 +25,11 @@ export function CabeceraInterior({ pagina, titulo, children }: { pagina: Pagina;
       <header className={estilos.cabecera} data-cabecera-portal>
         <NavegacionPortal actual={ruta} />
         <nav className={estilos.recorrido} aria-label="Recorrido del portal">
-          {PARADAS.map(({ href, nombre }) => (
-            <Link href={href} key={href} className={estilos.parada} aria-current={href === ruta ? "page" : undefined}>
+          {PARADAS.filter(({ href }) => href === "/" || href === ruta).map(({ href, nombre }) => (
+            <span key={href} className={estilos.parada} aria-current={href === ruta ? "page" : undefined}>
               <span className={estilos.nodo} aria-hidden="true">{href === ruta ? <span className={estilos.tren}><Tren compacto /></span> : null}</span>
               <span>{nombre}</span>
-            </Link>
+            </span>
           ))}
         </nav>
       </header>
@@ -40,7 +40,6 @@ export function CabeceraInterior({ pagina, titulo, children }: { pagina: Pagina;
             <h1 id="titulo-pagina">{titulo}</h1>
             {children}
             <div className={estilos.etapas}><IndicadorEstacion actual={pagina === "beneficios" ? 2 : 1} /></div>
-            {acciones}
           </div>
           <div className={estilos.arte} aria-hidden="true"><Arte /></div>
         </div>

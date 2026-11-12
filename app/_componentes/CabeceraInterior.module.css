@@ -19,7 +19,7 @@
 .recorrido {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   max-inline-size: var(--ancho-sitio);
   margin-inline: auto;
   padding: var(--espacio-3) var(--espacio-4) var(--espacio-2);
