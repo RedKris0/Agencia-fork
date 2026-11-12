@@ -187,8 +187,6 @@
 }
 
 .identidad {
-  --color-linea-texto: var(--color-marca-texto);
-  --color-texto-suave: var(--color-marca-linea);
   display: grid;
   align-content: start;
   gap: var(--espacio-3);
@@ -200,7 +198,7 @@
 .identidad h3 {
   font-size: var(--texto-2);
   line-height: var(--interlineado-titulos);
-  color: var(--color-linea-texto);
+  color: var(--color-marca-texto);
   text-wrap: balance;
 }
 
@@ -212,7 +210,7 @@
   display: flex;
   align-items: start;
   gap: var(--espacio-2);
-  color: var(--color-texto-suave);
+  color: var(--color-marca-linea);
   font-size: var(--texto-m1);
 }
 
@@ -331,6 +329,7 @@
   block-size: var(--espacio-4);
   inline-size: 75%;
   background: var(--color-borde);
+  /* La opacidad atenúa una forma decorativa de espera, sin texto ni información. */
   opacity: 0.25;
   border-radius: var(--radio);
 }
