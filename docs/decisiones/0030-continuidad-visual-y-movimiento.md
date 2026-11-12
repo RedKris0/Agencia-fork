@@ -23,7 +23,8 @@ Las tarjetas separan una cabecera gráfica de la información y sus fuentes.
 La ficha individual utiliza esa cabecera y paneles de indicadores para
 mantener la continuidad al abrir una carrera desde el explorador.
 
-El token de entrada pasa de 500 a 850 ms y el escalonado de 60 a 90 ms.
+Se reutilizan los tiempos de entrada de 850 ms y escalonado de 90 ms,
+incorporados en el PR #151 y documentados en el ADR 0029.
 El escalonado de tarjetas se limita a dos posiciones para evitar esperas
 acumuladas en catálogos largos. Los controles conservan sus tiempos breves.
 Las apariciones funcionan al desplazarse y tras actualizar los resultados.
@@ -37,6 +38,8 @@ aplican los colores y las ilustraciones propias para prolongar la identidad
 de la portada. El movimiento acompaña la lectura y las interacciones.
 
 Se consultaron referencias de composición y movimiento publicadas en Awwwards.
+Estas referencias orientan el diseño visual. Los datos educativos mantienen
+las fuentes oficiales documentadas por el proyecto.
 La adaptación a AE-SE conserva sus fuentes locales, tokens y requisitos de
 trazabilidad. Las observaciones visuales orientan la composición.
 
@@ -55,7 +58,8 @@ y los catálogos mantienen sus contratos.
 
 - Compilación directa de Next, lint y comprobación de tipos aprobados.
 - 44 pares de contraste verificados por el generador de tokens.
-- 189 pruebas de Node y 27 pruebas Playwright aprobadas con Edge.
+- La ejecución de las pruebas se registra en el PR de integración, una vez
+  incorporadas sus dependencias, con sus resultados y fecha.
 - Navegación entre páginas con identidad compartida y cierre del menú móvil.
 - Apariciones repetidas, registro de tarjetas tras filtrar y foco inmediato.
 - Reducción de movimiento y contenido completo sin JavaScript.

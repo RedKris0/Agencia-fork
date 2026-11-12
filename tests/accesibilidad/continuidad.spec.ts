@@ -90,7 +90,7 @@ test('la identidad y el contenido de las páginas interiores funcionan sin JavaS
     await pagina.getByRole('link', { name: 'Ir al contenido', exact: true }).press('Enter');
     await expect(pagina.locator('main')).toBeFocused();
     await pagina.keyboard.press('Tab');
-    await expect(pagina.locator('main input:not([type="hidden"])').first()).toBeFocused();
+      await expect(pagina.locator('main :is(a[href], button, input:not([type="hidden"]), select, textarea, summary)').first()).toBeFocused();
   }
   await contexto.close();
 });
