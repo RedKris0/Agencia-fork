@@ -40,37 +40,50 @@ export function CabeceraViaje() {
   useEffect(() => {
     const reduccion = matchMedia("(prefers-reduced-motion: reduce)");
     const secciones = ESTACIONES.map(({ id }) => document.getElementById(id));
+    let posiciones: number[] = [];
+    let anchoVia = 0;
     let cuadro = 0;
+
+    function medir() {
+      if (!via.current) return;
+      const limite = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+      posiciones = secciones.map(seccion => seccion ? Math.min(limite, Math.max(0,
+        seccion.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(seccion).scrollMarginBlockStart),
+      )) : 0);
+      anchoVia = via.current.clientWidth;
+    }
 
     function actualizar() {
       cuadro = 0;
-      if (!via.current || !tren.current) return;
-      const limite = Math.max(0, document.documentElement.scrollHeight - innerHeight);
-      const posiciones = secciones.map(seccion => seccion ? Math.min(limite, Math.max(0,
-        seccion.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(seccion).scrollMarginBlockStart),
-      )) : 0);
+      if (!tren.current) return;
       const referencia = scrollY;
       let indice = 0;
       for (let i = 1; i < posiciones.length; i++) if (referencia >= posiciones[i]) indice = i;
       const siguiente = posiciones[indice + 1];
       const avance = siguiente === undefined ? 0 : Math.min(1, Math.max(0, (referencia - posiciones[indice]) / Math.max(1, siguiente - posiciones[indice])));
       const progreso = (indice + (reduccion.matches ? 0 : avance)) / (ESTACIONES.length - 1);
-      tren.current.style.transform = `translate3d(${progreso * via.current.clientWidth}px, 0, 0)`;
-      setActual(indice);
+      tren.current.style.transform = `translate3d(${progreso * anchoVia}px, 0, 0)`;
+      setActual(anterior => anterior === indice ? anterior : indice);
     }
 
     function programar() {
       if (!cuadro) cuadro = requestAnimationFrame(actualizar);
     }
 
+    function redimensionar() {
+      medir();
+      programar();
+    }
+
+    medir();
     programar();
     addEventListener("scroll", programar, { passive: true });
-    addEventListener("resize", programar);
+    addEventListener("resize", redimensionar);
     reduccion.addEventListener("change", programar);
     return () => {
       cancelAnimationFrame(cuadro);
       removeEventListener("scroll", programar);
-      removeEventListener("resize", programar);
+      removeEventListener("resize", redimensionar);
       reduccion.removeEventListener("change", programar);
     };
   }, []);
