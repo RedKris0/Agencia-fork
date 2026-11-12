@@ -63,8 +63,8 @@
 }
 
 .parada[aria-current] .nodo {
-  background: var(--color-accion);
-  border-color: var(--color-accion);
+  background: var(--color-marca-linea);
+  border-color: var(--color-marca-linea);
 }
 
 .tren {
@@ -138,9 +138,9 @@
 }
 
 .etapas {
-  --color-linea: var(--color-accion);
+  --color-linea: var(--color-marca-linea);
   --color-linea-texto: var(--color-marca-texto);
-  --color-sobre-linea: var(--color-sobre-accion);
+  --color-sobre-linea: var(--color-marca-fondo);
   --color-superficie: var(--color-marca-fondo);
   --color-texto: var(--color-marca-texto);
   --color-estacion-explorar: var(--color-marca-linea);

@@ -16,7 +16,7 @@ const PARADAS = [
 ];
 const ILUSTRACIONES = { carreras: Tren, comparador: ComparacionIlustrada, beneficios: CalendarioIlustrado, ficha: Tren };
 
-export function CabeceraInterior({ pagina, titulo, children, acciones }: { pagina: Pagina; titulo: string; children: ReactNode; acciones?: ReactNode }) {
+export function CabeceraInterior({ pagina, titulo, children }: { pagina: Pagina; titulo: string; children: ReactNode }) {
   const ruta = pagina === "ficha" ? "/carreras" : `/${pagina}`;
   const volverAlExplorador = pagina === "comparador" || pagina === "ficha";
   const Arte = ILUSTRACIONES[pagina];
