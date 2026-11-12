@@ -53,7 +53,10 @@
   border: var(--borde) solid var(--color-marca-linea);
   border-radius: var(--radio);
   background: var(--color-marca-fondo);
-  --color-foco: var(--color-marca-texto);
+}
+
+.comparador .seleccionadas a:focus-visible {
+  outline-color: var(--color-marca-texto);
 }
 
 .seleccionadas li > div {
