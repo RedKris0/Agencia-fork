@@ -125,5 +125,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root { --mov-rapido: 0ms; --mov-normal: 0ms; }
+  :root { --mov-rapido: 0ms; --mov-normal: 0ms; --mov-entrada: 0ms; --mov-escalon: 0ms; --mov-fundido: 0ms; --mov-carga: 0ms; }
 }

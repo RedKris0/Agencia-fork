@@ -1,4 +1,4 @@
-# Sistema de diseño · "Mapa de trayecto"
+# Sistema de diseño · "Mapa de trayecto", base visual Andén urbano
 
 > Regla de este proyecto: **ningún elemento visual existe porque "se ve bonito"**. Cada color, letra, espacio y borde responde a una de estas cuatro razones, y aquí queda escrita cuál:
 >
@@ -8,6 +8,10 @@
 > 4. **Identidad** (el concepto propio y el logo de la agencia).
 >
 > Si una propuesta no puede justificarse con una de las cuatro, no entra.
+
+> **Decisión del líder (11-nov-2026): el indicador mantiene las 4 estaciones** («Explorar → Postular → Llegar → Avanzar»). El alcance vigente ([ADR 0031](decisiones/0031-producto-y-organizacion.md)) cubre «Explorar» y «Postular»; «Llegar» y «Avanzar» quedan como etapas futuras, sin pantallas por ahora, y se mostrarán como próximas (con texto, no solo color) hasta que exista el trabajo de permanencia. Los tokens `estacion-*` y el componente `IndicadorEstacion` no cambian.
+
+La idea (la línea de metro) está en la sección 1. La base visual vigente, **Andén urbano** (fondo blanco, superficies azul marino en modo oscuro, tokens de movimiento), se decidió en el [ADR 0029](decisiones/0029-base-visual-anden-urbano.md) y reemplaza la paleta crema anterior.
 
 Fuente de verdad de los valores: [`diseno/tokens.json`](../diseno/tokens.json). El CSS se genera y verifica con `python3 scripts/tokens.py`.
 
@@ -73,11 +77,11 @@ Algunos colores no alcanzan el contraste mínimo de WCAG para texto (4,5:1) sobr
 | Color | Como relleno | Como texto sobre `fondo` |
 |---|---|---|
 | Azul `linea` | 11,99:1 | el mismo `#0D325F` sirve como texto |
-| Coral `accion` | 2,73:1, no sirve como texto | usar `accion-texto` `#A93A22` → 5,93:1 |
+| Coral `accion` | 2,92:1, no sirve como texto | usar `accion-texto` `#A93A22` → 6,33:1 |
 | Rojo `alerta` | 6,15:1 | el mismo `#B42318` sirve como texto |
-| Verde `exito` | 3,20:1 (vale para íconos y bordes) | usar `exito-texto` `#00785A` → 5,13:1 |
+| Verde `exito` | 3,42:1 (vale para íconos y bordes) | usar `exito-texto` `#00785A` → 5,48:1 |
 
-El botón coral es válido aunque el coral tenga 2,73:1 contra el fondo: lo que identifica al botón es su texto, en tinta sobre coral (5,90:1).
+El botón coral es válido aunque el coral tenga 2,92:1 contra el fondo: lo que identifica al botón es su texto, en tinta sobre coral (5,90:1).
 
 Regla práctica: **un color de relleno nunca se usa como texto si tiene variante `-texto`.**
 
@@ -85,20 +89,22 @@ Regla práctica: **un color de relleno nunca se usa como texto si tiene variante
 
 | Token | Valor | Razón |
 |---|---|---|
-| `fondo` | `#FAF7F2` (papel) | Un blanco levemente cálido. Razón de identidad: evoca papel impreso y separa la plataforma del blanco puro de los portales genéricos. No atribuimos efectos sobre la fatiga visual porque no los podemos respaldar. |
-| `superficie` | `#FFFFFF` | Tarjetas y formularios: se distinguen del fondo sin necesitar sombras. |
-| `texto` | `#1C1B19` (tinta) | 16,11:1 sobre `fondo`. Negro cálido coherente con el papel. |
-| `texto-suave` | `#5E5A53` | 6,42:1: texto secundario que sigue cumpliendo AA con margen. |
-| `borde` | `#8F887D` | 3,28:1: cumple el 3:1 que WCAG 1.4.11 exige a los bordes de componentes. |
+| `fondo` | `#FFFFFF` | Blanco puro: el máximo contraste posible con el texto y con los colores de marca, y un lienzo neutro para el recorrido. Reemplaza el crema `#FAF7F2` anterior (ADR 0029). |
+| `superficie` | `#FFFFFF` | Tarjetas y formularios. Se separan del fondo con borde, no con sombra. |
+| `superficie-suave` | `#EFF4FB` | Bandas y bloques de apoyo. `texto` 15,57:1 y `texto-suave` 6,31:1 sobre ella. |
+| `texto` | `#1C1B19` (tinta) | 17,21:1 sobre `fondo`. |
+| `texto-suave` | `#4B5B6C` | 6,97:1: texto secundario que sigue cumpliendo AA con margen. |
+| `borde` | `#718198` | 3,97:1: cumple el 3:1 que WCAG 1.4.11 exige a los bordes de componentes. |
+| `marca-fondo` / `marca-texto` / `marca-linea` | `#0D325F` / `#FFFFFF` / `#8DB2E6` | Cabecera azul marino, igual en ambos temas. Texto 12,82:1 y línea 5,89:1 sobre ella. |
 
 ### 2.6 Modo oscuro
 
-Se activa según la preferencia del sistema operativo y puede forzarse con `data-tema`. El azul marino casi desaparece sobre fondo oscuro (1,4:1), así que en modo oscuro la línea pasa a un azul claro del mismo tono (`#8DB2E6`, 8,38:1); el coral se mantiene. Todos los pares están verificados en ambos modos (36 de 36 cumplen; ver `python3 scripts/tokens.py --check`). Razón: accesibilidad (personas con fotofobia o baja visión) y respeto por la configuración del usuario.
+Se activa según la preferencia del sistema operativo y puede forzarse con `data-tema`. El fondo oscuro es azul marino (`#0A1D33`, superficie `#102B48`, apoyo `#173859`), de la misma familia que el logo. El azul marino de la línea casi desaparece sobre él (1,33:1), así que en modo oscuro la línea pasa a un azul claro del mismo tono (`#8DB2E6`, 7,80:1); el coral se mantiene. Todos los pares están verificados en ambos modos (44 de 44 cumplen; ver `python3 scripts/tokens.py --check`). Razón: accesibilidad (personas con fotofobia o baja visión) y respeto por la configuración del usuario.
 
 ### 2.7 Reglas de uso
 
 - **Nunca solo color para transmitir información** (WCAG 1.4.1 y regla 2 de Okabe-Ito). Cada estación lleva color **+ número + nombre**; cada estado lleva color **+ ícono + palabra**.
-- **El coral se gasta poco:** una sola acción principal por pantalla. Si todo es coral, nada lo es.
+- **El coral se gasta poco:** una sola acción principal por pantalla. Si todo es coral, nada lo es. **Decisión del líder (11-nov-2026):** el coral se usa solo en (1) el botón de la acción principal y (2) la sección de beneficios de la portada con fondo coral que describe el [ADR 0029](decisiones/0029-base-visual-anden-urbano.md). Los adornos (tren, rieles, parada o estación activa, indicadores del carrusel, subrayados de navegación, bordes de cabecera) usan `--color-linea` o los tokens de marca, nunca `--color-accion`.
 - **Sin degradados ni sombras decorativas:** no aportan información, cuestan rendimiento en equipos básicos y son una señal de plantilla genérica.
 
 ---
@@ -130,6 +136,8 @@ suman 51.236 bytes. Procedencia y licencias en `public/fuentes/README.md`.
 |---|---|---|
 | Tamaño base | `1rem` (16 px por defecto) | Se expresa en `rem` para respetar el tamaño de letra que la persona configuró en su teléfono (WCAG 1.4.4: el texto debe poder ampliarse al 200%). En campos de formulario, menos de 16 px hace que iPhone haga zoom automático. |
 | Escala | razón 1,25 (tercera mayor) | Una escala moderada: los títulos se distinguen del cuerpo sin desbordar pantallas de 360 px. |
+| Texto pequeño | `0.875rem` (14 px) | Sube desde `0.8rem` para que fechas y fuentes sigan legibles en teléfono. |
+| Titular de escritorio | `4rem` (`--texto-5`) | Solo para el titular de la portada en pantallas anchas. |
 | Interlineado del texto | 1,5 | Coincide con el espaciado que WCAG 1.4.12 exige que el texto soporte sin romperse. |
 | Interlineado de títulos | 1,2 | Los títulos son cortos; más espacio separaría líneas que deben leerse como una unidad. |
 | Largo de línea máximo | 68 caracteres | Dentro del rango de 45 a 75 caracteres que la tipografía editorial (Bringhurst) considera cómodo para leer. |
@@ -141,7 +149,7 @@ suman 51.236 bytes. Procedencia y licencias en `public/fuentes/README.md`.
 
 | Decisión | Valor | Razón |
 |---|---|---|
-| Unidad base | 4 px, escala 4·8·12·16·24·32·48·64 | Un solo sistema evita decisiones arbitrarias ("¿13 o 15 px?") y mantiene alineación. |
+| Unidad base | 4 px, escala 4·8·12·16·24·32·48·64·80·96 | Un solo sistema evita decisiones arbitrarias ("¿13 o 15 px?") y mantiene alineación. |
 | Objetivo táctil mínimo | **44 × 44 px** | WCAG 2.2 exige 24 px como mínimo (2.5.8, AA) y recomienda 44 px (2.5.5, AAA). Elegimos 44: pantallas pequeñas, dedos en movimiento, personas con temblor. |
 | Anillo de foco | 3 px, color `foco` | Quien navega con teclado o lector de pantalla siempre ve dónde está. Contraste ≥ 3:1. |
 
@@ -169,9 +177,9 @@ suman 51.236 bytes. Procedencia y licencias en `public/fuentes/README.md`.
 
 ## 7. Movimiento
 
-- Duraciones de 150 y 220 ms: lo suficiente para entender qué cambió, sin hacer esperar.
+- Duraciones de 150 y 220 ms para respuestas (botones, estados). Para la aparición de contenido hay tokens propios: `entrada` 850 ms, `escalon` 90 ms entre elementos, `fundido` 180 ms y `carga` 1600 ms. La curva común es `--mov-curva`.
 - Solo para explicar un cambio (algo aparece, se abre, avanza la línea). Nunca decorativo.
-- Con `prefers-reduced-motion`, las duraciones pasan a 0 (WCAG 2.3.3). Ya está en `tokens.css`.
+- Con `prefers-reduced-motion`, todas las duraciones pasan a 0 (WCAG 2.3.3). `tokens.py` lo genera desde `tokens.json`, así que un token de movimiento nuevo queda cubierto solo.
 
 ---
 
@@ -221,10 +229,9 @@ Archivos en `public/marca/`, redibujados como vectores a partir del único origi
 ## Fuentes
 
 - Okabe, M. e Ito, K. *Color Universal Design: How to make figures and presentations that are friendly to colorblind people.* https://jfly.uni-koeln.de/color/
-- Valores hexadecimales de la paleta Okabe-Ito (documentación del paquete `see`, R): https://rdrr.io/cran/see/man/palette_okabeito.html
 - Elliot, A. J. (2015). *Color and psychological functioning: a review of theoretical and empirical work.* Frontiers in Psychology, 6. https://doi.org/10.3389/fpsyg.2015.00368
 - W3C. *Web Content Accessibility Guidelines (WCAG) 2.2.* https://www.w3.org/TR/WCAG22/ — criterios 1.4.1, 1.4.3, 1.4.4, 1.4.11, 1.4.12, 2.3.3, 2.5.5, 2.5.8.
-- Braille Institute. *Atkinson Hyperlegible Next y Mono.* https://www.brailleinstitute.org/freefont/ · reseña: https://christiantietze.de/posts/2025/02/atkinson-hyperlegible-font-next-mono/
+- Braille Institute. *Atkinson Hyperlegible Next y Mono.* https://www.brailleinstitute.org/freefont/
 - Bringhurst, R. *The Elements of Typographic Style* (largo de línea de 45–75 caracteres).
 - Lucide. https://lucide.dev (licencia ISC).
 - Machado, G. M., Oliveira, M. M. y Fernandes, L. A. F. (2009). *A Physiologically-based Model for Simulation of Color Vision Deficiency.* IEEE Transactions on Visualization and Computer Graphics, 15(6). Matrices usadas para simular daltonismo (severidad máxima).

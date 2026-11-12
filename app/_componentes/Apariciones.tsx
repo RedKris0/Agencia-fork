@@ -46,7 +46,15 @@ export function Apariciones() {
     }
 
     // Los filtros y la navegación pueden insertar tarjetas después de la primera carga.
-    const cambios = new MutationObserver(registrar);
+    let pendiente = false;
+    const cambios = new MutationObserver(() => {
+      if (pendiente) return;
+      pendiente = true;
+      requestAnimationFrame(() => {
+        pendiente = false;
+        registrar();
+      });
+    });
     registrar();
     cambios.observe(document.body, { childList: true, subtree: true });
     document.addEventListener("focusin", mostrarFoco);

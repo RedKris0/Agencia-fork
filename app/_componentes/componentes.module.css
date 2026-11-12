@@ -33,7 +33,7 @@
   padding: var(--espacio-6) var(--espacio-4);
   background: var(--color-marca-fondo);
   color: var(--color-marca-texto);
-  border-block-end: var(--borde-linea) solid var(--color-accion);
+  border-block-end: var(--borde-linea) solid var(--color-marca-linea);
 }
 .logo { inline-size: var(--ancho-logo); block-size: auto; max-inline-size: 100%; max-block-size: var(--espacio-16); }
 .logoClaro { display: none; }
@@ -71,9 +71,9 @@
 .boton:enabled:active { transform: none; }
 
 .encabezado .estacion[aria-current="step"] .numero {
-  background: var(--color-accion);
-  border-color: var(--color-accion);
-  color: var(--color-sobre-accion);
+  background: var(--color-linea);
+  border-color: var(--color-linea);
+  color: var(--color-sobre-linea);
 }
 
 @media (min-width: 48rem) {

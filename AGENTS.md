@@ -19,30 +19,35 @@ Ningún cambio llega a `main` sin una revisión con la pauta `revisar-pr` confir
 
 ## 1. Qué estamos construyendo
 
-**Agencia de Enlace & Seguimiento Estudiantil**: una plataforma gratuita que conecta a cualquier persona (de cualquier edad) con la educación superior en Chile y la acompaña **antes, durante y después** de entrar.
+**Agencia de Enlace & Seguimiento Estudiantil**: un sitio web gratuito para estudiantes de 3.º y 4.º medio de liceos con financiamiento público y un **panel interactivo de seguimiento para sus colegios**, operados por una **fundación sin fines de lucro**. Territorio de referencia: Región de O'Higgins, provincia de Colchagua (sede San Fernando de AIEP). Ver [ADR 0031](docs/decisiones/0031-producto-y-organizacion.md).
 
-Idea central (nuestro sello): **la Ficha de Trayectoria pertenece al estudiante**. El estudiante decide, con consentimiento explícito, qué compartir y con quién. La institución recibe información solo si el estudiante lo autoriza.
+**El problema (todo lo demás parte de aquí):** los estudiantes de liceos con financiamiento público llegan al final de la enseñanza media sin una meta vocacional clara, con información insuficiente y sin un seguimiento sistemático desde su colegio. El acceso inmediato a la educación superior es de 36,3 % a 41,9 % en esos liceos, frente a 68,7 % en colegios particulares pagados (SIES, 2023). Causas: (1) asimetría de información sobre carreras, requisitos y financiamiento; (2) trámites y plazos del beneficio (FUAS) no comprendidos a tiempo; (3) orientación escolar sin seguimiento por estudiante ni datos.
 
-### Las tres etapas
+Idea central (nuestro sello): **el estudiante decide qué comparte con su colegio**. El colegio ve la meta y el avance solo de quienes lo autorizan (y de sus tutores, si son menores).
 
-| Etapa | Objetivo | Qué ofrecemos |
+### Qué ofrecemos
+
+| Para quién | Qué | Estado |
 |---|---|---|
-| **Antes** | Elegir bien | Explorador de carreras con datos oficiales, simulador de puntaje ponderado y ranking, beneficios, plazos, orientación vocacional |
-| **Durante la postulación** | No perder nada | Calendario de plazos, checklist de beneficios (FUAS, gratuidad, becas, créditos), recordatorios |
-| **Después** | No desertar y desarrollarse | Acompañamiento psicosocial, psicoeducativo y psicolaboral, a través de: mantención de beneficios (renovación, avance mínimo, plazos), relatos de pares, estrategias de estudio con evidencia, derivación a la red de apoyo y pulso de check-in como sensor. Ver [ADR 0010](docs/decisiones/0010-modulo-de-permanencia.md) |
+| **Estudiante (gratis, siempre)** | Ficha de carrera con fuente, comparación, simulación del puntaje ponderado, hoja de decisión y guía de trámites y plazos del FUAS | Núcleo |
+| **Colegio y sostenedor (suscripción)** | Panel interactivo: meta vocacional, avance, resumen para el docente y ensayo con prueba oficial publicada con estimación de puntaje comparada con la meta de la carrera | Núcleo (el panel está en diseño) |
+| **Portal de transparencia** (idea acordada, por diseñar) | Mostrar cómo la fundación procesa los datos oficiales (fuente, pasos, normalización, fecha), a partir del tablero analítico de pronósticos, sin atribuirse los datos: son del Estado; el aporte es el proceso | Propuesta; ver [ADR 0031](docs/decisiones/0031-producto-y-organizacion.md) |
+| **Escalabilidad** (fuera del alcance actual) | Permanencia en la educación superior, pulso de check-in, panel para instituciones de educación superior, pruebas propias por colegio | Proyección; ver [ADR 0010](docs/decisiones/archivo/0010-modulo-de-permanencia.md) |
 
 ### Productos
 
-1. **Portal público (PWA)**: web instalable opcionalmente. Nunca exigir descarga.
-2. **Asistente IA**: responde solo con información de fuentes oficiales y cita la fuente. Deriva a una persona cuando corresponde.
-3. **Panel de agencia**: gestión interna de casos y seguimiento.
-4. **Panel institucional (SaaS)**: seguimiento de cohortes para instituciones clientes. Multi-institución, datos aislados por institución.
+1. **Sitio público (PWA)**: web instalable opcionalmente. Nunca exigir descarga.
+2. **Panel de seguimiento para colegios**: multi-colegio, datos aislados por institución (Row Level Security).
+3. **Asistente IA**: responde solo con información de fuentes oficiales y cita la fuente. Deriva a una persona cuando corresponde (diseño; no es núcleo).
+4. **Panel de agencia**: gestión interna de casos.
 
 ### Principios de negocio que afectan el código
 
 - **Gratis para el estudiante, siempre.** Nada de muros de pago, anuncios ni datos vendidos.
-- **Neutralidad**: el portal público nunca ordena, destaca ni recomienda instituciones por ser clientes. Cualquier código que ordene resultados debe usar criterios explícitos y documentados (ej. empleabilidad, puntaje, cercanía), nunca la condición de cliente.
-- **El software es nuestro**: las instituciones arriendan acceso (SaaS). No se entrega código fuente a clientes.
+- **Neutralidad**: el sitio público nunca ordena, destaca ni recomienda instituciones por ser clientes. Cualquier código que ordene resultados debe usar criterios explícitos y documentados (ej. empleabilidad, puntaje, cercanía), nunca la condición de cliente.
+- **Cliente**: colegios y sostenedores, mediante suscripción. Orden de financiamiento: (1) colegios y sostenedores, (2) fondos públicos, (3) filantropía como último recurso.
+- **Organización**: fundación sin fines de lucro (se constituye en 2027; hasta el 2 de diciembre de 2026 es un proyecto de título y el piloto de 2027 se hace por convenio de colaboración). Los excedentes se reinvierten; el uso gratuito del estudiante y la neutralidad se fijan en los estatutos.
+- **El código es de la fundación**: los colegios arriendan acceso al panel. No se entrega código fuente a clientes.
 
 ---
 
@@ -87,7 +92,7 @@ Diseñamos para cumplir la **Ley 21.719** (que modifica la Ley 19.628) desde ya,
 - Todo contenido psicoeducativo debe ser revisado por un profesional (psicología/psicopedagogía) antes de publicarse.
 - **Sin neuromitos**: no usar "estilos de aprendizaje" (visual/auditivo/kinestésico) como base de recomendaciones, porque no tienen respaldo empírico. Usar en cambio **metacognición** y **estrategias de estudio con evidencia** (práctica de recuperación, práctica espaciada, intercalado, autoexplicación). El objetivo es que el estudiante conozca *cómo estudia y cómo puede mejorar*, no ponerle una etiqueta.
 - Lenguaje sin estigma: nunca "alumno malo", "en riesgo" visible para el estudiante, ni etiquetas que lo definan. Internamente se habla de "señales de alerta".
-- **No prometer predicción.** El pulso de check-in detecta por autorreporte y por ausencia de respuesta, nunca predice deserción. Ningún texto de interfaz, documento comercial ni respuesta del asistente puede describirlo de otra forma ([ADR 0010](docs/decisiones/0010-modulo-de-permanencia.md)).
+- **No prometer predicción.** El pulso de check-in detecta por autorreporte y por ausencia de respuesta, nunca predice deserción. Ningún texto de interfaz, documento comercial ni respuesta del asistente puede describirlo de otra forma ([ADR 0010](docs/decisiones/archivo/0010-modulo-de-permanencia.md)).
 - Cada componente de acompañamiento que se agregue debe declarar la evidencia que lo respalda en [`docs/evidencia-permanencia.md`](docs/evidencia-permanencia.md), con su nivel: alta, media, baja, negativa o sin evidencia.
 
 ### 2.5 Diseño: todo con justificación
@@ -97,7 +102,7 @@ Diseñamos para cumplir la **Ley 21.719** (que modifica la Ley 19.628) desde ya,
 - **Agregar o cambiar un token requiere un ADR** y correr `python3 scripts/tokens.py` (falla si el contraste no cumple).
 - **"Psicología del color" no es justificación válida** en este proyecto: la evidencia es incipiente (ver `docs/diseno.md`, sección 2.1).
 - Tipografías: solo Atkinson Hyperlegible Next (texto) y Atkinson Hyperlegible Mono (cifras), alojadas en el proyecto.
-- Una sola acción principal (coral) por pantalla. Nunca información transmitida solo con color.
+- Una sola acción principal (coral) por pantalla. Única excepción: la sección de beneficios de la portada con fondo coral (ADR 0029). Los adornos no usan coral (ver `docs/diseno.md`). Nunca información transmitida solo con color.
 
 ### 2.6 Accesibilidad e inclusión
 
@@ -113,7 +118,7 @@ Diseñamos para cumplir la **Ley 21.719** (que modifica la Ley 19.628) desde ya,
 | Capa | Elección | Motivo | ADR |
 |---|---|---|---|
 | Frontend + backend web | **Next.js (TypeScript)** como PWA | Sin descarga obligatoria, instalable, fichas de carrera pre-generadas | [0001](docs/decisiones/0001-aplicacion-web-progresiva.md) |
-| Estilos | Tailwind CSS leyendo las variables de `diseno/tokens.css` | Un solo origen de colores y medidas | [0005](docs/decisiones/0005-sistema-visual-mapa-de-trayecto.md) |
+| Estilos | Tailwind CSS leyendo las variables de `diseno/tokens.css` | Un solo origen de colores y medidas | [0005](docs/decisiones/0005-sistema-visual-mapa-de-trayecto.md), [0029](docs/decisiones/0029-base-visual-anden-urbano.md) |
 | Base de datos y autenticación | **Supabase (PostgreSQL)** con Row Level Security, región São Paulo | Aislamiento por institución impuesto por la base de datos | [0002](docs/decisiones/0002-supabase-con-rls.md) |
 | Procesamiento de datos oficiales | **Python** (scripts en `datos/`) | Limpieza de archivos CSV/XLSX oficiales | — |
 | Asistente IA | **Gemini en nivel pagado**, solo a través de `lib/ia/proveedor.ts` | Los datos no se usan para entrenar; se puede cambiar de proveedor | [0004](docs/decisiones/0004-ia-gemini-nivel-pagado.md) |
@@ -132,7 +137,7 @@ Cambiar cualquier elemento del stack requiere un registro de decisión (sección
 │   ├── tokens.json          ← ÚNICA fuente de colores, tipografía y medidas
 │   └── tokens.css           ← generado por scripts/tokens.py (no editar a mano)
 ├── scripts/tokens.py        ← genera tokens.css y verifica contraste WCAG
-├── app/                     ← Next.js (portal, panel agencia, panel institucional)
+├── app/                     ← Next.js (sitio público, panel de colegios, panel de agencia)
 ├── lib/                     ← lógica compartida (cálculos, IA, acceso a datos)
 │   ├── calculos/            ← puntaje ponderado, ranking (con pruebas)
 │   └── ia/                  ← interfaz del asistente y protocolo de crisis
