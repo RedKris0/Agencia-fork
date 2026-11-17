@@ -48,7 +48,7 @@ export function BeneficiosCalendario({ beneficios, plazos }: Props) {
   return (
     <>
       <Encabezado estacionActual={2} navegacion={[{ href: "/", texto: "Inicio" }, { href: "/carreras", texto: "Carreras" }]} />
-      <main id="contenido" tabIndex={-1} className={estilos.pagina}>
+      <main id="contenido" tabIndex={-1} className={`${estilos.pagina} ${estilos.contenido}`}>
         <header className={estilos.encabezado}>
           <h1>Beneficios y plazos 2027</h1>
           <p>Revisa opciones oficiales. Cumplir requisitos no asegura un beneficio: podrías acceder si el Ministerio de Educación (Mineduc) confirma tus antecedentes.</p>

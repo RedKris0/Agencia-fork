@@ -1,52 +1,302 @@
 .pagina {
-  display: grid;
-  gap: var(--espacio-8);
   min-inline-size: 0;
-  max-inline-size: var(--medida);
-  margin-inline: auto;
-  padding: var(--espacio-8) var(--espacio-4);
+  background: var(--color-fondo);
 }
 
-.encabezado,
-.seccion,
-.tarjeta,
-.listaBeneficios,
-.listaPlazos {
-  display: grid;
-  gap: var(--espacio-4);
-  min-inline-size: 0;
-}
-
-.encabezado {
-  padding-block-end: var(--espacio-6);
-  border-block-end: var(--borde-linea) solid var(--color-linea);
-}
-
-.encabezado h1,
-.encabezado p,
-.seccion h2,
-.seccion h3,
-.seccion h4,
-.seccion p,
-.seccion ul {
+.pagina :where(h1, h2, h3, h4, p, ul) {
   margin: 0;
 }
 
-.encabezado h1 {
-  font-size: var(--texto-3);
+.pagina :where(a, input, h2):focus-visible {
+  outline: var(--anillo-foco) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
+}
+
+.pagina svg {
+  inline-size: var(--espacio-6);
+  block-size: var(--espacio-6);
+  flex-shrink: 0;
+}
+
+.pagina a {
+  text-underline-offset: var(--espacio-1);
+}
+.contenido {
+  max-inline-size: var(--ancho-sitio);
+  margin-inline: auto;
+  padding-inline: var(--espacio-4);
+  padding-block: var(--espacio-6) var(--espacio-12);
+}
+.enlaceHero, .accion {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  min-block-size: var(--objetivo-tactil);
+  color: inherit;
+}
+
+.accesos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-3) var(--espacio-6);
+  padding-block-start: var(--espacio-6);
+}
+
+.accion {
+  gap: var(--espacio-6);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde) solid var(--color-accion-texto);
+  border-radius: var(--radio);
+  background: var(--color-accion);
+  color: var(--color-sobre-accion);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+
+
+.seccion {
+  display: grid;
+  gap: var(--espacio-4);
+  min-inline-size: 0;
+  overflow-wrap: break-word;
+}
+
+.seccion + .seccion {
+  margin-block-start: var(--espacio-16);
+  border-block-start: var(--borde-linea) solid var(--color-linea);
+  padding-block-start: var(--espacio-8);
 }
 
 .seccion h2 {
   font-size: var(--texto-2);
+  scroll-margin-block-start: var(--espacio-6);
 }
 
 .seccion h3 {
   font-size: var(--texto-1);
+  line-height: var(--interlineado-titulos);
+  color: var(--color-linea-texto);
 }
 
 .seccion h4 {
   font-size: var(--texto-0);
+  margin-block-end: var(--espacio-2);
 }
+
+.seccion > p {
+  max-inline-size: var(--medida);
+  color: var(--color-texto-suave);
+}
+
+.buscador {
+  display: grid;
+  gap: var(--espacio-3);
+  max-inline-size: var(--medida-comparativa);
+  margin-block: var(--espacio-2) var(--espacio-4);
+}
+
+.buscador label {
+  font-weight: 700;
+}
+
+.campo {
+  position: relative;
+}
+
+.campo > svg {
+  position: absolute;
+  inset-inline-start: var(--espacio-4);
+  inset-block-start: var(--espacio-6);
+  transform: translateY(-50%);
+  color: var(--color-texto-suave);
+  pointer-events: none;
+}
+
+.busqueda {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: var(--espacio-12);
+  padding: var(--espacio-3) var(--espacio-12);
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  font: inherit;
+}
+
+.conteo {
+  color: var(--color-texto-suave);
+}
+
+.listaBeneficios {
+  display: grid;
+  gap: var(--espacio-6);
+}
+
+.tarjeta {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-content: start;
+  gap: 0;
+  min-inline-size: 0;
+  padding: 0;
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie);
+}
+
+.resumenBeneficio, .detalleBeneficio {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.resumenBeneficio {
+  padding: var(--espacio-6);
+  background: var(--color-marca-linea);
+  color: var(--color-marca-fondo);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--espacio-6)), calc(100% - var(--espacio-6)) 100%, 0 100%);
+}
+
+.resumenBeneficio h3 {
+  color: var(--color-marca-fondo);
+}
+
+.detalleBeneficio {
+  padding: var(--espacio-6);
+}
+
+.tarjeta > .fuente {
+  padding: var(--espacio-4) var(--espacio-6);
+}
+
+.tarjeta ul {
+  padding-inline-start: var(--espacio-6);
+}
+
+.fuente {
+  padding-block-start: var(--espacio-4);
+  border-block-start: var(--borde) solid var(--color-borde);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-m1);
+  overflow-wrap: break-word;
+}
+
+.fuente a {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.fuente svg {
+  inline-size: var(--espacio-4);
+  block-size: var(--espacio-4);
+  margin-inline-start: var(--espacio-1);
+}
+
+.listaPlazos {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.listaPlazos::before {
+  content: "";
+  position: absolute;
+  inset-block: var(--espacio-8);
+  inset-inline-start: var(--espacio-2);
+  inline-size: var(--borde-linea);
+  background: var(--color-linea);
+}
+
+.plazo {
+  position: relative;
+  display: grid;
+  gap: var(--espacio-6);
+  padding: var(--espacio-8) 0 var(--espacio-8) var(--espacio-12);
+}
+
+.plazo + .plazo {
+  border-block-start: var(--borde) solid var(--color-borde);
+}
+
+.plazo::before {
+  content: "";
+  position: absolute;
+  inset-block-start: var(--espacio-8);
+  inset-inline-start: calc(var(--borde-linea) / 2);
+  inline-size: var(--espacio-4);
+  block-size: var(--espacio-4);
+  border: var(--borde-linea) solid var(--color-linea);
+  border-radius: 50%;
+  background: var(--color-fondo);
+}
+
+.resumenPlazo {
+  display: grid;
+  align-content: start;
+  gap: var(--espacio-3);
+}
+
+.fechaPlazo {
+  min-inline-size: 0;
+}
+
+.fechaPlazo > p {
+  padding: var(--espacio-4);
+  background: var(--color-marca-fondo);
+  color: var(--color-marca-texto);
+  border: var(--borde) solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.vacio {
+  display: flex;
+  align-items: start;
+  gap: var(--espacio-4);
+  padding: var(--espacio-6);
+  border: var(--borde) dashed var(--color-borde);
+  border-radius: var(--radio);
+  background: var(--color-superficie-suave);
+}
+
+@media (min-width: 48rem) {
+.contenido {
+    padding-inline: var(--espacio-8);
+  }
+
+  .listaBeneficios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plazo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--espacio-8);
+  }
+
+  .plazo .fuente {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 64rem) {
+
+  .resumenBeneficio h3 {
+    font-size: var(--texto-2);
+  }
+}
+
+@media (hover: hover) {
+  .accion:hover {
+    text-decoration: underline;
+  }
+}
+
+.encabezado { display: grid; gap: var(--espacio-3); margin-block: var(--espacio-6); }
+.encabezado h1 { font-size: var(--texto-3); }
+.encabezado p { color: var(--color-texto-suave); }
 
 /* En una grilla, el ancho mínimo automático de un texto puede desbordar a
    360 px o con zoom. Cada bloque puede encogerse y cortar palabras largas. */
@@ -59,40 +309,6 @@
   overflow-wrap: break-word;
 }
 
-.busqueda {
-  box-sizing: border-box;
-  inline-size: 100%;
-  min-block-size: var(--objetivo-tactil);
-  padding: var(--espacio-3) var(--espacio-4);
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio);
-  background: var(--color-superficie);
-  color: var(--color-texto);
-  font: inherit;
-}
-
-.tarjeta {
-  padding: var(--espacio-4);
-  border: var(--borde) solid var(--color-borde);
-  border-radius: var(--radio);
-  background: var(--color-superficie);
-}
-
-.listaBeneficios,
-.listaPlazos {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.seccion ul {
-  padding-inline-start: var(--espacio-6);
-}
-
-.fuente {
-  color: var(--color-texto-suave);
-  overflow-wrap: break-word;
-}
 
 /* A 200 % de zoom los títulos conservan palabras completas antes de recurrir
    al corte de emergencia para contenido realmente irrompible. */

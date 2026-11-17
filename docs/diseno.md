@@ -351,6 +351,14 @@ se muestran todas las columnas. Sin JavaScript se conservan los datos de todas
 las carreras elegidas y se oculta el selector interactivo. Los enlaces para
 agregar, quitar y llevar la selección a la hoja funcionan sin JavaScript.
 
+### Tarjetas de beneficios y fechas
+
+Las tarjetas separan nombre y explicación del beneficio de requisitos, cobertura
+y postulación. Las fechas se agrupan con su proceso y fuente. Los plazos
+pendientes conservan su explicación y referencia; las fechas confirmadas usan
+`time`. Las superficies de marca y los bordes distinguen grupos sin depender
+solo del color. Se reutilizan los tamaños y objetivos táctiles de los tokens.
+
 ## 10. Pendientes
 
 
