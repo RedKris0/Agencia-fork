@@ -366,6 +366,16 @@ Sin JavaScript se conservan el catálogo completo, sus fuentes y el calendario,
 con un aviso junto al buscador. Las anclas llevan al calendario o a la búsqueda
 y permiten continuar con teclado. El conteo anuncia los resultados del filtro.
 
+### Verificación de continuidad
+
+En la ficha, los títulos conservan palabras completas; los valores pueden usar `break-word` como última salida para que unidades largas no desborden con texto al 200 %.
+
+El ADR 0030 registra la propuesta de continuidad sobre la base aceptada del
+ADR 0029. Las pruebas enlazan portada, explorador, ficha, comparador, beneficios
+y hoja, con teclado, ambos temas, movimiento reducido y texto ampliado.
+Las capturas se generan en los resultados de pruebas, fuera del repositorio.
+El PR registra la evidencia disponible y los resultados de su cabeza publicada.
+
 ## 10. Pendientes
 
 

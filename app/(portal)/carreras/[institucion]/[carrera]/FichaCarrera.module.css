@@ -12,7 +12,7 @@
 }
 
 .ficha[data-pagina-interior] .datos > article {
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
 }
 
 .contenido {
