@@ -448,14 +448,3 @@
   gap: var(--espacio-6);
   min-inline-size: 0;
 }
-
-.encabezado {
-  display: grid;
-  gap: var(--espacio-3);
-  margin-block: var(--espacio-6);
-  padding-block-end: var(--espacio-6);
-  border-block-end: var(--borde-linea) solid var(--color-linea);
-}
-.encabezado h1 { font-size: var(--texto-3); }
-.encabezado p { color: var(--color-texto-suave); }
-.volver { color: var(--color-linea-texto); }

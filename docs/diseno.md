@@ -318,6 +318,14 @@ palabras completas a 360 px con texto al 200 %, también al pasar a dos columnas
 Cada cifra declara si corresponde a toda la carrera en la institución o a la
 sede y jornada. La medida, el período, la fuente y la fecha acompañan su valor.
 
+### Espera y navegación del explorador
+
+El formulario GET conserva búsqueda y filtros en la dirección de la página.
+Con JavaScript, el envío válido muestra una espera anunciada y tres esqueletos
+decorativos. `--mov-carga` representa la espera y se anula con movimiento reducido.
+Al regresar con el historial, `pageshow` recupera los resultados. Sin JavaScript,
+el formulario y los enlaces de paginación conservan su navegación normal.
+
 ## 10. Pendientes
 
 
