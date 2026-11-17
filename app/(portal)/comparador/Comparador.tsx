@@ -95,7 +95,7 @@ export function Comparador({ seleccionadas, quitarHref, resultados, q, carrerasA
   }
 
   return (
-    <main id="contenido" tabIndex={-1} className={estilos.comparador}>
+    <main id="contenido" tabIndex={-1} className={`${estilos.comparador} ${estilos.contenido}`}>
       <Link className={estilos.volver} href="/carreras">Volver al explorador</Link>
       <header className={estilos.encabezado}>
         <IndicadorEstacion actual={1} />

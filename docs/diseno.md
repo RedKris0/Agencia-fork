@@ -326,6 +326,15 @@ decorativos. `--mov-carga` representa la espera y se anula con movimiento reduci
 Al regresar con el historial, `pageshow` recupera los resultados. Sin JavaScript,
 el formulario y los enlaces de paginación conservan su navegación normal.
 
+### Selección del comparador
+
+Los enlaces a fuentes conservan el subrayado en ambos temas para distinguirlos sin depender del color.
+
+Las carreras elegidas se distinguen con superficies de marca y texto visible.
+Buscar utiliza un formulario GET; agregar y quitar utilizan enlaces que conservan
+la selección. La dirección guarda códigos oficiales de carreras. La acción coral
+es buscar; quitar y llevar la selección a la hoja usan acciones secundarias.
+
 ## 10. Pendientes
 
 
