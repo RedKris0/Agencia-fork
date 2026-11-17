@@ -31,7 +31,7 @@ function Celda({ carrera, fila, ocultaEnMovil }: { carrera: Carrera; fila: FilaI
   const sinDato = !indicador || indicador.valor === null;
 
   return (
-    <div className={`${estilos.celda} ${ocultaEnMovil ? estilos.ocultaEnMovil : ''}`}>
+    <div className={`${estilos.celda} ${ocultaEnMovil ? estilos.ocultaEnMovil : ''}`} data-sin-dato={sinDato || undefined}>
       <p className={sinDato ? estilos.sinDato : estilos.valor}>{sinDato ? 'Sin datos suficientes' : formatoIndicador(indicador)}</p>
       {sinDato ? (
         <p>{indicador && 'motivo_sin_dato' in indicador ? indicador.motivo_sin_dato : 'Este dato aún no está cargado.'}</p>

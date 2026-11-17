@@ -335,6 +335,14 @@ Buscar utiliza un formulario GET; agregar y quitar utilizan enlaces que conserva
 la selección. La dirección guarda códigos oficiales de carreras. La acción coral
 es buscar; quitar y llevar la selección a la hoja usan acciones secundarias.
 
+### Filas de comparación
+
+Cada fila reúne la definición y unidad de un indicador con sus valores alineados.
+Cada cifra conserva período, nivel de origen, fuente y fecha. Los períodos
+diferentes producen una advertencia escrita y los valores ausentes conservan
+su explicación. Desde `64rem`, la etiqueta ocupa una parte y los datos tres;
+el margen del encabezado deriva de esa proporción de columnas.
+
 ## 10. Pendientes
 
 
