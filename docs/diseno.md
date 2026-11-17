@@ -359,6 +359,13 @@ pendientes conservan su explicación y referencia; las fechas confirmadas usan
 `time`. Las superficies de marca y los bordes distinguen grupos sin depender
 solo del color. Se reutilizan los tamaños y objetivos táctiles de los tokens.
 
+### Búsqueda y navegación de beneficios
+
+La búsqueda filtra el catálogo en el dispositivo y requiere JavaScript.
+Sin JavaScript se conservan el catálogo completo, sus fuentes y el calendario,
+con un aviso junto al buscador. Las anclas llevan al calendario o a la búsqueda
+y permiten continuar con teclado. El conteo anuncia los resultados del filtro.
+
 ## 10. Pendientes
 
 

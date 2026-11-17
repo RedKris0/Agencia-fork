@@ -294,13 +294,9 @@
   }
 }
 
-.encabezado { display: grid; gap: var(--espacio-3); margin-block: var(--espacio-6); }
-.encabezado h1 { font-size: var(--texto-3); }
-.encabezado p { color: var(--color-texto-suave); }
 
 /* En una grilla, el ancho mínimo automático de un texto puede desbordar a
    360 px o con zoom. Cada bloque puede encogerse y cortar palabras largas. */
-.encabezado > *,
 .seccion > *,
 .tarjeta > *,
 .listaBeneficios > *,
