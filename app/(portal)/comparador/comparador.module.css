@@ -157,6 +157,7 @@
 }
 
 .elegirMovil {
+  display: none;
   margin: 0;
   padding: var(--espacio-4);
   border: var(--borde) solid var(--color-borde);
@@ -321,8 +322,12 @@
   background: var(--color-superficie-suave);
 }
 
+.comparador[data-interactivo] .elegirMovil {
+  display: grid;
+}
+
 @media not all and (min-width: 64rem) {
-  .comparador .ocultaEnMovil {
+  .comparador[data-interactivo] .ocultaEnMovil {
     display: none;
   }
 }
@@ -358,7 +363,7 @@
     font-size: var(--texto-1);
   }
 
-  .elegirMovil {
+  .comparador[data-interactivo] .elegirMovil {
     display: none;
   }
 
@@ -427,14 +432,3 @@
   outline: var(--anillo-foco) solid var(--color-foco);
   outline-offset: var(--espacio-1);
 }
-
-.encabezado {
-  display: grid;
-  gap: var(--espacio-3);
-  margin-block: var(--espacio-6);
-  padding-block-end: var(--espacio-6);
-  border-block-end: var(--borde-linea) solid var(--color-linea);
-}
-.encabezado h1 { font-size: var(--texto-3); }
-.encabezado p { color: var(--color-texto-suave); }
-.volver { color: var(--color-linea-texto); }

@@ -343,6 +343,14 @@ diferentes producen una advertencia escrita y los valores ausentes conservan
 su explicación. Desde `64rem`, la etiqueta ocupa una parte y los datos tres;
 el margen del encabezado deriva de esa proporción de columnas.
 
+### Comparación en teléfono y hoja de decisión
+
+En teléfono, la selección interactiva muestra hasta dos carreras lado a lado.
+Las casillas anuncian su límite con texto y se operan con teclado. En escritorio
+se muestran todas las columnas. Sin JavaScript se conservan los datos de todas
+las carreras elegidas y se oculta el selector interactivo. Los enlaces para
+agregar, quitar y llevar la selección a la hoja funcionan sin JavaScript.
+
 ## 10. Pendientes
 
 
